@@ -1,8 +1,9 @@
 #include <stdio.h>
 
 int main{
-    printf("test")
+    printf("test");
+    int a;
 
 
-    return 0
+    return 0;
 }
