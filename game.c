@@ -18,9 +18,9 @@ typedef struct Ville Ville;
 
 struct Ville
 {
-    int id;
-    int voisin[100];
-    int cout_voisin[100];
+    int id;//id
+    int voisin[100];// liste de voisin sous forme d'une liste de id d'autres ville
+    int cout_voisin[100];// liste de cout de voyage vers voisin sous forme d'une liste de cout
 
 };
 
@@ -31,10 +31,10 @@ int main(){
     struct Ville Toulouse;
 
     Toulouse.id = 1;
-   /* Toulouse.voisin;
-    Toulouse.cout_voisin;*/
+    Toulouse.voisin[0] = 1;
+    Toulouse.cout_voisin[0] = 0;
 
-    printf("la ville Toulouse a pour id : %d",Toulouse.id);
+    printf("la ville Toulouse a pour id : %d et as pour voisin :%d pour un cout de %d",Toulouse.id,Toulouse.voisin[0],Toulouse.cout_voisin[0]);
 
     return 0;
 }
