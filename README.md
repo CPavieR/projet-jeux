@@ -4,6 +4,7 @@ etat actuel :
 
 
 Système de transport(graphe-algo dijkstra) : graphe pondéré
+(faire import graphe from file)
 
 Frais-revenue : somme
 
