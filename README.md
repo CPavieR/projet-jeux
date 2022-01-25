@@ -3,8 +3,8 @@ Ceci est le projet de jeu CMI informatique
 etat actuel :
 
 
-Système de transport(graphe-algo dijkstra) : graphe pondéré
-(faire import graphe from file)
+Système de transport(graphe-algo dijkstra) : graphe pondéré                      A complété
+(creer fonction operations usuels et import depuis fichier texte)
 
 Frais-revenue : somme
 
