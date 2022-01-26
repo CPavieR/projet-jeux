@@ -10,6 +10,8 @@ https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c/16119-cre
 typedef struct Ville Ville;
 
 #include <stdio.h>
+#include <stdlib.h> 
+#include <string.h>
 
 struct Ville
 {
@@ -17,6 +19,23 @@ struct Ville
     int voisin[100];      // liste de voisin sous forme d'une liste de id d'autres ville
     int cout_voisin[100]; // liste de cout de voyage vers voisin sous forme d'une liste de cout
 };
+
+
+int import_csv(){
+    FILE *f;
+    f = fopen("Untitled 1.csv","r"); 
+    char tab [1024];
+    fgets(tab,sizeof(tab),f);
+    char *ligne = strtok(tab,";");
+    while (ligne != "F" && ligne != NULL) {
+        printf("%s\n",ligne);
+        ligne = strtok(NULL,";");
+    } 
+    return 0;//function à compléter
+};
+
+
+
 
 Ville* import_villes_from_file()
 {
