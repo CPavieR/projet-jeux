@@ -37,39 +37,36 @@ int import_csv()
     return 0; //function à compléter
 };
 
-
-
 int* get_list_of_int_from_list_of_char(char char_list[])
-// fonction permetant d'obtenir 
+// fonction permetant d'obtenir
 // une liste de int a partir d'une liste de char
 // la liste doit etre sous la forme [nbr][nbr][nbr]...
 {
-    int k = strlen(char_list);// on prends la longueur de la liste de charac a convertir
-    int list_of_int[20];// contient la liste de int final
-    short i = 0;// numero de la case que l'on regarde
-    short number_number = 0;// numero du nombre que l'on ecrit dans la liste de int finale
-    int somme_case = 0;// est la somme de la casse que l'on observe
-    while(i < k){
-        printf("hit");
-        if(char_list[i]=='['){
+    int k = strlen(char_list); // on prends la longueur de la liste de charac a convertir
+    int list_of_int[20];       // contient la liste de int final
+    short i = 0;               // numero de la case que l'on regarde
+    short number_number = 0;   // numero du nombre que l'on ecrit dans la liste de int finale
+    int somme_case = 0;        // est la somme de la casse que l'on observe
+    while (i < k)
+    {
+        if (char_list[i] == '[')
+        {
             i++;
             somme_case = 0;
-            printf("hit2");
-            while(isdigit(char_list[i])){
-                somme_case = somme_case*10 +char_list[i]-48;
+            while (isdigit(char_list[i]))
+            {
+                somme_case = somme_case * 10 + char_list[i] - 48;
                 i++;
-                printf("hit3");
             }
             list_of_int[number_number] = somme_case;
             number_number++;
-
         }
         i++;
     }
     return list_of_int;
 }
 
-void test_villes()//test basiques sur le type villes
+void test_villes() //test basiques sur le type villes
 {
 
     Ville villes_europe[20];
@@ -114,11 +111,10 @@ void test_villes()//test basiques sur le type villes
 int main()
 {
     int *list;
-    char test[40]= "fdrf[45][43];[43]";
+    char test[40] = "fdrf[45][43];[43]";
     import_csv();
     list = get_list_of_int_from_list_of_char(test);
-    printf("test 1 : %d \n test 2 : %d \n test 3 : %d \n", list[0],list[1], list[2]);
-    
+    printf("test 1 : %d \n test 2 : %d \n test 3 : %d \n", list[0], list[1], list[2]);
 
     return 0;
 }
