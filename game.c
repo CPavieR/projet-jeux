@@ -7,40 +7,69 @@ chaque ville possedera un indice, id, la definissant
 cette premiere approche n'est pas "bonne" et doit et sera ameliorer
 https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c/16119-creez-vos-propres-types-de-variables
 */
-typedef struct Ville Ville;
+typedef struct Ville Ville; // simplification d'utilisation du type ville
 
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
-struct Ville
+struct Ville // on creer un nouveau type (type somme) nommé ville
 {
     int id;               //id
+    char nom[25];         // nom de la ville
     int voisin[100];      // liste de voisin sous forme d'une liste de id d'autres ville
     int cout_voisin[100]; // liste de cout de voyage vers voisin sous forme d'une liste de cout
 };
 
-
-int import_csv(){
-    FILE *f;
-    f = fopen("Untitled 1.csv","r"); 
-    char tab [1024];
-    fgets(tab,sizeof(tab),f);
-    char *ligne = strtok(tab,";");
-    while (ligne != "F" && ligne != NULL) {
-        printf("%s\n",ligne);
-        ligne = strtok(NULL,";");
-    } 
-    return 0;//function à compléter
+int import_csv()
+{
+    FILE *document;
+    document = fopen("villes.csv", "r");
+    char tab[1024];
+    fgets(tab, sizeof(tab), document);
+    char *ligne = strtok(tab, ";");
+    while (ligne != "F" && ligne != NULL)
+    {
+        printf("%s\n", ligne);
+        ligne = strtok(NULL, ";");
+    }
+    return 0; //function à compléter
 };
 
 
 
-
-Ville* import_villes_from_file()
+int* get_list_of_int_from_list_of_char(char char_list[])
+// fonction permetant d'obtenir 
+// une liste de int a partir d'une liste de char
+// la liste doit etre sous la forme [nbr][nbr][nbr]...
 {
+    int k = strlen(char_list);// on prends la longueur de la liste de charac a convertir
+    int list_of_int[20];// contient la liste de int final
+    short i = 0;// numero de la case que l'on regarde
+    short number_number = 0;// numero du nombre que l'on ecrit dans la liste de int finale
+    int somme_case = 0;// est la somme de la casse que l'on observe
+    while(i < k){
+        printf("hit");
+        if(char_list[i]=='['){
+            i++;
+            somme_case = 0;
+            printf("hit2");
+            while(isdigit(char_list[i])){
+                somme_case = somme_case*10 +char_list[i]-48;
+                i++;
+                printf("hit3");
+            }
+            list_of_int[number_number] = somme_case;
+            number_number++;
+
+        }
+        i++;
+    }
+    return list_of_int;
 }
-void test_villes()
+
+void test_villes()//test basiques sur le type villes
 {
 
     Ville villes_europe[20];
@@ -84,8 +113,12 @@ void test_villes()
 }
 int main()
 {
-    test_villes();
+    int *list;
+    char test[40]= "fdrf[45][43];[43]";
+    import_csv();
+    list = get_list_of_int_from_list_of_char(test);
+    printf("test 1 : %d \n test 2 : %d \n test 3 : %d \n", list[0],list[1], list[2]);
+    
 
     return 0;
 }
-
