@@ -1,0 +1,102 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{libertine}
+\usepackage[pdftex]{graphicx}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+  
+
+%ici on ajoute les images sur la même ligne (j'ai mis des images mais je pense que ça ne fonctionnera pas de votre côté pour l'instant)
+\begin{minipage}[c]{.46\linewidth}
+     \begin{center}
+             \includegraphics[width=4cm]{logo-fds.png}
+         \end{center}
+   \end{minipage} \hfill
+   \begin{minipage}[c]{.46\linewidth}
+    \begin{center}
+            \includegraphics[width=4cm]{logo-figure.png}
+        \end{center}
+ \end{minipage}
+    
+%ici il faudra voir pour séparer les iages du titre (en l'état ils sont collés)
+%on passe ici au début du code de la page de garde
+
+    \textsc{\LARGE Faculté Des Sciences - Montpellier}\\[2cm]
+
+    \textsc{\Large Etude de faisabilité et cahier des charges}\\[1.5cm]
+
+    \HRule \\[0.4cm]
+    { \huge \bfseries Projet CMI\\[0.4cm] }
+
+    \HRule \\[2cm]
+    \\[2cm]
+
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+        Conrath Matthieu\\
+        Robert Wendy\\
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+       Pavie-Routaboul Clement\\
+        Rebagliato Lucas\\
+      \end{flushright}
+    \end{minipage}
+
+    \vfill
+
+    {\large 3 février 2022}
+
+  \end{center}
+  \end{sffamily}
+\end{titlepage}
+
+\newpage
+
+%et à partir de là c'est le code pour le reste du doc
+
+\renewcommand*\contentsname{Sommaire}
+\tableofcontents
+   \section*{Introduction}
+   \addcontentsline{toc}{section}{Introduction}
+      Ce document est le cahier des charges ainsi que l'étude de faisabilité du projet qui sera à effectuer durant le second semestre de la première année de Licence informatique (avec la mention Cursus Master en Ingénierie)
+\newpage
+\section{Cahier des charges}
+      \subsection{But du Jeu}
+         Notre jeu sera un jeu de gestion d'une entreprise de fret. Ainsi, l'objectif de notre jeu sera de développer notre entreprise au travers de la gestion de contrats, d'employés etc... 
+      \subsection{Ce que doit faire notre jeu en priorité}
+        En priorité, notre jeu doit permettre d'utiliser un graphe pondéré en guise de carte pour gérer les contrats de l'entreprise. Nous devons alors parcourir ce graphe d'un sommet S à un autre somme Z (représentant différentes villes). Pour faire cela, nous devons implanter l'algorithme de Dijkstra. Un système de contrat devra être mis en place qui devra comprendre une rémunération ainsi que des charges. Enfin nous devrons inclure un système de sauvegarde.
+      \subsection{Ce que l'on peut ajouter si l'on a le temps (extra)}
+       Une fois que nous aurons terminé les éléments essentiels nous pourrons alors intégrer un système d'expérience pour les employés, nous pourrons aussi organiser des évènements aléatoires et ajouter une interface graphique ainsi que des sons et bruits afin d'ajouter une ambiance sonore au jeu.
+\section{Étude de faisabilité}
+     Dans cette section nous verrons les éléments que nous savons réaliser ainsi que ce que l'on ne sait pas faire.
+      \subsection{Les langages que nous utiliserons}
+         Pour ce projet nous utiliserons C comme langage principal, sans s'interdire d'utiliser les bibliothèques disponible. De plus, nous devrons faire en sorte que le jeu soit compatible avec les environnements linux. 
+      \subsection{Les problèmes algorithmique à résoudre}
+         Dans notre projet, nous comptons utiliser des graphes et des arbres. Ces derniers constitueront la majeure partie des problèmes algorithmiques.
+    \subsection{Ce que l'on ne sait pas faire à l'heure actuelle}
+         A l'heure actuelle, la majeure partie du groupe est novice en C, de plus nous n'avons pour l'instant pas utilisé les graphes dans ce contexte précis.
+\section{Planification du projet}
+    \subsection{Répartition des tâches}
+    \subsection{Temps estimé pour faire les tâches données}
+    
+\section*{Conclusion}
+   \addcontentsline{toc}{section}{Conclusion}
+      texte de la conclusion 
+
+   \appendix  % On passe aux annexes
+   \section{Bibliographie}
+       notes sur la bibliographie, les docs utilisés etc...
+
+
+\end{document}
