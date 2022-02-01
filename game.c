@@ -7,50 +7,52 @@ chaque ville possedera un indice, id, la definissant
 cette premiere approche n'est pas "bonne" et doit et sera ameliorer
 https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c/16119-creez-vos-propres-types-de-variables
 */
+typedef struct Ville Ville; // simplification d'utilisation du type ville
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
+//on vas implementer le graphe pondéré des ville grace a une matrice pour les distance et liaison
+// et une liste de nom ou l'id de la ville est l'index de son nom
+int matrice_europe[50][50];
+char **nom_ville;
 
-int import_csv()
+int get_num_from_charac(char characters[])
 {
-    FILE *document;
-    document = fopen("villes.csv", "r");
-    char tab[1024];
-    fgets(tab, sizeof(tab), document);
-    char *ligne = strtok(tab, ";");
-    while (ligne != "F" && ligne != NULL)
+    int k = strlen(characters);
+    int somme = 0;
+    for (int i = 0; i < k; i++)
     {
-        printf("%s\n", ligne);
-        ligne = strtok(NULL, ";");
+        somme = somme * 10 + characters[i] - 48; //on convertit ceux ci (-48) et on ajoute ceux ci a la somme en prenant en compte les puissance de dix
     }
-    return 0; //function à compléter
-};
+    return somme;
+}
 
 int* get_list_of_int_from_list_of_char(char char_list[])
 // fonction permetant d'obtenir
 // une liste de int a partir d'une liste de char
 // la liste doit etre sous la forme [nbr][nbr][nbr]...
 {
-    int k = strlen(char_list); // on prends la longueur de la liste de charac a convertir
-    int list_of_int[20];       // contient la liste de int final
-    short i = 0;               // numero de la case que l'on regarde
-    short number_number = 0;   // numero du nombre que l'on ecrit dans la liste de int finale
-    int somme_case = 0;        // est la somme de la casse que l'on observe
-    while (i < k)
+    
+    int k = strlen(char_list);  // on prends la longueur de la liste de charac a convertir
+    static int list_of_int[20]; // contient la liste de int final
+    short i = 0;                // numero de la case que l'on regarde
+    short number_number = 0;    // numero du nombre que l'on ecrit dans la liste de int finale
+    int somme_case = 0;         // est la somme de la casse que l'on observe
+    while (i < k)               //boucle sur les indice de char_list
     {
-        if (char_list[i] == '[')
+        if (char_list[i] == '[') // si il y as une ouverture de bracket (c'est a dirte le debut d'un nr)
         {
             i++;
             somme_case = 0;
-            while (isdigit(char_list[i]))
+            while (isdigit(char_list[i])) // tant que les caractere sont des nombres
             {
-                somme_case = somme_case * 10 + char_list[i] - 48;
+                somme_case = somme_case * 10 + char_list[i] - 48; //on convertit ceux ci (-48) et on ajoute ceux ci a la somme en prenant en compte les puissance de dix
                 i++;
             }
-            list_of_int[number_number] = somme_case;
+            list_of_int[number_number] = somme_case; //quand un nombre est fini on l'ajoute a la liste d'entier et on recommence
             number_number++;
         }
         i++;
@@ -58,55 +60,75 @@ int* get_list_of_int_from_list_of_char(char char_list[])
     return list_of_int;
 }
 
-void test_villes() //test basiques sur le type villes
+void insert_voisin(int id, char *li_voisin, char *voisin_cout)
 {
-
-    Ville villes_europe[20];
-
-    Ville toulouse;
-
-    toulouse.id = 0;
-    toulouse.voisin[0] = 0;
-    toulouse.voisin[1] = 3;
-    toulouse.cout_voisin[0] = 0;
-    toulouse.cout_voisin[1] = 2;
-
-    Ville marseille;
-
-    marseille.id = 1;
-    marseille.voisin[0] = 1;
-    marseille.voisin[1] = 2;
-    marseille.cout_voisin[0] = 0;
-    marseille.cout_voisin[1] = 2;
-
-    Ville nice;
-
-    nice.id = 2;
-    nice.voisin[0] = 2;
-    nice.cout_voisin[0] = 0;
-
-    Ville lyon;
-
-    lyon.id = 3;
-    lyon.voisin[0] = 3;
-    lyon.cout_voisin[0] = 0;
-
-    villes_europe[0] = toulouse;
-    villes_europe[1] = marseille;
-    villes_europe[2] = nice;
-    villes_europe[3] = lyon;
-    printf("test\n");
-
-    printf("la ville Toulouse a pour id : %d et as pour voisin :%d pour un cout de %d\n", toulouse.id, toulouse.voisin[1], toulouse.cout_voisin[1]);
-    printf("la ville Marseille a pour id : %d et as pour voisin :%d pour un cout de %d\n", marseille.id, marseille.voisin[1], marseille.cout_voisin[1]);
+    printf("hit");
+    int *liste_des_voisins = get_list_of_int_from_list_of_char(li_voisin);
+    int *cout_des_voisin = get_list_of_int_from_list_of_char(voisin_cout);
+    int k = strlen(liste_des_voisins);// <- ligne produisant warning a corriger
+    for(int i = 0; i<k; i++){
+            matrice_europe[id][(liste_des_voisins[i])]= cout_des_voisin[i];
+    }
 }
+int import_csv()
+{
+    int id = 0; //initialisations des variables propres aux villes
+    int voisin[50];
+    int cout_voisin[50];
+    FILE *document;
+    document = fopen("villes.csv", "r");
+    char tab[1024];
+    printf("hit");
+    while (fgets(tab, sizeof(tab), document))
+    {                                  //on lit le fichier jusqu'a que la lecture echoue
+        char *mots = strtok(tab, ";"); //on delimite la str
+                                       //while (mots != NULL)// on attends 4 champs id, nom, voisin, cout voisin
+        printf("hit");
+        id = get_num_from_charac(mots);
+        printf("hit1");
+        mots = strtok(NULL, ";"); // on passe au mots suivant
+        printf("hit2");
+        memcpy ( nom_ville[id], mots, strlen(mots)+1 ); // <- ligne ne marchant pas
+        printf("hit3");
+        mots = strtok(NULL, ";");      
+        printf("hit4");         // on passe au mots suivant
+        char *voisin_cout = strtok(NULL, ";");
+        printf("hit5"); // on passe au mots suivant
+        printf("hit");
+        insert_voisin(id, mots, voisin_cout);
+    }
+    printf("hit");
+    return 0; //function à compléter
+};
+
+
+
+
+
+
+
 int main()
 {
-    int *list;
+/*    int *list;
     char test[40] = "fdrf[45][43];[43]";
     import_csv();
     list = get_list_of_int_from_list_of_char(test);
-    printf("test 1 : %d \n test 2 : %d \n test 3 : %d \n", list[0], list[1], list[2]);
 
+
+    printf("test 1 : %d \n test 2 : %d \n test 3 : %d \n", list[0], list[1], list[2]);
+*/
+    printf("hit");
+    import_csv();
+    printf("hit");
+
+
+    for(int i = 0; i<50;i++){
+        for(int j =0; j<50; j++){
+            printf("%d ",matrice_europe[i][j]);
+
+        }
+        printf("\n");
+
+    }
     return 0;
 }
