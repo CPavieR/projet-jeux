@@ -26,7 +26,7 @@
             \includegraphics[width=4cm]{logo-figure.png}
         \end{center}
  \end{minipage}
-    
+\newline \newline
 %ici il faudra voir pour séparer les iages du titre (en l'état ils sont collés)
 %on passe ici au début du code de la page de garde
 
