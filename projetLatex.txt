@@ -76,42 +76,56 @@
       \subsection{But du Jeu}
          Notre jeu sera un jeu de gestion d'une entreprise de fret. Ainsi, l'objectif de notre jeu sera de développer notre entreprise au travers de la gestion de contrats, d'employés etc. 
       \subsection{Ce que doit faire notre jeu en priorité}
-        En priorité, notre jeu doit permettre d'utiliser un graphe pondéré en guise de carte pour gérer les contrats de l'entreprise. Nous devons alors parcourir ce graphe d'un sommet S à un autre somme Z (représentant différentes villes). Pour faire cela, nous devons implanter l'algorithme de Dijkstra. Un système de contrat devra être mis en place qui devra comprendre une rémunération ainsi que des charges. Enfin nous devrons inclure un système de sauvegarde.
+        En priorité, notre jeu doit permettre d'utiliser un graphe pondéré en guise de carte pour gérer les contrats de l'entreprise. Nous devons alors parcourir ce graphe d'un sommet  A un autre sommet B (représentant différentes villes). Pour faire cela, nous devons implanter l'algorithme de Dijkstra. Un système de contrat devra être mis en place qui devra comprendre la rémunération ainsi que les charges. Nous devrons également inclure de quoi sauvegarder la partie du joueur. Enfin, nous ajouterons des évènements aléatoires.
       \subsection{Ce que l'on peut ajouter si l'on a le temps (extra)}
-       Une fois que nous aurons terminé les éléments essentiels nous pourrons alors intégrer un système d'expérience pour les employés, nous pourrons aussi organiser des évènements aléatoires et ajouter une interface graphique ainsi que des sons et bruits afin d'ajouter une ambiance sonore au jeu.
+       Une fois que nous aurons terminé les éléments essentiels, nous pourrons alors intégrer un système d'expérience pour les employés. Ajouter une interface graphique ainsi que des sons et bruits pour ajouter une ambiance sonore au jeu serait également souhaitable.
+\newpage
 \section{Étude de faisabilité}
      Dans cette section nous verrons les éléments que nous savons réaliser ainsi que ce que l'on ne sait pas faire.
-      \subsection{Les langages que nous utiliserons}
+      \subsection{Le langage que nous utiliserons}
          Pour ce projet nous utiliserons C comme langage principal, sans s'interdire d'utiliser les bibliothèques disponibles. De plus, nous devrons faire en sorte que le jeu soit compatible avec les environnements Linux. 
       \subsection{Les problèmes algorithmiques à résoudre}
-         Dans notre projet, nous comptons utiliser des graphes et des arbres. Ces derniers constitueront la majeure partie des problèmes algorithmiques.
+         Dans notre projet, nous comptons utiliser des graphes et des arbres. Ces derniers constitueront la majeure partie des problèmes algorithmiques. Pour s'en prémunir, nous devrons trouver des méthodes d'implémentation afin que le programme soit le plus dynamique possible et qu'il ne contienne pas d'erreurs.
     \subsection{Ce que l'on ne sait pas faire à l'heure actuelle}
          À l'heure actuelle, la majeure partie du groupe est novice en C, de plus nous n'avons pour l'instant pas utilisé les graphes dans ce contexte précis.
+
+\newpage
+
 \section{Planification du projet}
-    \subsection{Répartition des tâches}
-
-
-
     \subsection{Temps estimé pour faire les tâches données}
-    
-    \begin{enumerate}
-\item système de transport et algorithme de Dijkstra | 2-3 semaines
-\item système de frais et de revenus (avec contrats et coûts) | 1 semaine
-\item implémentation de conducteurs avec leurs véhicules | 1 semaine
-\item système de sauvegardes | 2 semaines
-\item évènements aléatoires | 1 semaine
-\item expérience des conducteurs | 2 semaines
-\item graphismes / sons | (optionnel)
-\item finitions du code et finalisation du rapport | 1 semaine
+
+\begin{enumerate}
+\item Système de transport et algorithme de Dijkstra | 2-3 semaines
+\item Système de frais et de revenus (avec contrats et coûts) | 1 semaine
+\item Implémentation de conducteurs avec leurs véhicules | 1 semaine
+\item Système de sauvegardes | 2 semaines
+\item Évènements aléatoires | 1 semaine
+\item Expérience des conducteurs | (optionnel)
+\item Graphismes / sons | (optionnel)
+\item Finitions du code et finalisation du rapport | 1 semaine
 \end{enumerate}
+
+    \subsection{Répartition des tâches}
+    
+\begin{enumerate}
+\item Système de transport et algorithme de Dijkstra | Clément - Matthieu
+\item Système de frais et de revenus (avec contrats et coûts) | Wendy - Lucas
+\item Implémentation de conducteurs avec leurs véhicules | Clément - Matthieu
+\item Système de sauvegardes | En groupe
+\item Évènements aléatoires | Wendy - Lucas
+\item Expérience des conducteurs | (optionnel)
+\item Graphismes / sons | (optionnel)
+\item Finitions du code et finalisation du rapport | En groupe
+\end{enumerate}
+
 
 \section*{Conclusion}
    \addcontentsline{toc}{section}{Conclusion}
-      texte de la conclusion 
+      Ainsi, nous avons d'abord détaillé le cahier des charges en commençant par le but du jeu puis en détaillant ce que l'on devra ajouter. Suite à cela nous avons fait l'étude de faisabilité en listant les problèmes qui seront rencontrés dans le langage que nous avons choisi pour ce projet. Enfin, nous avons listé les tâches à effectuer avec l'estimation du temps et leur répartition.
 
-   \appendix  % On passe aux annexes
-   \section{Bibliographie}
-       notes sur la bibliographie, les docs utilisés etc...
+\section*{Bibliographie}
+    \addcontentsline{toc}{section}{Bibliographie}
+       Brian W. Kernighan and Dennis M. Ritchie. The C Programming Language. Prentice Hall Professional Technical Reference, 2nd edition, 1988
 
 
 \end{document}
