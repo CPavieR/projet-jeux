@@ -7,20 +7,12 @@ chaque ville possedera un indice, id, la definissant
 cette premiere approche n'est pas "bonne" et doit et sera ameliorer
 https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c/16119-creez-vos-propres-types-de-variables
 */
-typedef struct Ville Ville; // simplification d'utilisation du type ville
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
-struct Ville // on creer un nouveau type (type somme) nommé ville
-{
-    int id;               //id
-    char nom[25];         // nom de la ville
-    int voisin[100];      // liste de voisin sous forme d'une liste de id d'autres ville
-    int cout_voisin[100]; // liste de cout de voyage vers voisin sous forme d'une liste de cout
-};
 
 int import_csv()
 {
