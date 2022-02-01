@@ -7,7 +7,7 @@ chaque ville possedera un indice, id, la definissant
 cette premiere approche n'est pas "bonne" et doit et sera ameliorer
 https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c/16119-creez-vos-propres-types-de-variables
 */
-typedef struct Ville Ville; // simplification d'utilisation du type ville
+
 
 #include <stdio.h>
 #include <stdlib.h>
