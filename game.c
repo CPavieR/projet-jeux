@@ -102,6 +102,7 @@ char **import_csv()//A DEBBUGGER
         // insert_voisin(id, mots, voisin_cout);
         fflush(NULL);
     }
+    fclose(document);
     //printf("hit");
     return nom_ville; // function à compléter
 };
