@@ -70,7 +70,7 @@ int *get_list_of_int_from_list_of_char(char char_list[])
             matrice_europe[id][(liste_des_voisins[i])]= cout_des_voisin[i];
     }
 }*/
-char **import_csv()
+char **import_csv()//A DEBBUGGER
 {
     static char *nom_ville[] = {""};
     int id = 0; // initialisations des variables propres aux villes
