@@ -12,7 +12,16 @@ https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c/16119-cre
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#define NOMBRE_DE_VILLES   16
 
+
+
+
+
+struct list_of_int_with_len{
+    int *liste;
+    int len;
+};
 // on vas implementer le graphe pondéré des ville grace a une matrice pour les distance et liaison
 //  et une liste de nom ou l'id de la ville est l'index de son nom
 // int matrice_europe[50][50];
@@ -29,7 +38,7 @@ int get_num_from_charac(char characters[])
     return somme;
 }
 
-int *get_list_of_int_from_list_of_char(char char_list[])
+struct list_of_int_with_len get_list_of_int_from_list_of_char(char char_list[])
 // fonction permetant d'obtenir
 // une liste de int a partir d'une liste de char
 // la liste doit etre sous la forme [nbr][nbr][nbr]...
@@ -42,7 +51,7 @@ int *get_list_of_int_from_list_of_char(char char_list[])
     int somme_case = 0;         // est la somme de la casse que l'on observe
     while (i < k)               // boucle sur les indice de char_list
     {
-        if (char_list[i] == '[') // si il y as une ouverture de bracket (c'est a dirte le debut d'un nr)
+        if (char_list[i] == '[' || char_list[i]==',') // si il y as une ouverture de bracket (c'est a dirte le debut d'un nr)
         {
             i++;
             somme_case = 0;
@@ -53,27 +62,46 @@ int *get_list_of_int_from_list_of_char(char char_list[])
             }
             list_of_int[number_number] = somme_case; // quand un nombre est fini on l'ajoute a la liste d'entier et on recommence
             number_number++;
+            printf("get list of int, int courant :%d\n", somme_case);
         }
-        i++;
+        else{
+        i++;}
+
     }
-    return list_of_int;
+    printf("fin de getlist of int\n");
+    struct list_of_int_with_len liste_entiers_avec_longueur = {list_of_int,number_number};
+    return liste_entiers_avec_longueur;
 }
 
-/*void insert_voisin(int id, char *li_voisin, char *voisin_cout)
+void insert_voisin(int id, char *li_voisin, char *voisin_cout, int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])
 {
-    char **nom_ville;
-    printf("hit");
-    int *liste_des_voisins = get_list_of_int_from_list_of_char(li_voisin);
-    int *cout_des_voisin = get_list_of_int_from_list_of_char(voisin_cout);
-    int k = strlen(liste_des_voisins);// <- ligne produisant warning a corriger
-    for(int i = 0; i<k; i++){
-            matrice_europe[id][(liste_des_voisins[i])]= cout_des_voisin[i];
+    printf("rentre insert voisin\n");
+    struct list_of_int_with_len liste_des_voisins = get_list_of_int_from_list_of_char(li_voisin);
+    int* listeIdVoisin = liste_des_voisins.liste;
+    for(int i = 0; i < liste_des_voisins.len;i++){
+        printf("%d ", listeIdVoisin[i]);
     }
-}*/
-char **import_csv()//A DEBBUGGER
+    struct list_of_int_with_len cout_des_voisin = get_list_of_int_from_list_of_char(voisin_cout);
+    for(int i = 0; i < cout_des_voisin.len;i++){
+        printf("%d ", cout_des_voisin.liste[i]);
+    }
+    int k = (liste_des_voisins.len);
+    int *listeCout = cout_des_voisin.liste;
+    printf("debut affectation matrice dans insert_voisin\n");
+    for(int i = 0; i<k; i++){
+            printf("affectation :%d ",listeIdVoisin[i]);
+            printf("%d\n",listeCout[i]);
+            matrice_adja[id][listeIdVoisin[i]]= listeCout[i];//(listeIdVoisin[i])
+    }
+}
+void import_csv(char *nom_ville[NOMBRE_DE_VILLES], int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])//A DEBBUGGER
+/**
+ * @brief cette fonction importera toute les variables stocké dans le fichier .csv
+ * elle prends en entrée les pointeur a l'endroit ou l'on voudrat stocké le resultat
+ * 1 pointeur tableau noms des ville
+ * 2 pointeur matrice d'adjacence pondéré
+ */
 {
-    static char *nom_ville[15];
-    //nom_ville = (char**)malloc(15*sizeof(char*));
     int id = 0; // initialisations des variables propres aux villes
     int voisin[50];
     int cout_voisin[50];
@@ -88,21 +116,17 @@ char **import_csv()//A DEBBUGGER
         printf("%s\n", mots);
         id = get_num_from_charac(mots);
         printf("%d\n",id);
-        // printf("hit1");
         mots = strtok(NULL, ";"); // on passe au mots suivant
         printf("%s\n", mots);
         nom_ville[id] = malloc(strlen(mots)+1);
-        strcpy(nom_ville[id] ,mots);
-        //nom_ville[id] = mots; // <- ligne ne marchant pas
-        // printf("hit3");
-        mots = strtok(NULL, ";");
-        printf("%s\n", mots);
-        mots = strtok(NULL, ";");
-        printf("%s\n", mots);
-        // on passe au mots suivant
-        // char *voisin_cout = strtok(NULL, ";");
-        // printf("hit5"); // on passe au mots suivant
-        // insert_voisin(id, mots, voisin_cout);
+        strcpy(nom_ville[id] ,mots);//on insere le nom de la ville au bon indice
+        char *li_voisin = strtok(NULL, ";");
+
+        printf("%s\n", li_voisin);
+        char *voisin_cout = strtok(NULL, ";");
+        printf("%s\n", voisin_cout);
+
+        insert_voisin(id, li_voisin, voisin_cout, matrice_adja);
         fflush(NULL);
     }
     fclose(document);
@@ -110,13 +134,14 @@ char **import_csv()//A DEBBUGGER
     {
         printf("%s %d\n",nom_ville[j],j);
     }
-    printf("hit");
+    printf("fin de fgets\n");
     //printf("hit");
-    return nom_ville; // function à compléter
 };
 
 int main()
 {
+    static char *nom_ville[NOMBRE_DE_VILLES];
+    static int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES];
     /*    int *list;
         char test[40] = "fdrf[45][43];[43]";
         import_csv();
@@ -125,22 +150,21 @@ int main()
 
         printf("test 1 : %d \n test 2 : %d \n test 3 : %d \n", list[0], list[1], list[2]);
     */
-    printf("hit\n");
-    char **noms = import_csv();
+    printf("debut de import csv\n");
+    import_csv(nom_ville, matrice_adja);
     printf("test\n");
     for (int j = 1; j < 13; j++)
     {
-        printf("%s %d\n",noms[j],j);
+        printf("%s %d\n",nom_ville[j],j);
     }
-    printf("hit");
 
-    /*for(int i = 0; i<50;i++){
-        for(int j =0; j<50; j++){
-            printf("%d ",matrice_europe[i][j]);
+    for(int i = 0; i<15;i++){
+        for(int j =0; j<15; j++){
+            printf("%d ",matrice_adja[i][j]);
 
         }
         printf("\n");
 
-    }*/
+    }
     return 0;
 }
