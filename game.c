@@ -72,8 +72,8 @@ int *get_list_of_int_from_list_of_char(char char_list[])
 }*/
 char **import_csv()//A DEBBUGGER
 {
-    char **nom_ville;
-    nom_ville = malloc(15*(50*sizeof(char*)));
+    static char *nom_ville[15];
+    //nom_ville = (char**)malloc(15*sizeof(char*));
     int id = 0; // initialisations des variables propres aux villes
     int voisin[50];
     int cout_voisin[50];
@@ -87,10 +87,13 @@ char **import_csv()//A DEBBUGGER
                                        // while (mots != NULL)// on attends 4 champs id, nom, voisin, cout voisin
         printf("%s\n", mots);
         id = get_num_from_charac(mots);
+        printf("%d\n",id);
         // printf("hit1");
         mots = strtok(NULL, ";"); // on passe au mots suivant
         printf("%s\n", mots);
-        nom_ville[id] = mots; // <- ligne ne marchant pas
+        nom_ville[id] = malloc(strlen(mots)+1);
+        strcpy(nom_ville[id] ,mots);
+        //nom_ville[id] = mots; // <- ligne ne marchant pas
         // printf("hit3");
         mots = strtok(NULL, ";");
         printf("%s\n", mots);
@@ -103,6 +106,11 @@ char **import_csv()//A DEBBUGGER
         fflush(NULL);
     }
     fclose(document);
+        for (int j = 1; j < 13; j++)
+    {
+        printf("%s %d\n",nom_ville[j],j);
+    }
+    printf("hit");
     //printf("hit");
     return nom_ville; // function à compléter
 };
