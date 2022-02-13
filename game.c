@@ -12,7 +12,7 @@ https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c/16119-cre
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#define NOMBRE_DE_VILLES   16
+#define NOMBRE_DE_VILLES   16//on construit par la suite des arrays dont la taille est égale au nombre de villes, a modif aux besoins
 
 
 
@@ -21,11 +21,12 @@ https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c/16119-cre
 struct list_of_int_with_len{
     int *liste;
     int len;
-};
+};//structure contenant une liste et sa taille, pratique pour plus tard
+
+
 // on vas implementer le graphe pondéré des ville grace a une matrice pour les distance et liaison
 //  et une liste de nom ou l'id de la ville est l'index de son nom
-// int matrice_europe[50][50];
-// char **nom_ville;
+
 
 int get_num_from_charac(char characters[])
 {
@@ -39,9 +40,11 @@ int get_num_from_charac(char characters[])
 }
 
 struct list_of_int_with_len get_list_of_int_from_list_of_char(char char_list[])
-// fonction permetant d'obtenir
-// une liste de int a partir d'une liste de char
-// la liste doit etre sous la forme [nbr][nbr][nbr]...
+/**
+ * @brief fonction permetant d'obtenir
+* une liste de int a partir d'une liste de char
+* la liste doit etre sous la forme nbr,nbr,nbr,...
+*/
 {
 
     int k = strlen(char_list);  // on prends la longueur de la liste de charac a convertir
@@ -74,24 +77,31 @@ struct list_of_int_with_len get_list_of_int_from_list_of_char(char char_list[])
 }
 
 void insert_voisin(int id, char *li_voisin, char *voisin_cout, int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])
+/**
+ * @brief cette fonction prends en parametre, un id de ville, deux liste de caractere contenant des listes de int et un pointeur vers la matrice d'adjacence
+ * elle vas ecrire dans la matrice les couts de deplacement d'un ville a une autre
+ * 
+ * 
+ * STATUT ACTUELLE : NE FONCTIONNE "PAS", erreur a voir plus bas
+ */
 {
     printf("rentre insert voisin\n");
     struct list_of_int_with_len liste_des_voisins = get_list_of_int_from_list_of_char(li_voisin);
     int* listeIdVoisin = liste_des_voisins.liste;
     for(int i = 0; i < liste_des_voisins.len;i++){
-        printf("%d ", listeIdVoisin[i]);
-    }
+        printf("%d ", listeIdVoisin[i]);//test, a enlever quand debuggé
+    }//ok
     struct list_of_int_with_len cout_des_voisin = get_list_of_int_from_list_of_char(voisin_cout);
     for(int i = 0; i < cout_des_voisin.len;i++){
-        printf("%d ", cout_des_voisin.liste[i]);
-    }
-    int k = (liste_des_voisins.len);
-    int *listeCout = cout_des_voisin.liste;
-    printf("debut affectation matrice dans insert_voisin\n");
-    for(int i = 0; i<k; i++){
-            printf("affectation :%d ",listeIdVoisin[i]);
-            printf("%d\n",listeCout[i]);
-            matrice_adja[id][listeIdVoisin[i]]= listeCout[i];//(listeIdVoisin[i])
+        printf("%d ", cout_des_voisin.liste[i]);//test, a enlever quand debuggé
+    }//ok
+    int k = (liste_des_voisins.len);//
+    int *listeCout = cout_des_voisin.liste;//
+    printf("debut affectation matrice dans insert_voisin\n");//
+    for(int i = 0; i<k; i++){//
+            printf("affectation :%d ",listeIdVoisin[i]);//
+            printf("%d\n",listeCout[i]);// d'une maniere ou d'une autre, entre ok et cette ligne les tab listeCout et listeIdVoisin on la meme valeur !
+            //matrice_adja[id][listeIdVoisin[i]]= listeCout[i];//(listeIdVoisin[i])
     }
 }
 void import_csv(char *nom_ville[NOMBRE_DE_VILLES], int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])//A DEBBUGGER
@@ -103,8 +113,6 @@ void import_csv(char *nom_ville[NOMBRE_DE_VILLES], int matrice_adja[NOMBRE_DE_VI
  */
 {
     int id = 0; // initialisations des variables propres aux villes
-    int voisin[50];
-    int cout_voisin[50];
     FILE *document;
     document = fopen("villes.csv", "r");
     char tab[4096];
@@ -118,7 +126,7 @@ void import_csv(char *nom_ville[NOMBRE_DE_VILLES], int matrice_adja[NOMBRE_DE_VI
         printf("%d\n",id);
         mots = strtok(NULL, ";"); // on passe au mots suivant
         printf("%s\n", mots);
-        nom_ville[id] = malloc(strlen(mots)+1);
+        nom_ville[id] = (char*)malloc(strlen(mots)+1);
         strcpy(nom_ville[id] ,mots);//on insere le nom de la ville au bon indice
         char *li_voisin = strtok(NULL, ";");
 
@@ -130,10 +138,6 @@ void import_csv(char *nom_ville[NOMBRE_DE_VILLES], int matrice_adja[NOMBRE_DE_VI
         fflush(NULL);
     }
     fclose(document);
-        for (int j = 1; j < 13; j++)
-    {
-        printf("%s %d\n",nom_ville[j],j);
-    }
     printf("fin de fgets\n");
     //printf("hit");
 };
@@ -142,25 +146,17 @@ int main()
 {
     static char *nom_ville[NOMBRE_DE_VILLES];
     static int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES];
-    /*    int *list;
-        char test[40] = "fdrf[45][43];[43]";
-        import_csv();
-        list = get_list_of_int_from_list_of_char(test);
-
-
-        printf("test 1 : %d \n test 2 : %d \n test 3 : %d \n", list[0], list[1], list[2]);
-    */
     printf("debut de import csv\n");
     import_csv(nom_ville, matrice_adja);
     printf("test\n");
     for (int j = 1; j < 13; j++)
     {
-        printf("%s %d\n",nom_ville[j],j);
+        printf("%s %d\n",nom_ville[j],j);//test nom des villes
     }
 
     for(int i = 0; i<15;i++){
         for(int j =0; j<15; j++){
-            printf("%d ",matrice_adja[i][j]);
+            printf("%d ",matrice_adja[i][j]);//test matrice
 
         }
         printf("\n");
