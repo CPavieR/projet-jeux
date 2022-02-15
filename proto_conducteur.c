@@ -21,10 +21,14 @@ float cout_au_hasard() {
 }
 
 
-//cette fonction permet de déplacement le conducteur dans le graphe attention cette fonctionne fais pas attention si elle peut
-//faire le déplacement.Il faudra donc rajouter un fonction afin de prévoir les déplacements à faire.
+//cette fonction permet de déplacement le conducteur dans le graphe attention cette fonctionne fais attention si elle peut
+//faire le déplacement.Il faudra aussi rajouter un fonction afin de prévoir les déplacements à faire.
 struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int deplacement,int matrice[4][4])//Fonction operationnel
 {   //on incrémenter le compteur de KM vers l'endroit où on va faire le déplacement
+    if (matrice[conducteur_a_deplacer.id][deplacement]==0)
+    {
+        deplacement = conducteur_a_deplacer.position;
+    }
     conducteur_a_deplacer.compteur_km = conducteur_a_deplacer.compteur_km + matrice[conducteur_a_deplacer.id][deplacement];
     //on fait le déplacemnt
     conducteur_a_deplacer.position = deplacement;
