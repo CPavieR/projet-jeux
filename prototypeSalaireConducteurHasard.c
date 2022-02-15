@@ -4,46 +4,24 @@
 
 float revenu_au_hasard() {
     float j=0;
-    j=(rand()%9)+7.0;
-    return j/10;
+    j=(rand()%20);
+    return j/10.0;
 }
 
+
+
 char* nom_au_hasard() {
-    char* nom = "";
-    srand(time(NULL));
-    switch(rand()%10) {
-        case 1:
-            nom = "Michel";
-        break;
-        case 2:
-            nom = "Josué";
-        break;
-        case 3:
-            nom = "Anguerrande";
-        break;
-        case 4:
-            nom = "Josselin";
-        break;
-        case 5:
-            nom = "Foulque";
-        break;
-        case 6:
-            nom = "Frederic";
-        break;
-        case 7:
-            nom = "David";
-        break;
-        case 8:
-            nom = "Jean-Gertrude";
-        break;
-        case 9:
-            nom = "Jépadnom";
-        break;
-    }
-    return nom;
+    char* noms[30] = {"Michel","Josué","Anguerrande","Josselin","Foulque","Frederic","David","Jean-Gertrude","Jépadnom","Liam",
+    "William","Sophia","Nathan","Léo","Emma","Logan","Florence", "Thomas","Noah","Félix",
+    "Edouard","Victor","Dylan","Louis","James","Ethan","Benjamin","Gabriel","Rose","Nolan"}; 
+    return noms[rand()%30+0];
 }
 
 int main() {
-    printf("le revenu sera de %f euro par kilomètre pour %s\n",revenu_au_hasard(), nom_au_hasard());
+    srand(time(NULL));
+    for (int i=0; i <= 50; i++) {
+        char* nom = nom_au_hasard();
+        printf("le revenu sera de %f euro par kilomètre pour %s \n",revenu_au_hasard(),nom);
+    };
     return 0;
 }
