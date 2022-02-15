@@ -51,7 +51,7 @@ int calcule_cout (struct conducteur cpt)//Fonction operationnel
 //Nombre ville est le nombre exact de ville (est non le nombre de ville-1 comme si on était dans une liste)
 struct conducteur ville_aleatoire (struct conducteur cpt,int nombre_ville)//Fonction operationnel
 {
-   int nombre = rand() % nombre_ville + 0;// on génèrent un nombre en 0 et le nombre de ville si il y a 4 ville l'intervalle sera [0,3]
+   int nombre = rand() % nombre_ville + 1;// on génèrent un nombre en 0 et le nombre de ville si il y a 4 ville l'intervalle sera [0,3]
    cpt.position = nombre;// change le position dans la structure concerné
    printf("%d\n",cpt.position);//un printf pour vérifier le résulatat et bon
    return cpt;//on retourne notre résulat
