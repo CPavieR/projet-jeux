@@ -2,39 +2,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-char nom = "";
+//char nom = "";
 float revenu_au_hasard() {
-    srand(time(NULL));
-    switch(rand()%10) {
-        case 1:{
-            return 1.5;
-        } break;
-        case 2:{
-            return 1.2;
-        } break;
-        case 3:{
-            return 1.1;
-        } break;
-        case 4:{
-            return 1.;
-        } break;
-        case 5:{
-            return 0.9;
-        } break;
-        case 6:{
-            return 0.8;
-        } break;
-        case 7:{
-            return 1.2;
-        } break;
-        case 8:{
-            return 1.3;
-        } break;
-        case 9:{
-            return 1.4;
-        } break;
-    }
-    return 1;
+    float j=0;
+    j=(rand()%20);
+    return j/10.0;
 }
 
 char nom_au_hasard() {
@@ -82,6 +54,7 @@ char nom_au_hasard() {
 
 int main() {
     srand(time(NULL));
-    printf("le revenu sera de %f euro par kilomètre pour %c ou %c\n",revenu_au_hasard(),nom, nom_au_hasard());
+    for (int i; i <= 50; i++) {
+    printf("le revenu sera de %f euro par kilomètre pour c ou c\n",revenu_au_hasard());};
     return 0;
 }
