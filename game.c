@@ -39,7 +39,7 @@ int get_num_from_charac(char characters[])
     return somme;
 }
 
-struct list_of_int_with_len get_list_of_int_from_list_of_char(char char_list[])
+int get_list_of_int_from_list_of_char(char char_list[], int *liste_a_rendre)
 /**
  * @brief fonction permetant d'obtenir
 * une liste de int a partir d'une liste de char
@@ -48,7 +48,6 @@ struct list_of_int_with_len get_list_of_int_from_list_of_char(char char_list[])
 {
 
     int k = strlen(char_list);  // on prends la longueur de la liste de charac a convertir
-    static int list_of_int[20]; // contient la liste de int final
     short i = 0;                // numero de la case que l'on regarde
     short number_number = 0;    // numero du nombre que l'on ecrit dans la liste de int finale
     int somme_case = 0;         // est la somme de la casse que l'on observe
@@ -63,7 +62,8 @@ struct list_of_int_with_len get_list_of_int_from_list_of_char(char char_list[])
                 somme_case = somme_case * 10 + char_list[i] - 48; // on convertit ceux ci (-48) et on ajoute ceux ci a la somme en prenant en compte les puissance de dix
                 i++;
             }
-            list_of_int[number_number] = somme_case; // quand un nombre est fini on l'ajoute a la liste d'entier et on recommence
+            printf("liste_a_rendre[%d] = %d",number_number,somme_case);
+            liste_a_rendre[number_number] = somme_case; // quand un nombre est fini on l'ajoute a la liste d'entier et on recommence
             number_number++;
             printf("get list of int, int courant :%d\n", somme_case);
         }
@@ -72,8 +72,7 @@ struct list_of_int_with_len get_list_of_int_from_list_of_char(char char_list[])
 
     }
     printf("fin de getlist of int\n");
-    struct list_of_int_with_len liste_entiers_avec_longueur = {list_of_int,number_number};
-    return liste_entiers_avec_longueur;
+    return number_number;
 }
 
 void insert_voisin(int id, char *li_voisin, char *voisin_cout, int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])
@@ -82,26 +81,26 @@ void insert_voisin(int id, char *li_voisin, char *voisin_cout, int matrice_adja[
  * elle vas ecrire dans la matrice les couts de deplacement d'un ville a une autre
  * 
  * 
- * STATUT ACTUELLE : NE FONCTIONNE "PAS", erreur a voir plus bas
+ * 
  */
 {
     printf("rentre insert voisin\n");
-    struct list_of_int_with_len liste_des_voisins = get_list_of_int_from_list_of_char(li_voisin);
-    int* listeIdVoisin = liste_des_voisins.liste;
-    for(int i = 0; i < liste_des_voisins.len;i++){
+    int listeIdVoisin[NOMBRE_DE_VILLES];
+    int k = get_list_of_int_from_list_of_char(li_voisin, listeIdVoisin);
+    for(int i = 0; i < k;i++){
         printf("%d ", listeIdVoisin[i]);//test, a enlever quand debuggé
     }//ok
-    struct list_of_int_with_len cout_des_voisin = get_list_of_int_from_list_of_char(voisin_cout);
-    for(int i = 0; i < cout_des_voisin.len;i++){
-        printf("%d ", cout_des_voisin.liste[i]);//test, a enlever quand debuggé
+    int listeCout[NOMBRE_DE_VILLES];
+    get_list_of_int_from_list_of_char(voisin_cout, listeCout);
+    for(int i = 0; i < k;i++){
+        printf("%d ", listeCout[i]);//test, a enlever quand debuggé
     }//ok
-    int k = (liste_des_voisins.len);//
-    int *listeCout = cout_des_voisin.liste;//
+
     printf("debut affectation matrice dans insert_voisin\n");//
     for(int i = 0; i<k; i++){//
             printf("affectation :%d ",listeIdVoisin[i]);//
             printf("%d\n",listeCout[i]);// d'une maniere ou d'une autre, entre ok et cette ligne les tab listeCout et listeIdVoisin on la meme valeur !
-            //matrice_adja[id][listeIdVoisin[i]]= listeCout[i];//(listeIdVoisin[i])
+            matrice_adja[id][listeIdVoisin[i]]= listeCout[i];//(listeIdVoisin[i])
     }
 }
 void import_csv(char *nom_ville[NOMBRE_DE_VILLES], int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])//A DEBBUGGER
@@ -156,7 +155,13 @@ int main()
 
     for(int i = 0; i<15;i++){
         for(int j =0; j<15; j++){
-            printf("%d ",matrice_adja[i][j]);//test matrice
+            if(matrice_adja[i][j]<100){
+                printf("00%d ",matrice_adja[i][j]);//test matrice
+            }else{if(matrice_adja[i][j]<10){
+                printf("0%d ",matrice_adja[i][j]);//test matrice
+            }else{printf("%d ",matrice_adja[i][j]);//test matrice
+            } }
+            
 
         }
         printf("\n");
