@@ -29,3 +29,6 @@ dans la fct, comment celle ci fonctionne
 n'oubliez pas, vous et vous ceul travaille sur vos fonctions et vous seul savez exactement comment elle fonctionne
 
 lorque que vous faites des commit, mettez en commentaire ce que vous avez fait, c'est a dire, toutes les nouvelles fcts etc
+
+
+random ressource : https://nicolasj.developpez.com/articles/libc/hasard/
