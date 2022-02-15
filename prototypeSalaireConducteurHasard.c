@@ -9,7 +9,7 @@ float cout_au_hasard() {
 }
 
 char* nom_au_hasard() {
-    char* noms[30] = {"Michel","Josué","Anguerrande","Josselin","Foulque","Frederic","David","Jean-Gertrude","Jépadnom","Liam",
+    char* noms[30] = {"Michel","Josué","Anguerrande","Josselin","Foulque","Frederic","David","Jean-Gertrude","Liam","Vladimir",
     "William","Sophia","Nathan","Léo","Emma","Logan","Florence", "Thomas","Noah","Félix",
     "Edouard","Victor","Dylan","Louis","James","Ethan","Benjamin","Gabriel","Rose","Nolan"}; 
     return noms[rand()%30];
