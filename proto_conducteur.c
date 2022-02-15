@@ -12,6 +12,15 @@ int compteur_km;
 int cout_au_km;
 };
 
+
+//permet de généré un revenue en 0,0 et 2,0 de manière aléatoire
+float cout_au_hasard() {
+    float j=0;
+    j=(rand()%20);
+    return j/10.0;
+}
+
+
 //cette fonction permet de déplacement le conducteur dans le graphe attention cette fonctionne fais pas attention si elle peut
 //faire le déplacement.Il faudra donc rajouter un fonction afin de prévoir les déplacements à faire.
 struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int deplacement,int matrice[4][4])//Fonction operationnel
