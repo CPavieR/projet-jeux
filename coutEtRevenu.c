@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "coutEtRevenu.h"
 
-float cout_au_hasard() { //Fonction pour génerer le coût total d'un camionneur à l'entreprise (basé sur le coût réel -> essence + salaire + impôt)
+
+float cout_au_hasard_de_coutRevenu() { //Fonction pour génerer le coût total d'un camionneur à l'entreprise (basé sur le coût réel -> essence + salaire + impôt)
     float j=0;
     j=(rand()%9)+7; //on veut un coût entre 0.7 et 1.5 euros par kilomètres par conducteur, on prend un nombre random entre 0 et 8 compris, on ajoute 7 (pour avoir entre 7 et 15)
     return j/10.0; //et pour finir on divise par 10 pour avoir entre 0.7 et 1.5
@@ -22,10 +24,10 @@ float chiffre_affaire(float cout_conducteur, int cpt_compteur_km) { //Fonction p
     return (cout_conducteur * cpt_compteur_km * multiplieur); //on a donc le cout total de la mission (cout par km x nombre de kilomètres) multiplié par le gain
 }
 
-int main() {
+/*int main() {
     printf("%s coûtera %f euros par kilomètre et le contrat actuel rapportera %f à l'entreprise\n",nom_au_hasard(), cout_au_hasard(), chiffre_affaire(cout_au_hasard(),(rand()%300)+50));
     //for (int i=0; i <= 20; i++) {
         //printf("%s coûtera %f euros par kilomètre et le contrat actuel rapportera %f à l'entreprise\n",nom_au_hasard(), cout_au_hasard(), chiffre_affaire(cout_au_hasard(),(rand()%300)+50));
     //};
     return 0;
-}
+}*/

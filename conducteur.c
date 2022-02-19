@@ -1,20 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "conducteur.h"
+
 //initalisation d'une nouvelle structure, c'est structure est peut avoir à des changements dans le future.
 //Pour l'instant cette structure possède un id, une position dans le graphe, un compteur de kilomètre et le cout au KM du
 //conducteur. J'ai essaiyé de compiler avec un chaine de caractère (pour un nom) mais la chaine de char empêchait le compilation (elle est en commentaire)
 //sinon le structure fonctionne
-struct conducteur {
-int id;
-int position;
-int compteur_km;
-//char nom[];
-int cout_au_km;
-};
+
 
 
 //permet de généré un revenue en 0,0 et 2,0 de manière aléatoire
-float cout_au_hasard() {
+float cout_au_hasard_deconducteur() {
     float j=0;
     j=(rand()%20);
     return j/10.0;
@@ -23,7 +19,7 @@ float cout_au_hasard() {
 
 //cette fonction permet de déplacement le conducteur dans le graphe attention cette fonctionne fais attention si elle peut
 //faire le déplacement.Il faudra aussi rajouter un fonction afin de prévoir les déplacements à faire.
-struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int deplacement,int matrice[4][4])//Fonction operationnel
+struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int deplacement,int matrice[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])//Fonction operationnel
 {   //on incrémenter le compteur de KM vers l'endroit où on va faire le déplacement
     if (matrice[conducteur_a_deplacer.id][deplacement]==0)
     {
@@ -61,7 +57,7 @@ struct conducteur ville_aleatoire (struct conducteur cpt,int nombre_ville)//Fonc
    return cpt;//on retourne notre résulat
 };
 
-
+/*
 int main()//fonction main qui permet d'éffectuer les tests
 {
     int ma_matrice_test[4][4] = {{1,6,8,4},{2,6,4,9},{8,5,1,6},{7,9,4,1}};//initialisatoin d'une matrice en 4*4
@@ -80,3 +76,4 @@ int main()//fonction main qui permet d'éffectuer les tests
 
 
 }
+*/
