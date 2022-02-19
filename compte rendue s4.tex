@@ -1,0 +1,104 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{libertine}
+\usepackage[pdftex]{graphicx}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+  
+
+%ici on ajoute les images sur la même ligne (j'ai mis des images mais je pense que ça ne fonctionnera pas de votre côté pour l'instant)
+\begin{minipage}[c]{.46\linewidth}
+     \begin{center}
+             \includegraphics[width=4cm]{img1.png}
+         \end{center}
+   \end{minipage} \hfill
+   \begin{minipage}[c]{.46\linewidth}
+    \begin{center}
+            \includegraphics[width=4cm]{img2.png}
+        \end{center}
+ \end{minipage}
+    \newline \newline
+%ici il faudra voir pour séparer les iages du titre (en l'état ils sont collés)
+%on passe ici au début du code de la page de garde
+
+    \textsc{\LARGE Faculté Des Sciences - Montpellier}\\[2cm]
+
+    \textsc{\Large Compte rendue de la scéance 4}\\[1.5cm]
+
+    \HRule \\[0.4cm]
+    { \huge \bfseries Projet CMI\\[0.4cm] }
+
+    \HRule \\[2cm]
+    \\[2cm]
+
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+        Conrath Matthieu\\
+        Robert Wendy\\
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+       Pavie-Routaboul Clement\\
+        Rebagliato Lucas\\
+      \end{flushright}
+    \end{minipage}
+
+    \vfill
+
+    {\large 19 février 2022}
+
+  \end{center}
+  \end{sffamily}
+\end{titlepage}
+
+\newpage
+
+%et à partir de là c'est le code pour le reste du doc
+
+\renewcommand*\contentsname{Sommaire}
+\tableofcontents
+\newpage
+   \section*{Introduction}
+   \addcontentsline{toc}{section}{Introduction}
+   
+      Ce document est le compte rendue de notre avancé sur le projet depuis le 18/01/2021 jusqu'a 19/02/2022
+
+\section{Objectif accomplie et problèmes recontrés}
+     \begin{tabular}{|l|c|r|}
+  \hline
+  Object & Statut actuel & Problème rencontré \\
+  \hline
+  Implémentation d'une matrice & Terminé & affichage de la matrice \\
+  Import du csv & Terminé & Nécéssité de traduire tous les caractères \\
+  Rédaction du csv pour les ville & Terminé& RAS\\
+  Structure des conducteurs & Prototype& Implétation du chaine de caractère\\
+  cout des trajets & Terminé& RAS\\
+  génération de nom & Terminé& RAS\\
+  L'aléatoire dans les fonctions & Terminé& Un nombre aléatoire ne se génere que\\&& tous les 0.1 secondes\\
+  revenu des contrats & A peine commencé& RAS\\
+
+  \hline
+\end{tabular}
+\section{Prochaine étapes}
+     Pour l'instant, il nous manque un algorithme afin d'effectuer les déplacements les plus optimisées. De plus, nous devons préparer la génération de plusieurs conducteurs et nous devons préparer les système de contrat.
+\section{Planification de la suite projet}
+    On a décider de retirer des éléments prioritaires le systèmes de sauvegardes. Mais l'on a décider de continuer selon la planification initiale.
+    
+
+   \appendix  % On passe aux annexes
+   \section{Bibliographie}
+    https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1043_aggregats-memoire-et-fichiers/4279\_structures/#1-12828\_definition-initialisation-et-utilisation
+
+    https://nicolasj.developpez.com/articles/libc/hasard/
+
+\end{document}
