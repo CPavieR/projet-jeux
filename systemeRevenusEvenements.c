@@ -35,13 +35,7 @@ char* nom_au_hasard(int n) { //Fonction pour génerer un nom "au hasard" parmis 
 }
 
 
-int prix_evenement_aleatoire(int n) {
-    int prixEvenement[10]={-180,-300,+2500,-600,-250,-6000,+8000,-135,+2000,+200};
-    return prixEvenement[n];
-}
-
-
-char* evenement_aleatoire(int n) {
+char* evenement_aleatoire(int n) { //création d'une fonction pour générer un évènement àléatoire, ces évènements seront liés à leur coût dans la fonction prix_evenement_aleatoire (même variable d'entrée n)
     char* evenements[10]={"Un de votre camion s'est retrouvé enlisé sur une aire d'autoroute, votre conducteur est obligé d'appeler et de payer un dépanneur car il transportait des denrées périssables. Vous perdez 180€",
     "Un de vos camions a acquis une conscience et a pris en otage son conducteur et vos marchandises en échange de sa liberté. Vous lui promettez un entretien plus fréquent et un plein d'essence. Il accepte par dépit et vous perdez 300€",
     "En arrivant ce matin à votre bureau, vous remarquez que des marchandises sont devant vos locaux. Aucun message de l'expéditeur et vous avez effectué toutes vos courses. Vous revendez ces marchandises et gagnez 2500€",
@@ -52,23 +46,27 @@ char* evenement_aleatoire(int n) {
     "Vous avez oublié de déclarer 27 centimes de bénéfices, le FISC vous tombe dessus. Vous devez payer 135€ d'amende.",
     "Suite à une erreur de la banque, il semblerait que vous ayez un moins-perçu et que vous gagnez ainsi 2000€",
     "Suite à une erreur de la banque, il semblerait que vous ayez un trop-perçu et que vous perdez ainsi 200€"};
-    return evenements[n];
+    return evenements[n]; //On prend l'un des 10 évènement aléatoire du tableau evenements
 }
 
 
-//retourne le nom d'une entreprise de façon aléatoire
-char* entreprise() {
-    char* listeEnt[25] = {"Aldi", "Amazon", "Apple", "Auchan", "Candia", 
+int prix_evenement_aleatoire(int n) { // création d'une fonction pour récupérer le cout de l'évènement aléatoire de la fonction evenement_aleatoire
+    int prixEvenement[10]={-180,-300,+2500,-600,-250,-6000,+8000,-135,+2000,+200};
+    return prixEvenement[n]; //On prend l'évènement aléatoire du tableau prixEvenement qui correspond à l'évènement aléatoire généré
+}
+
+
+char* entreprise() { //Création d'une fonction pour prendre aléatoirement un nom d'une entreprise ci-dessous pour générer une propostion de contrat
+    char* entreprises[25] = {"Aldi", "Amazon", "Apple", "Auchan", "Candia", 
     "Casino", "Cdiscount", "Chaussea", "Decathlon", "Fnac", 
     "Foot locker", "Fromageries Bel Production", "Froudis", "Gifi", "Gucci", 
     "IKEA", "Jardiland", "Kiko", "Leroy Merlin", "Maisons du monde", 
     "Micromania", "Nosibe", "Panzani", "Primark", "Stokomani"};
-    return listeEnt[int_random()%25+0];
+    return entreprises[int_random()%25+0]; //On prend l'un des 25 noms du tableau entreprises
 }
 
 
-//retourne un revenu aléatoire compris entre 6 000 et 9 000€ 
-int prix_contrat(){
+int prix_contrat(){ // Création d'une fonction pour générer un revenu aléatoire compris entre 6 000 et 9 000€
     return 6000+(int_random()%3000);
 }
 
