@@ -20,7 +20,10 @@ int main()
     static int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES];
     printf("debut de import csv\n");
     import_csv(nom_ville, matrice_adja);
-
+    rnd_srand();
+    for(int i =0; i<350;i++){
+        printf("%d\n", rnd_rand());
+    }
 
 
 

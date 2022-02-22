@@ -13,5 +13,6 @@ struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int depla
 struct conducteur reset_compteur (struct conducteur cpt);
 int calcule_cout (struct conducteur cpt);
 struct conducteur ville_aleatoire (struct conducteur cpt,int nombre_ville);
+int djistra(int matrice[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES], int id_depart, int id_arrive);
 
 #endif

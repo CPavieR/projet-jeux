@@ -4,9 +4,26 @@
 #include "coutEtRevenu.h"
 
 
+static int a;
+static int *g_seed = &a;
+void rnd_srand ()
+{
+   *g_seed = time(NULL);
+}
+
+int int_random (void)
+{
+   *g_seed = ( 1103515245 * *g_seed + 12345 ) % 2147483647;
+    if(*g_seed<0){
+        *g_seed = -*g_seed;
+    }
+    return (*g_seed);
+}
+
+
 float cout_au_hasard_de_coutRevenu() { //Fonction pour génerer le coût total d'un camionneur à l'entreprise (basé sur le coût réel -> essence + salaire + impôt)
     float j=0;
-    j=(rand()%9)+7; //on veut un coût entre 0.7 et 1.5 euros par kilomètres par conducteur, on prend un nombre random entre 0 et 8 compris, on ajoute 7 (pour avoir entre 7 et 15)
+    j=(int_random()%9)+7; //on veut un coût entre 0.7 et 1.5 euros par kilomètres par conducteur, on prend un nombre random entre 0 et 8 compris, on ajoute 7 (pour avoir entre 7 et 15)
     return j/10.0; //et pour finir on divise par 10 pour avoir entre 0.7 et 1.5
 }
 
@@ -18,8 +35,7 @@ char* nom_au_hasard() { //Fonction pour génerer un nom "au hasard" parmis les 3
 }
 
 float chiffre_affaire(float cout_conducteur, int cpt_compteur_km) { //Fonction pour créer le chiffre d'affaire selon le cout choisi pour ce conducteur et le nombre de kilomètres du contrat
-    srand(time(NULL));
-    float multiplieur=(rand()%4)+11.0; //on crée un multiplicateur qui mettra toujours l'entreprise en position de rentabilité sur tous les contrats (entre 1.1 et 1.4 fois le cout de chaque contrat)
+    float multiplieur=(int_random()%4)+11.0; //on crée un multiplicateur qui mettra toujours l'entreprise en position de rentabilité sur tous les contrats (entre 1.1 et 1.4 fois le cout de chaque contrat)
     multiplieur = multiplieur/10.0; //même méthode que pour le coût, on met le multiplicateur entre 11 et 14 puis on divise par 10 (pour avoir entre 1.1 et 1.4 comme multiplicateur)
     return (cout_conducteur * cpt_compteur_km * multiplieur); //on a donc le cout total de la mission (cout par km x nombre de kilomètres) multiplié par le gain
 }

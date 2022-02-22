@@ -57,6 +57,31 @@ struct conducteur ville_aleatoire (struct conducteur cpt,int nombre_ville)//Fonc
    return cpt;//on retourne notre résulat
 };
 
+
+/*int trajet(int )
+
+
+int dijkstra(int matrice[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES], int id_depart, int id_arrive)
+/**
+* @brief cette fonction utilise l'algorithme de dijkstra pour trouver l'iteneraire le plus rapide entre deux sommets du graphe
+*
+*
+*
+{
+    int distance[NOMBRE_DE_VILLES];
+    _Bool traite[NOMBRE_DE_VILLES];
+    for (int i =0; i<NOMBRE_DE_VILLES;i++){
+        distance[i] = 10000;//on initialise les couts, ainsi que les sommets que l'on as parcourus
+        traite[i] = 0;
+    }
+    
+
+}
+*/
+
+
+
+
 /*
 int main()//fonction main qui permet d'éffectuer les tests
 {
