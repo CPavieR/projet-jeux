@@ -12,7 +12,7 @@
 int calcule_repos(struct conducteur cpt)
 {
 int repos = cpt.jour_de_repos/100;
-return repos
+return repos;
 }
 
 
