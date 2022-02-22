@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "conducteur.h"
-#include "coutEtRevenu.h"
+#include "systemeRevenusEvenements.h"
 
 //initalisation d'une nouvelle structure, c'est structure est peut avoir à des changements dans le future.
 //Pour l'instant cette structure possède un id, une position dans le graphe, un compteur de kilomètre et le cout au KM du
@@ -30,8 +30,6 @@ struct conducteur soustraction_par_tour_du_repos(struct conducteur cpt)
     cpt.jour_de_repos = cpt.jour_de_repos -1;
     return cpt;
 };
-
-
 
 
 //cette fonction permet de déplacement le conducteur dans le graphe attention cette fonctionne fais attention si elle peut
