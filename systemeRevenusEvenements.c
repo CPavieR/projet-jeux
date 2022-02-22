@@ -57,16 +57,17 @@ int prix_evenement_aleatoire(int n) { // création d'une fonction pour récupér
 
 
 char* entreprise() { //Création d'une fonction pour prendre aléatoirement un nom d'une entreprise ci-dessous pour générer une propostion de contrat
-    char* entreprises[25] = {"Aldi", "Amazon", "Apple", "Auchan", "Candia", 
+    char* entreprises[27] = {"Aldi", "Amazon", "Apple", "Auchan", "Candia", 
     "Casino", "Cdiscount", "Chaussea", "Decathlon", "Fnac", 
     "Foot locker", "Fromageries Bel Production", "Froudis", "Gifi", "Gucci", 
     "IKEA", "Jardiland", "Kiko", "Leroy Merlin", "Maisons du monde", 
-    "Micromania", "Nosibe", "Panzani", "Primark", "Stokomani"};
+    "Micromania", "Nosibe", "Panzani", "Primark", "Stokomani","Evil Corp","Reffined Uranium & co."};
     return entreprises[int_random()%25+0]; //On prend l'un des 25 noms du tableau entreprises
 }
 
 
-int prix_contrat(){ // Création d'une fonction pour générer un revenu aléatoire compris entre 6 000 et 9 000€
+int 
+(){ // Création d'une fonction pour générer un revenu aléatoire compris entre 6 000 et 9 000€
     return 6000+(int_random()%3000);
 }
 

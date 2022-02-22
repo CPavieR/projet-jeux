@@ -42,7 +42,7 @@ float cout_au_hasard_deconducteur() {
 
 //cette fonction permet de déplacement le conducteur dans le graphe attention cette fonctionne fais attention si elle peut
 //faire le déplacement.Il faudra aussi rajouter un fonction afin de prévoir les déplacements à faire.
-struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int id_arrivee, int deplacement_en_km)//Fonction operationnel
+struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int id_arrivee, int deplacement_en_km, float* pointeur_du_capital)//Fonction operationnel
 {   //on incrémenter le compteur de KM vers l'endroit où on va faire le déplacement
     if(conducteur_a_deplacer.jour_de_repos != 0){
         return conducteur_a_deplacer;
@@ -52,6 +52,7 @@ struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int id_ar
     conducteur_a_deplacer.position = id_arrivee;
     int jour_de_rep = calcule_repos(deplacement_en_km);
     conducteur_a_deplacer.jour_de_repos = jour_de_rep;
+    *pointeur_du_capital = *pointeur_du_capital - calcule_cout(deplacement_en_km, conducteur_a_deplacer.cout_au_km);
     return (conducteur_a_deplacer);//on retourne le struct aprés le déplacement
 }
 
@@ -64,9 +65,9 @@ struct conducteur reset_compteur (struct conducteur cpt)//Fonction operationnel
 
 
 //Permet de calculer le cout du compteur de KM du conducteur
-int calcule_cout (struct conducteur cpt)//Fonction operationnel
+float calcule_cout (int km, float coutKm)//Fonction operationnel
 {
-    return cpt.cout_au_km*cpt.compteur_km;// on retoure simplement le cout au KM fois le nombre de KM
+    return (float)km*coutKm;// on retoure simplement le cout au KM fois le nombre de KM
 };
 
 
