@@ -5,7 +5,7 @@ struct conducteur {
 int id;
 int position;
 int compteur_km;
- int jour_de_repos;
+int jour_de_repos;
 //char nom[];
 int cout_au_km;
 };
