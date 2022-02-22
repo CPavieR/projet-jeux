@@ -32,12 +32,6 @@ struct conducteur soustraction_par_tour_du_repos(struct conducteur cpt)
 };
 
 
-//permet de généré un revenue en 0,0 et 2,0 de manière aléatoire
-float cout_au_hasard_deconducteur() {
-    float j=0;
-    j=(int_random()%20);
-    return j/10.0;
-}
 
 
 //cette fonction permet de déplacement le conducteur dans le graphe attention cette fonctionne fais attention si elle peut
