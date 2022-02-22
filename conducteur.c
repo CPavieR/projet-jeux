@@ -8,6 +8,28 @@
 //sinon le structure fonctionne
 
 
+//cette foncion permet de calculer le nombre de jour de repos 
+int calcule_repos(struct conducteur cpt)
+{
+int repos = cpt.jour_de_repos/100;
+return repos
+}
+
+
+//cette fonction permet d'initialiser le nombre de jour de repos sur conducteur
+struct conducteur init_repos(struct conducteur cpt)
+    {
+        cpt.jour_de_repos = calcule_repos(cpt);
+        return cpt;
+    }
+
+//cette fonction permet de soustraire le nombre de jour de repos du conducteur (on l'utilise au début de chaque tour)
+struct conducteur soustraction_par_tour_du_repos(struct conducteur cpt)
+{
+    cpt.jour_de_repos = cpt.jour_de_repos -1;
+    return cpt;
+};
+
 
 //permet de généré un revenue en 0,0 et 2,0 de manière aléatoire
 float cout_au_hasard_deconducteur() {
