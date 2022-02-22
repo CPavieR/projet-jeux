@@ -1,0 +1,103 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{libertine}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+  
+
+%ici on ajoute les images sur la même ligne (j'ai mis des images mais je pense que ça ne fonctionnera pas de votre côté pour l'instant)
+\begin{minipage}[c]{.46\linewidth}
+     \begin{center}
+             \includegraphics[width=4cm]{logo-fds.png}
+         \end{center}
+   \end{minipage} \hfill
+   \begin{minipage}[c]{.46\linewidth}
+    \begin{center}
+            \includegraphics[width=4cm]{logo-figure.png}
+        \end{center}
+ \end{minipage}
+    \newline \newline
+%ici il faudra voir pour séparer les images du titre (en l'état ils sont collés)
+%on passe ici au début du code de la page de garde
+
+    \textsc{\LARGE Faculté Des Sciences - Montpellier}\\[2cm]
+
+    \textsc{\Large Compte rendu de la séance 5}\\[1.5cm]
+
+    \HRule \\[0.4cm]
+    { \huge \bfseries Projet CMI\\[0.4cm] }
+
+    \HRule \\[2cm]
+    \\[2cm]
+
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+        Conrath Matthieu\\
+        Robert Wendy\\
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+       Pavie-Routaboul Clement\\
+        Rebagliato Lucas\\
+      \end{flushright}
+    \end{minipage}
+
+    \vfill
+    {\large 26 février 2022}
+    \\
+    {\url{https://github.com/CPavieR/projet-jeux}}
+
+  \end{center}
+  \end{sffamily}
+\end{titlepage}
+
+\newpage
+
+%et à partir de là c'est le code pour le reste du doc
+
+
+\section*{Introduction}
+      Ce document est le compte rendu de notre avancé sur le projet du 19/02/2022 au 26/02/2022. Nous avons terminé la génération des contrats pour notre entreprise (nom de l'entreprise qui nous embauche et combien elle nous versera pour la réussite de la livraison). La gestion des évènements aléatoire est également terminée, il y en a peu mais ils ont une certaine probabilité de survenir chaque tour.
+
+\section{Objectifs accomplis et problèmes rencontrés}
+     \begin{tabular}{|l|c|r|}
+  \hline
+  Objectif & Statut actuel & Problème(s) rencontré(s) \\
+  \hline
+  Implémentation d'une matrice & Terminé & Pas de soucis rencontrés \\
+  Import du csv & Terminé & écrasement des structures C \\
+  Rédaction du csv pour les villes & Terminé & Pas de soucis rencontrés\\
+  Structure des conducteurs & à améliorer & Nécessité d'optimisation du \\&& code initial\\
+  Coûts des trajets & Terminé & Pas de soucis rencontrés\\
+  Génération de nom & Terminé & Pas de soucis rencontrés\\
+  L'aléatoire dans les fonctions & à améliorer & On ne peut générer un nombre \\&& aléatoire que toutes les 0.1s\\
+  Revenu des contrats & Terminé & Pas de soucis rencontrés\\
+
+  \hline
+\end{tabular}
+\section{Prochaines étapes}
+     Pour l'instant, il nous manque un algorithme afin d'effectuer les déplacements les plus optimisés. Nous devons également commencer l'ajout d'évènements aléatoires et améliorer les programmes actuels qui ne fonctionnent pas de manière optimisée (la génération lente avec l'aléatoire notamment). 
+     Ces étapes sont les plus nécessaires pour commencer des tests sur l'ensemble du projet. 
+     Par rapport à la planification initiale, nous avons décidé de rendre non prioritaire le système de sauvegardes par difficulté à l'inclure dans le code pour l'instant.
+    
+
+   \appendix  % On passe aux annexes
+   \section{Bibliographie}
+   \paragraph{1- }
+    \url{https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1043_aggregats-memoire-et-fichiers/4279_structures/}
+    \paragraph{2- }
+    \url{https://nicolasj.developpez.com/articles/libc/hasard/}
+
+\end{document}
