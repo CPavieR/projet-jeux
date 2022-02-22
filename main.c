@@ -23,6 +23,8 @@ char nom[30];
 
 int main()
 {
+    static float capital = 10000;
+    float* pointeur_du_capital = &capital;
     static char *nom_ville[NOMBRE_DE_VILLES];
     static int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES];
     printf("debut de import csv\n");
@@ -40,15 +42,16 @@ int main()
     for(int i = 0; i<3; i++){
         printf("conducteur : id: %d, position : %d, compteur : %d, coutkm : %1.1f, jour de repos : %d\n",a[i].id,a[i].position,a[i].compteur_km, a[i].cout_au_km,a[i].jour_de_repos);
     }
-    
-    a[0] = deplacement(a[0],5,300);
-    a[1] = deplacement(a[1], 9, 910);
-    a[2] = deplacement(a[2], 13, 5);
+    printf("capital : %f", capital);
+    a[0] = deplacement(a[0],5,300,pointeur_du_capital);
+    a[1] = deplacement(a[1], 9, 910,pointeur_du_capital);
+    a[2] = deplacement(a[2], 13, 5,pointeur_du_capital);
 
 
     for(int i = 0; i<3; i++){
         printf("conducteur : id: %d, position : %d, compteur : %d, coutkm : %1.1f, jour de repos : %d\n",a[i].id,a[i].position,a[i].compteur_km, a[i].cout_au_km,a[i].jour_de_repos);
     }
+    printf("capital : %f", capital);
 
 
 
