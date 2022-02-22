@@ -5,8 +5,9 @@ struct conducteur {
 int id;
 int position;
 int compteur_km;
-//char nom[];
 int cout_au_km;
+int jour_de_repos;
+char nom[30];
 };
 
 struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int deplacement,int matrice[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES]);

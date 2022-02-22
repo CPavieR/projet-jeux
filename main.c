@@ -22,10 +22,10 @@ int main()
     import_csv(nom_ville, matrice_adja);
     rnd_srand();
     for(int i =0; i<350;i++){
-        printf("%d\n", rnd_rand());
+        printf("%d\n", int_random());
     }
 
-
+    
 
 
     return 0;

@@ -51,21 +51,30 @@ int calcule_cout (struct conducteur cpt)//Fonction operationnel
 //Nombre ville est le nombre exact de ville (est non le nombre de ville-1 comme si on était dans une liste)
 struct conducteur ville_aleatoire (struct conducteur cpt,int nombre_ville)//Fonction operationnel
 {
-   int nombre = rand() % nombre_ville + 1;// on génèrent un nombre en 0 et le nombre de ville si il y a 4 ville l'intervalle sera [0,3]
-   cpt.position = nombre;// change le position dans la structure concerné
-   printf("%d\n",cpt.position);//un printf pour vérifier le résulatat et bon
-   return cpt;//on retourne notre résulat
+    int nombre = rand() % nombre_ville + 1;// on génèrent un nombre en 0 et le nombre de ville si il y a 4 ville l'intervalle sera [0,3]
+    cpt.position = nombre;// change le position dans la structure concerné
+    printf("%d\n",cpt.position);//un printf pour vérifier le résulatat et bon
+    return cpt;//on retourne notre résulat
 };
 
 
-/*int trajet(int )
+//int trajet_un_hop(int matrice[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES], int id_depart, int id_arrive)
+/**
+*
+*
+*
+{
 
+}
+*/
 
-int dijkstra(int matrice[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES], int id_depart, int id_arrive)
+//int dijkstra(int matrice[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES], int id_depart, int id_arrive)
 /**
 * @brief cette fonction utilise l'algorithme de dijkstra pour trouver l'iteneraire le plus rapide entre deux sommets du graphe
 *
 *
+*
+
 *
 {
     int distance[NOMBRE_DE_VILLES];
@@ -74,10 +83,17 @@ int dijkstra(int matrice[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES], int id_depart, int
         distance[i] = 10000;//on initialise les couts, ainsi que les sommets que l'on as parcourus
         traite[i] = 0;
     }
-    
+    for (int i =0; i<NOMBRE_DE_VILLES;i++){
+
+        for (int i =0; i<NOMBRE_DE_VILLES;i++){
+        
+
+    }
+}
 
 }
 */
+
 
 
 
