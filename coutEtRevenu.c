@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "coutEtRevenu.h"
+#include "systemeRevenusEvenements.h"
 
 
 static int a;
@@ -20,30 +20,65 @@ int int_random (void)
     return (*g_seed);
 }
 
-
-float cout_au_hasard_de_coutRevenu() { //Fonction pour génerer le coût total d'un camionneur à l'entreprise (basé sur le coût réel -> essence + salaire + impôt)
+float cout_au_hasard() { //Fonction pour génerer le coût total d'un camionneur à l'entreprise (basé sur le coût réel -> essence + salaire + impôt)
     float j=0;
-    j=(int_random()%9)+7; //on veut un coût entre 0.7 et 1.5 euros par kilomètres par conducteur, on prend un nombre random entre 0 et 8 compris, on ajoute 7 (pour avoir entre 7 et 15)
-    return j/10.0; //et pour finir on divise par 10 pour avoir entre 0.7 et 1.5
+    j=(int_random()%9)+11; //on veut un coût entre 1.1 et 1.9 euros par kilomètres par conducteur, on prend un nombre random entre 0 et 8 compris, on ajoute 7 (pour avoir entre 7 et 15)
+    return j/10.0; //et pour finir on divise par 10 pour avoir entre 1.1 et 1.9
 }
 
-char* nom_au_hasard() { //Fonction pour génerer un nom "au hasard" parmis les 30 suivants :
+
+char* nom_au_hasard(int n) { //Fonction pour génerer un nom "au hasard" parmis les 30 suivants :
     char* noms[30] = {"Michel","Josué","Anguerrande","Josselin","Foulque","Frederic","David","Jean-Gertrude","Liam","Vladimir", // on commence par créer le tableau noms
     "William","Sophia","Nathan","Léo","Emma","Logan","Florence", "Thomas","Noah","Félix",
     "Edouard","Victor","Dylan","Louis","James","Ethan","Benjamin","Gabriel","Rose","Nolan"}; 
-    return noms[rand()%30]; //On prend un nombre au hasard entre 0 et 29 compris qui nous permet de prendre un nombre au hasard dans le tableau
+    return noms[int_random()%30]; //On prend un nombre au hasard entre 0 et 29 compris qui nous permet de prendre un nombre au hasard dans le tableau
 }
 
-float chiffre_affaire(float cout_conducteur, int cpt_compteur_km) { //Fonction pour créer le chiffre d'affaire selon le cout choisi pour ce conducteur et le nombre de kilomètres du contrat
-    float multiplieur=(int_random()%4)+11.0; //on crée un multiplicateur qui mettra toujours l'entreprise en position de rentabilité sur tous les contrats (entre 1.1 et 1.4 fois le cout de chaque contrat)
-    multiplieur = multiplieur/10.0; //même méthode que pour le coût, on met le multiplicateur entre 11 et 14 puis on divise par 10 (pour avoir entre 1.1 et 1.4 comme multiplicateur)
-    return (cout_conducteur * cpt_compteur_km * multiplieur); //on a donc le cout total de la mission (cout par km x nombre de kilomètres) multiplié par le gain
+
+int prix_evenement_aleatoire(int n) {
+    int prixEvenement[10]={-180,-300,+2500,-600,-250,-6000,+8000,-135,+2000,+200};
+    return prixEvenement[n];
 }
+
+
+char* evenement_aleatoire(int n) {
+    char* evenements[10]={"Un de votre camion s'est retrouvé enlisé sur une aire d'autoroute, votre conducteur est obligé d'appeler et de payer un dépanneur car il transportait des denrées périssables. Vous perdez 180€",
+    "Un de vos camions a acquis une conscience et a pris en otage son conducteur et vos marchandises en échange de sa liberté. Vous lui promettez un entretien plus fréquent et un plein d'essence. Il accepte par dépit et vous perdez 300€",
+    "En arrivant ce matin à votre bureau, vous remarquez que des marchandises sont devant vos locaux. Aucun message de l'expéditeur et vous avez effectué toutes vos courses. Vous revendez ces marchandises et gagnez 2500€",
+    "Un de vos camion a un pneu crevé et vous devez le remplacer. Vous perdez 600€",
+    "L'un de vos conducteurs a percuté un sanglier en passant sur une route de nuit et vous devez remplacer le pare-choc et un phare avant. Vous perdez 250€",
+    "L'un de vos donducteurs en situation d'ébriété a conduis votre camion et est rentré dans un platane centenaire. Le conducteur est par miracle indemne mais on ne peut pas en dire autant de votre camion. Les réparations vous coûtent 6000€",
+    "un de vos concurrent a fait faillite, vous gagnez beaucoup de parts sur le marché et empochez un beau pactole. Vous gagnez 8000€",
+    "Vous avez oublié de déclarer 27 centimes de bénéfices, le FISC vous tombe dessus. Vous devez payer 135€ d'amende.",
+    "Suite à une erreur de la banque, il semblerait que vous ayez un moins-perçu et que vous gagnez ainsi 2000€",
+    "Suite à une erreur de la banque, il semblerait que vous ayez un trop-perçu et que vous perdez ainsi 200€"};
+    return evenements[n];
+}
+
+
+//retourne le nom d'une entreprise de façon aléatoire
+char* entreprise() {
+    char* listeEnt[25] = {"Aldi", "Amazon", "Apple", "Auchan", "Candia", 
+    "Casino", "Cdiscount", "Chaussea", "Decathlon", "Fnac", 
+    "Foot locker", "Fromageries Bel Production", "Froudis", "Gifi", "Gucci", 
+    "IKEA", "Jardiland", "Kiko", "Leroy Merlin", "Maisons du monde", 
+    "Micromania", "Nosibe", "Panzani", "Primark", "Stokomani"};
+    return listeEnt[int_random()%25+0];
+}
+
+
+//retourne un revenu aléatoire compris entre 6 000 et 9 000€ 
+int prix_contrat(){
+    return 6000+(int_random()%3000);
+}
+
 
 /*int main() {
-    printf("%s coûtera %f euros par kilomètre et le contrat actuel rapportera %f à l'entreprise\n",nom_au_hasard(), cout_au_hasard(), chiffre_affaire(cout_au_hasard(),(rand()%300)+50));
-    //for (int i=0; i <= 20; i++) {
-        //printf("%s coûtera %f euros par kilomètre et le contrat actuel rapportera %f à l'entreprise\n",nom_au_hasard(), cout_au_hasard(), chiffre_affaire(cout_au_hasard(),(rand()%300)+50));
-    //};
+    rnd_srand();
+    //printf("%s coûtera %f euros par kilomètre. L'entreprise %s vous propose un contrat à %d. Par ailleurs, %s, %d\n",nom_au_hasard(n), cout_au_hasard(), entreprise(), prix_contrat(), evenement_aleatoire(n), (prix_evenement_aleatoire(n)));
+    for (int i=0; i <= 20; i++) {
+        int n=int_random()%10;
+        printf("%s coûtera %f euros par kilomètre. L'entreprise %s vous propose un contrat à %d. Par ailleurs, %s, %d\n",nom_au_hasard(n), cout_au_hasard(), entreprise(), prix_contrat(), evenement_aleatoire(n), (prix_evenement_aleatoire(n)));
+    };
     return 0;
 }*/
