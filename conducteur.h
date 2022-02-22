@@ -5,10 +5,14 @@ struct conducteur {
 int id;
 int position;
 int compteur_km;
+ int jour_de_repos;
 //char nom[];
 int cout_au_km;
 };
 
+int calcule_repos(struct conducteur cpt);
+struct conducteur init_repos(struct conducteur cpt);
+ struct conducteur soustraction_par_tour_du_repos(struct conducteur cpt); 
 struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int deplacement,int matrice[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES]);
 struct conducteur reset_compteur (struct conducteur cpt);
 int calcule_cout (struct conducteur cpt);
