@@ -4,7 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "conducteur.h"
-#include "coutEtRevenu.h"
+#include "systemeRevenusEvenements.h"
 #include "import.h"
 #define NOMBRE_DE_VILLES   16//on construit par la suite des arrays dont la taille est égale au nombre de villes, a modif aux besoins
 
