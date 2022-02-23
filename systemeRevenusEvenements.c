@@ -60,7 +60,7 @@ char* entreprise() { //Création d'une fonction pour prendre aléatoirement un n
     char* entreprises[27] = {"Aldimanche", "Zonama", "ThunderCrow", "Auchamp", "ResearchDoor", 
     "Big Pharma & co.", "Ccher", "Chauchea", "Hexathlon", "Boing Boing", 
     "Cognition R&D dept", "Fromageries Bell", "Order Of Seven Angles", "Gigi", "Goose Chasing Ind.", 
-    "SPC-3008 ", "Jardiflat", "Eugenics Humanity Project co.", "Le roi Martin", "Psiion 3b Project inc.", 
+    "SPC-3008 ", "Jardiflat", "Singularity Humanity Project co.", "Le roi Martin", "Psiion 3b Project inc.", 
     "Micromaniaque", "Nosilbe", "Pak", "Marque n°826", "Vim4ever","Evil Corp","Reffined Uranium & co."};
     return entreprises[int_random()%25+0]; //On prend l'un des 25 noms du tableau entreprises
 }
