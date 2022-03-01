@@ -62,7 +62,7 @@ char* entreprise() { //Création d'une fonction pour prendre aléatoirement un n
     "Cognition R&D dept", "Fromageries Bell", "Order Of Seven Angles", "Gigi", "Goose Chasing Ind.", 
     "SPC-3008 ", "Jardiflat", "Singularity Humanity Project co.", "Le roi Martin", "Psiion 3b Project inc.", 
     "Micromaniaque", "Nosilbe", "Pak", "Marque n°826", "Vim4ever","Evil Corp","Reffined Uranium & co."};
-    return entreprises[int_random()%25+0]; //On prend l'un des 25 noms du tableau entreprises
+    return entreprises[int_random()%27+0]; //On prend l'un des 25 noms du tableau entreprises
 }
 
 
