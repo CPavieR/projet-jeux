@@ -57,7 +57,7 @@ int prix_evenement_aleatoire(int n) { // création d'une fonction pour récupér
 
 
 char* entreprise() { //Création d'une fonction pour prendre aléatoirement un nom d'une entreprise ci-dessous pour générer une propostion de contrat
-    char* entreprises[27] = {"Aldimanche", "Zonama", "ThunderCrow", "Auchamp", "ResearchDoor", 
+    char* entreprises[27] = {"Aldimanche", "Zonama", "ThunderCrow", "Auchampignons", "ResearchDoor", 
     "Big Pharma & co.", "Ccher", "Chauchea", "Hexathlon", "Boing Boing", 
     "Cognition R&D dept", "Fromageries Bell", "Order Of Seven Angles", "Gigi", "Goose Chasing Ind.", 
     "SPC-3008 ", "Jardiflat", "Singularity Humanity Project co.", "Le roi Martin", "Psiion 3b Project inc.", 
