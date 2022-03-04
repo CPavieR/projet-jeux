@@ -38,7 +38,12 @@ int get_int_in_input_in_range(int a, int b){
     return reponse;
 }
 
-void tirage_des_contracts(int nb_contract,char *liste_entreprise[], int *revenu_de_contr, int* km){
+void tirage_des_contracts(int nb_contract,char *liste_entreprise[], int *revenu_de_contr, int* km)
+/***
+* @brief permet de generet un nombre de nombres definis de contrat
+*entre : nb de contrat a generer, tableau de tacleau de char pour les noms d'entreprise, int* pour les revenue associe, int* pour le nombre de km pour chaque contrat
+*/
+{
     for(int i = 0; i<nb_contract;i++){
         liste_entreprise[i] = entreprise();
         revenu_de_contr[i] = prix_contrat();
@@ -47,9 +52,15 @@ void tirage_des_contracts(int nb_contract,char *liste_entreprise[], int *revenu_
 }
 
 int km_random(){
+    //donne un nombre de kilometre aleatoire, temporaire les temps que l'algo de dijsktra soit termine
     return (int_random() % 1000);
 }
-void gestion_contrat(struct conducteur courant, float* pointeur_du_capital){
+void gestion_contrat(struct conducteur courant, float* pointeur_du_capital)
+/***
+* @brief permet a partir d'un conducteur de luis donner un contrat
+entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
+*/
+{
                 printf("le conducteur %s a finis de se reposer, il peux donc realiser un contract\n", courant.nom);
                 char *liste_entreprise_de_contract[3];
                 int revenu_pour_contrat[3];
@@ -68,6 +79,7 @@ void gestion_contrat(struct conducteur courant, float* pointeur_du_capital){
 }
 
 int main()
+    //boucle principale du jeu
 {
     static float capital = 10000;
     float* pointeur_du_capital = &capital;
@@ -77,17 +89,18 @@ int main()
     import_csv(nom_ville, matrice_adja);
     rnd_srand();
     int code_action = -1;
-    int nombre_de_conduct = 3;
-    struct conducteur a[10] = {
+    int nombre_de_conduct = 3;//definitions des variables nessecaire a l'excution de la boucle principale
+    struct conducteur a[10] = {//on definit une liste de conducteur avec 10 conducteur maximum
         {1,1,0,1.1,0,"jean-michel"},
         {2,3,555,1.3,0,"patrick"},
         {3,7,0,1.5,2,"pakpak"}};
     
     while(code_action != 0){
-        printf("Votre entreprise possede : %1.2f\n\n", capital);
-        for(int i = 0; i<nombre_de_conduct; i++){
+        printf("Votre entreprise possede : %1.2f\n\n", capital);//on affiche le capital a chaque boucle
+        for(int i = 0; i<nombre_de_conduct; i++){//pour chacun des conducteur on teste s'il sont repose si oui, on leur assigne un nouveau contrat
+            //sinon on decremente leur jours de repos
             
-            printf("conducteur : id: %d, position : %d, compteur : %d, coutkm : %1.1f, jour de repos : %d\n",a[i].id,a[i].position,a[i].compteur_km, a[i].cout_au_km,a[i].jour_de_repos);
+            printf("conducteur : %s id: %d, position : %d, compteur : %d, coutkm : %1.1f, jour de repos : %d\n"a[i].nom,a[i].id,a[i].position,a[i].compteur_km, a[i].cout_au_km,a[i].jour_de_repos);
             if(a[i].jour_de_repos == 0){
                 gestion_contrat(a[i], pointeur_du_capital);
             }
