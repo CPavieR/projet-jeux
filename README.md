@@ -3,16 +3,16 @@ Ceci est le projet de jeu CMI informatique
 etat actuel :
 
 
-Système de transport(graphe-algo dijkstra) : graphe pondéré                      A complété
+Système de transport(graphe-algo dijkstra) : graphe pondéré               fait sauf dijkstra
 (creer fonction operations usuels et import depuis fichier texte)
 
-Frais-revenue : somme
+Frais-revenue : somme                                                     fait
 
-Système de conducteur/véhicule : liste
+Système de conducteur/véhicule : liste                                    fait
 
 Système de Sauvegarde : txt
 
-Evénement aléatoire
+Evénement aléatoire                                                       a introduire
 
 exp(arbre)
 
