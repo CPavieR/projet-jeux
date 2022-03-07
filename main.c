@@ -8,7 +8,14 @@
 #include "import.h"
 #define NOMBRE_DE_VILLES   16//on construit par la suite des arrays dont la taille est égale au nombre de villes, a modif aux besoins
 
-
+void viderBuffer()
+{
+    int c = 0;
+    while (c != '\n' && c != EOF)
+    {
+        c = getchar();
+    }
+}
 
 
 /*struct conducteur {
@@ -32,11 +39,14 @@ int get_int_in_input_in_range(int a, int b){
     scanf("%d",&reponse);
     while(a>reponse || reponse > b){
         printf("nous n'avons pas compris votre demande, ressayez.\n");
-        fflush(stdin);
+        viderBuffer();
         scanf("%d",&reponse);
     }
     return reponse;
 }
+
+
+
 
 void tirage_des_contracts(int nb_contract,char *liste_entreprise[], int *revenu_de_contr, int* km){
     for(int i = 0; i<nb_contract;i++){
@@ -50,20 +60,21 @@ int km_random(){
     return (int_random() % 1000);
 }
 void gestion_contrat(struct conducteur courant, float* pointeur_du_capital){
-                printf("le conducteur %s a finis de se reposer, il peux donc realiser un contract\n", courant.nom);
-                char *liste_entreprise_de_contract[3];
-                int revenu_pour_contrat[3];
-                int km_contract[3];
-                tirage_des_contracts(3, liste_entreprise_de_contract, revenu_pour_contrat, km_contract);
-                printf("%s coûtera %1.1f euros par kilometre.\n",courant.nom, courant.cout_au_km);
-                for(int j = 0; j<3; j++){
-                    printf("L'entreprise %s vous propose un contrat pour %d km a %d euros.\n", liste_entreprise_de_contract[j],km_contract[j], revenu_pour_contrat[j]);
-                }
-                printf("\n\n veuillez choisir l'un de ces contracts en ecrivant 1, 2 ou 3\n");
-                int choix;
-                choix = get_int_in_input_in_range(1,3);
-                courant = deplacement(courant,int_random()%10,km_contract[choix],pointeur_du_capital);
-                *pointeur_du_capital = *pointeur_du_capital + revenu_pour_contrat[choix];
+    printf("le conducteur %s a finis de se reposer, il peux donc realiser un contract\n", courant.nom);
+    char *liste_entreprise_de_contract[3];
+    int revenu_pour_contrat[3];
+    int km_contract[3];
+    tirage_des_contracts(3, liste_entreprise_de_contract, revenu_pour_contrat, km_contract);
+    printf("%s coûtera %1.1f euros par kilometre.\n",courant.nom, courant.cout_au_km);
+    for(int j = 0; j<3; j++){
+        printf("L'entreprise %s vous propose un contrat pour %d km a %d euros.\n", liste_entreprise_de_contract[j],km_contract[j], revenu_pour_contrat[j]);
+    }
+    printf("\n\n veuillez choisir l'un de ces contracts en ecrivant 1, 2 ou 3\n");
+    int choix;
+    choix = get_int_in_input_in_range(1,3);
+    courant = deplacement(courant,int_random()%10,km_contract[choix-1],pointeur_du_capital);
+    *pointeur_du_capital = *pointeur_du_capital + revenu_pour_contrat[choix];
+    //printf("Votre entreprise possede : %1.2f euros REMUNE\n\n", *pointeur_du_capital);
 
 }
 
@@ -84,7 +95,7 @@ int main()
         {3,7,0,1.5,2,"pakpak"}};
     
     while(code_action != 0){
-        printf("Votre entreprise possede : %1.2f\n\n", capital);
+        printf("Votre entreprise possede : %1.2f euros\n\n", capital);
         for(int i = 0; i<nombre_de_conduct; i++){
             
             printf("conducteur : id: %d, position : %d, compteur : %d, coutkm : %1.1f, jour de repos : %d\n",a[i].id,a[i].position,a[i].compteur_km, a[i].cout_au_km,a[i].jour_de_repos);
@@ -94,6 +105,7 @@ int main()
             else{
                 a[i].jour_de_repos = a[i].jour_de_repos - 1;
             }
+            printf("Votre entreprise possede : %1.2f euros\n\n", capital);
         }
     printf("voulez vous continuer ? 0 = non, 1 = oui\n");
     code_action = get_int_in_input_in_range(0,1);

@@ -36,6 +36,7 @@ struct conducteur soustraction_par_tour_du_repos(struct conducteur cpt)
 //faire le déplacement.Il faudra aussi rajouter un fonction afin de prévoir les déplacements à faire.
 struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int id_arrivee, int deplacement_en_km, float* pointeur_du_capital)//Fonction operationnel
 {   //on incrémenter le compteur de KM vers l'endroit où on va faire le déplacement
+    //printf("nb km :%d\n",deplacement_en_km);
     if(conducteur_a_deplacer.jour_de_repos != 0){
         return conducteur_a_deplacer;
     }
@@ -44,7 +45,12 @@ struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int id_ar
     conducteur_a_deplacer.position = id_arrivee;
     int jour_de_rep = calcule_repos(deplacement_en_km);
     conducteur_a_deplacer.jour_de_repos = jour_de_rep;
+    printf("cout conduc :%f\n",conducteur_a_deplacer.cout_au_km);
+    printf("nb km :%d\n",deplacement_en_km);
     *pointeur_du_capital = *pointeur_du_capital - calcule_cout(deplacement_en_km, conducteur_a_deplacer.cout_au_km);
+    printf("%f\n",calcule_cout(deplacement_en_km, conducteur_a_deplacer.cout_au_km));
+    //printf("Votre entreprise possede : %1.2f euros COUT\n\n", *pointeur_du_capital);
+
     return (conducteur_a_deplacer);//on retourne le struct aprés le déplacement
 }
 
@@ -59,7 +65,7 @@ struct conducteur reset_compteur (struct conducteur cpt)//Fonction operationnel
 //Permet de calculer le cout du compteur de KM du conducteur
 float calcule_cout (int km, float coutKm)//Fonction operationnel
 {
-    return (float)km*coutKm;// on retoure simplement le cout au KM fois le nombre de KM
+    return km * coutKm;// on retoure simplement le cout au KM fois le nombre de KM
 };
 
 
