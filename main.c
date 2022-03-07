@@ -80,7 +80,7 @@ entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
                 printf("\n\n veuillez choisir l'un de ces contracts en ecrivant 1, 2 ou 3\n");
                 int choix;
                 choix = get_int_in_input_in_range(1,3);
-                courant = deplacement(courant,int_random()%10,km_contract[choix],pointeur_du_capital);
+                courant = deplacement(courant,int_random()%10,km_contract[choix-1],pointeur_du_capital);
                 *pointeur_du_capital = *pointeur_du_capital + revenu_pour_contrat[choix];
 
 }
@@ -107,7 +107,7 @@ int main()
         for(int i = 0; i<nombre_de_conduct; i++){//pour chacun des conducteur on teste s'il sont repose si oui, on leur assigne un nouveau contrat
             //sinon on decremente leur jours de repos
             
-            printf("conducteur : %s id: %d, position : %d, compteur : %d, coutkm : %1.1f, jour de repos : %d\n"a[i].nom,a[i].id,a[i].position,a[i].compteur_km, a[i].cout_au_km,a[i].jour_de_repos);
+            printf("conducteur : %s id: %d, position : %d, compteur : %d, coutkm : %1.1f, jour de repos : %d\n",a[i].nom,a[i].id,a[i].position,a[i].compteur_km, a[i].cout_au_km,a[i].jour_de_repos);
             if(a[i].jour_de_repos == 0){
                 gestion_contrat(a[i], pointeur_du_capital);
             }
