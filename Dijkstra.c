@@ -32,7 +32,7 @@ int dijkstra(int matrice[NOMBRE_DE_VILLE][NOMBRE_DE_VILLE],int depart , int arri
     }
     //Initialisation des valeurs de départs
     lst_D[depart][0]=0;
-    lst_D[depart][1]=0;
+    lst_D[depart][1]=depart;
     lst_Av[ind_lst_Av] = depart;
     while (ind_lst_Av<NOMBRE_DE_VILLE)
     {
