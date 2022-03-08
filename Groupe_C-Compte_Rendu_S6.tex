@@ -1,0 +1,103 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{libertine}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+  
+
+%ici on ajoute les images sur la même ligne (j'ai mis des images mais je pense que ça ne fonctionnera pas de votre côté pour l'instant)
+\begin{minipage}[c]{.46\linewidth}
+     \begin{center}
+             \includegraphics[width=4cm]{logo-fds.png}
+         \end{center}
+   \end{minipage} \hfill
+   \begin{minipage}[c]{.46\linewidth}
+    \begin{center}
+            \includegraphics[width=4cm]{logo-figure.png}
+        \end{center}
+ \end{minipage}
+    \newline \newline
+%ici il faudra voir pour séparer les images du titre (en l'état ils sont collés)
+%on passe ici au début du code de la page de garde
+
+    \textsc{\LARGE Faculté Des Sciences - Montpellier}\\[2cm]
+
+    \textsc{\Large Compte rendu de la séance 6}\\[1.5cm]
+
+    \HRule \\[0.4cm]
+    { \huge \bfseries Projet CMI\\[0.4cm] }
+
+    \HRule \\[2cm]
+    \\[2cm]
+
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+        Conrath Matthieu\\
+        Robert Wendy\\
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+       Pavie-Routaboul Clement\\
+        Rebagliato Lucas\\
+      \end{flushright}
+    \end{minipage}
+
+    \vfill
+    {\large 11 mars 2022}
+    \\
+    {\url{https://github.com/CPavieR/projet-jeux}}
+
+  \end{center}
+  \end{sffamily}
+\end{titlepage}
+
+\newpage
+
+%et à partir de là c'est le code pour le reste du doc
+
+
+\section*{Introduction}
+      Ce document est le compte rendu de notre avancé sur le projet du 1/03/2022 au 11/03/2022. En premier lieu nous avons rassembler tous les programmes faits jusque là, afin d'avoir une première ébauche de la boucle principale qui sera notre jeu. Cette boucle fonctionne bien et nous pouvons déjà choisir des contrats pour nos conducteurs après leurs jours de repos (également calculés). Ensuite nous avons également finalisé l'algorithme de Dijkstra pour avoir le plus court chemin entre deux villes et calculer le coût par kilomètre à l'entreprise. Nous avons aussi réalisé un makefile de tous les programmes pour pouvoir compiler simplement d'une seule commande l'ensemble du code.
+
+\section{Objectifs accomplis et problèmes rencontrés}
+     \begin{tabular}{|l|c|r|}
+  \hline
+  Objectif & Statut actuel & Problème(s) rencontré(s) \\
+  \hline
+   - Création de la boucle & Terminé & Problème pour garder le capital\\
+   principale && entre deux boucle \\
+   - Création d'un makefile & Terminé & Pas de soucis\\
+   - Finalisation de l'algorithme & Terminé & Pas de soucis\\
+   de Dijkstra &&\\
+   - Embaucher des conducteurs & Terminé & Pas de soucis \\
+   - Système de sauvegarde & Commencé & Pas de soucis pour l'instant\\
+   - Graphismes & Commencé & Impossible d'installer la\\
+   &&bibliothèque CSFML à la Fac\\
+  
+
+  \hline
+\end{tabular}
+\section{Prochaines étapes}
+    Nous avons déjà commencé les objectifs secondaires (permettre la sauvegarde du jeu, la partie graphisme...) et il nous reste quelques améliorations à faire, en particulier sur la possibilité d'embaucher des conducteurs et sur l'application de l'algorithme de Dijkstra au reste du code.
+    
+
+\appendix  % On passe aux annexes
+\section{Bibliographie}
+\paragraph{1- }
+Livre Physique : : \url{https://www.editions-hatier.fr/livre/prepabac-nsi-tle-generale-specialite-bac-2022-9782401075221}
+\paragraph{2- }
+\url{https://zestedesavoir.com/tutoriels/755/le-langage-c-1/1043_aggregats-memoire-et-fichiers/4279_structures/}
+
+\end{document}
