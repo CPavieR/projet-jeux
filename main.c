@@ -6,6 +6,8 @@
 #include "conducteur.h"
 #include "systemeRevenusEvenements.h"
 #include "import.h"
+#include "sauvegarde.h"
+
 #define NOMBRE_DE_VILLES   16//on construit par la suite des arrays dont la taille est égale au nombre de villes, a modif aux besoins
 
 void viderBuffer()
@@ -142,7 +144,7 @@ int main()
     //code_action = get_int_in_input_in_range(1,5);
 
     printf("%d\n", code_action);
-    
+    sauvegarder(capital, nombre_de_conduct, a);
     return 0;
 }
 
