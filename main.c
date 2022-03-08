@@ -44,7 +44,10 @@ int get_int_in_input_in_range(int a, int b){
     }
     return reponse;
 }
-
+int km_random(){
+    //donne un nombre de kilometre aleatoire, temporaire les temps que l'algo de dijsktra soit termine
+    return (int_random() % 1000);
+}
 void tirage_des_contracts(int nb_contract,char *liste_entreprise[], int *revenu_de_contr, int* km)
 /***
 * @brief permet de generet un nombre de nombres definis de contrat
@@ -58,11 +61,8 @@ void tirage_des_contracts(int nb_contract,char *liste_entreprise[], int *revenu_
     }
 }
 
-int km_random(){
-    //donne un nombre de kilometre aleatoire, temporaire les temps que l'algo de dijsktra soit termine
-    return (int_random() % 1000);
-}
-void gestion_contrat(struct conducteur courant, float* pointeur_du_capital)
+
+struct conducteur gestion_contrat(struct conducteur courant, float* pointeur_du_capital)
 /***
 * @brief permet a partir d'un conducteur de luis donner un contrat
 entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
@@ -82,8 +82,26 @@ entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
                 choix = get_int_in_input_in_range(1,3);
                 courant = deplacement(courant,int_random()%10,km_contract[choix-1],pointeur_du_capital);
                 *pointeur_du_capital = *pointeur_du_capital + revenu_pour_contrat[choix];
+return courant;
+}
+
+
+void gestion_evenement_aleatoire(float* pointeur_du_capital)
+/***
+* @brief gere les evenements aleatoire
+*il ont 10% de chance de se produire lorsque que l'on realise un contract
+*
+*/
+{
+    if(int_random()%10 == 9){
+        int nb_evenement = int_random()%10;
+        printf("%s\n",evenement_aleatoire(nb_evenement));
+        *pointeur_du_capital = *pointeur_du_capital - prix_evenement_aleatoire(nb_evenement);
+    }
+
 
 }
+
 
 int main()
     //boucle principale du jeu
@@ -94,7 +112,7 @@ int main()
     static int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES];
     printf("debut de import csv\n");
     import_csv(nom_ville, matrice_adja);
-    rnd_srand();
+    init_random();
     int code_action = -1;
     int nombre_de_conduct = 3;//definitions des variables nessecaire a l'excution de la boucle principale
     struct conducteur a[10] = {//on definit une liste de conducteur avec 10 conducteur maximum
@@ -103,13 +121,15 @@ int main()
         {3,7,0,1.5,2,"pakpak"}};
     
     while(code_action != 0){
+
         printf("Votre entreprise possede : %1.2f\n\n", capital);//on affiche le capital a chaque boucle
         for(int i = 0; i<nombre_de_conduct; i++){//pour chacun des conducteur on teste s'il sont repose si oui, on leur assigne un nouveau contrat
             //sinon on decremente leur jours de repos
-            
+            printf("NOMBRE DE JOUR DE REPOS : %d", a[i].jour_de_repos);
             printf("conducteur : %s id: %d, position : %d, compteur : %d, coutkm : %1.1f, jour de repos : %d\n",a[i].nom,a[i].id,a[i].position,a[i].compteur_km, a[i].cout_au_km,a[i].jour_de_repos);
             if(a[i].jour_de_repos == 0){
-                gestion_contrat(a[i], pointeur_du_capital);
+                a[i] = gestion_contrat(a[i], pointeur_du_capital);
+                gestion_evenement_aleatoire(pointeur_du_capital);
             }
             else{
                 a[i].jour_de_repos = a[i].jour_de_repos - 1;

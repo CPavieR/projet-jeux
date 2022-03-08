@@ -9,6 +9,6 @@ int prix_evenement_aleatoire(int n);
 char* evenement_aleatoire(int n);
 char* entreprise();
 int prix_contrat();
-void rnd_srand ();
+void init_random ();
 int int_random (void);
 #endif

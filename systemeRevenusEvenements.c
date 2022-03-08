@@ -6,7 +6,7 @@
 
 static int a;
 static int *g_seed = &a;
-void rnd_srand ()
+void init_random ()
 {
    *g_seed = time(NULL);
 }
