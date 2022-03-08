@@ -23,6 +23,32 @@ int get_num_from_charac(char characters[])
     return somme;
 }
 
+
+float get_float_from_charac(char characters[])
+{
+    int k = strlen(characters);
+    float somme = 0.;
+    float cent = 0.;
+    int i = 0;
+    while(i<k && characters[i] != 46)
+    {   
+
+        somme = somme * 10 + characters[i] - 48; // on convertit ceux ci (-48) et on ajoute ceux ci a la somme en prenant en compte les puissance de dix
+        i = i +1;
+    }
+    i = i + 1;
+    while(i<k)
+    {
+        cent = cent * 10 + characters[i] - 48;
+        i++;
+    }
+    cent = cent / 100;
+    somme = somme + cent;
+
+    return somme;
+}
+
+
 int get_list_of_int_from_list_of_char(char char_list[], int *liste_a_rendre)
 /**
  * @brief fonction permetant d'obtenir
@@ -106,6 +132,55 @@ void import_csv(char *nom_ville[NOMBRE_DE_VILLES], int matrice_adja[NOMBRE_DE_VI
     }
     fclose(document);//on ferme le document
 };
+
+
+void import_sauvegarde(float *capital, int *nbr_conduc, struct conducteur *a[10])
+/**
+ * @brief cette fonction importera toute les variables stocké dans le fichier .csv
+ * elle prends en entrée les pointeur a l'endroit ou l'on voudrat stocké le resultat
+ * 1 pointeur tableau noms des ville
+ * 2 pointeur matrice d'adjacence pondéré
+ */
+{   
+    
+    printf("debut import fct\n");
+
+    FILE *document;
+    document = fopen("sauvegarde.txt", "r");
+    char tab[4096];
+    fgets(tab, sizeof(tab), document);
+        printf("fgets passe\n");
+                              // on lit le fichier jusqu'a que la lecture echoue
+        char *mots = strtok(tab, ";"); // on delimite la str
+                                       // while (mots != NULL)// on attends 4 champs id, nom, voisin, cout voisin
+        float capita = get_float_from_charac(mots);//on recupere l'id de la ville que l'on est en train de lire
+        *capital = capita;
+        mots = strtok(NULL, ";"); // on passe au mots suivant
+        *nbr_conduc = get_num_from_charac(mots);
+        printf("debut import conduc\n");
+
+
+    for(int i = 0; i<*nbr_conduc; i++){
+        fgets(tab, sizeof(tab), document);
+        char *mots = strtok(tab, ";");
+        a[i].id = get_num_from_charac(mots);
+        mots = strtok(NULL, ";");
+        a[i].position = get_num_from_charac(mots);
+        mots = strtok(NULL, ";");
+        a[i].compteur_km = get_num_from_charac(mots);
+        mots = strtok(NULL, ";");
+        a[i].cout_au_km = get_float_from_charac(mots);
+        mots = strtok(NULL, ";");
+        a[i].jour_de_repos = get_float_from_charac(mots);
+        mots = strtok(NULL, ";");
+        strcpy(a[i].nom ,mots);
+    }
+    fclose(document);//on ferme le document
+};
+
+
+
+
 
 
 

@@ -116,11 +116,9 @@ int main()
     import_csv(nom_ville, matrice_adja);
     init_random();
     int code_action = -1;
-    int nombre_de_conduct = 3;//definitions des variables nessecaire a l'excution de la boucle principale
-    struct conducteur a[10] = {//on definit une liste de conducteur avec 10 conducteur maximum
-        {1,1,0,1.1,0,"jean-michel"},
-        {2,3,555,1.3,0,"patrick"},
-        {3,7,0,1.5,2,"pakpak"}};
+    int nombre_de_conduct = 1;//definitions des variables nessecaire a l'excution de la boucle principale
+    struct conducteur a[10];//on definit une liste de conducteur avec 10 conducteur maximum
+    //import_sauvegarde(pointeur_du_capital,&nombre_de_conduct,a);
     
     while(code_action != 0){
 
