@@ -116,11 +116,72 @@ int main()
     import_csv(nom_ville, matrice_adja);
     init_random();
     int code_action = -1;
+<<<<<<< HEAD
     int nombre_de_conduct = 1;//definitions des variables nessecaire a l'excution de la boucle principale
     struct conducteur a[10];//on definit une liste de conducteur avec 10 conducteur maximum
     //import_sauvegarde(pointeur_du_capital,&nombre_de_conduct,a);
     
+=======
+    int nombre_de_conduct = 3;//definitions des variables nessecaire a l'excution de la boucle principale
+    struct conducteur a[10] = {//on definit une liste de conducteur avec 10 conducteur maximum
+        {1,1,0,1.1,0,"jean-michel"},
+        {2,3,555,1.3,0,"patrick"},
+        {3,7,0,1.5,2,"pakpak"}};
+    int nombre_de_tour = 0 ;
+>>>>>>> 224b4bf8a27530865b813d3ba63993c5d1858564
     while(code_action != 0){
+        printf("vous etes actuellement au tour numero %d", nombre_de_tour);//debut d'ajout de code (matthieu le 08.03.2022)
+        nombre_de_tour++;
+        if (nombre_de_tour % 20 == 0)
+        {
+            printf("Tapez 1 si vous voulez engager un nouveau conducteur");
+            int var_validation1;
+            scanf("%d",&var_validation1);
+            if (var_validation == 1)
+            {
+                struct conducteur conduct1;
+                conduct1.id = nombre_de_conduct + 1;
+                conduct1.nom = nom_au_hasard();
+                conduct1.cout_au_km = cout au hasard;
+                conduct1 = ville_aleatoire(conduct1,NOMBRE_DE_VILLES);
+                
+                struct conducteur conduct2;
+                conduct2.id = nombre_de_conduct + 2;
+                conduct2.nom = nom_au_hasard();
+                conduct2.cout_au_km = cout au hasard;
+                conduct2 = ville_aleatoire(conduct2,NOMBRE_DE_VILLES);
+                
+                struct conducteur conduct3;
+                conduct3.id = nombre_de_conduct + 3;
+                conduct3.nom = nom_au_hasard();
+                conduct3.cout_au_km = cout au hasard;
+                conduct3 = ville_aleatoire(conduct1,NOMBRE_DE_VILLES);
+                
+                printf("On vous propose 3 conducteur");
+                printf("Le premier se nommne %s à un cout de de %f et se trouve actuellement dans la ville %d", conduct1.nom,conduct1.cout_au_km,conduct1.position);
+                printf("Le second se nommne %s à un cout de de %f et se trouve actuellement dans la ville %d", conduct2.nom,conduct2.cout_au_km,conduct2.position);
+                printf("Le troisieme se nommne %s à un cout de de %f et se trouve actuellement dans la ville %d", conduct3.nom,conduct3.cout_au_km,conduct3.position);
+                
+                int var_validation2;
+                printf("Tapez 1,2 ou 3 pour choisir un conducteur. Sinon vous ne pourrez pas choisir un nouveau conducteur");
+                scanf("%d",&var_validation2);
+                if (var_validation2 == 1)
+                {
+                    a[nombre_de_conduct]= {conduct1.id,conduct1.position,0,conduct1.cout_au_km,0,conduct1.nom};
+                    nombre_de_conduct++;
+                }
+                elif (var_validation2 == 2)
+                {
+                    a[nombre_de_conduct]= {conduct2.id,conduct2.position,0,conduct2.cout_au_km,0,conduct2.nom};
+                    nombre_de_conduct++;
+                }
+                elif (var_validation2 == 3)
+                {
+                    a[nombre_de_conduct]= {conduct3.id,conduct3.position,0,conduct3.cout_au_km,0,conduct3.nom};
+                    nombre_de_conduct++;
+                }         
+            }
+        }//fin d'ajout de code (matthieu le 08.03.2022)
 
         printf("Votre entreprise possede : %1.2f\n\n", capital);//on affiche le capital a chaque boucle
         for(int i = 0; i<nombre_de_conduct; i++){//pour chacun des conducteur on teste s'il sont repose si oui, on leur assigne un nouveau contrat

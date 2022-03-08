@@ -27,7 +27,7 @@ float cout_au_hasard() { //Fonction pour génerer le coût total d'un camionneur
 }
 
 
-char* nom_au_hasard(int n) { //Fonction pour génerer un nom "au hasard" parmis les 30 suivants :
+char* nom_au_hasard() { //Fonction pour génerer un nom "au hasard" parmis les 30 suivants :
     char* noms[30] = {"Michel","Josué","Anguerrande","Josselin","Foulque","Frederic","David","Jean-Gertrude","Liam","Vladimir", // on commence par créer le tableau noms
     "William","Sophia","Nathan","Léo","Emma","Logan","Florence", "Thomas","Noah","Félix",
     "Edouard","Victor","Dylan","Louis","James","Ethan","Benjamin","Gabriel","Rose","Nolan"}; 
