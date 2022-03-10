@@ -17,7 +17,7 @@ void sauvegarder(float capital, int nbr_conduc, struct conducteur *a)
 
     fputs(str, document);
 
-    sprintf(str, ";%d\n", nbr_conduc);
+    sprintf(str, ";%d;\n", nbr_conduc);
     fputs(str, document);
     for (int i = 0; i < nbr_conduc; i++)
     {
