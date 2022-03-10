@@ -18,7 +18,9 @@ int get_num_from_charac(char characters[])
     int somme = 0;
     for (int i = 0; i < k; i++)//pour chaque chiffres
     {
+        
         somme = somme * 10 + characters[i] - 48; // on convertit ceux ci (-48) et on ajoute ceux ci a la somme en prenant en compte les puissance de dix
+        //printf("somme = %d",somme);
     }
     return somme;
 }
@@ -35,16 +37,20 @@ float get_float_from_charac(char characters[])
 
         somme = somme * 10 + characters[i] - 48; // on convertit ceux ci (-48) et on ajoute ceux ci a la somme en prenant en compte les puissance de dix
         i = i +1;
+        //printf("unite : %f\n", somme);
     }
     i = i + 1;
-    while(i<k)
+    //printf("unite fini : %f\n", somme);
+    int limite = i + 2;
+    while(i<limite)
     {
         cent = cent * 10 + characters[i] - 48;
         i++;
+        //printf(" virgule : %f\n", cent);
     }
     cent = cent / 100;
     somme = somme + cent;
-
+    //printf("%f\n", somme);
     return somme;
 }
 
@@ -134,46 +140,48 @@ void import_csv(char *nom_ville[NOMBRE_DE_VILLES], int matrice_adja[NOMBRE_DE_VI
 };
 
 
-void import_sauvegarde(float *capital, int *nbr_conduc, struct conducteur *a[10])
+void import_sauvegarde(float *capital, int *nbr_conduc, struct conducteur (*a)[10])
 /**
- * @brief cette fonction importera toute les variables stocké dans le fichier .csv
- * elle prends en entrée les pointeur a l'endroit ou l'on voudrat stocké le resultat
- * 1 pointeur tableau noms des ville
- * 2 pointeur matrice d'adjacence pondéré
+ * @brief cette fonction importera toute les donnes du fichier sauvegarde.txt
+ * elle prends en entrée les pointeur des donnes de la sauvegarde
+ * pointeur capital entreprise, pointeur nombre de conducteur, pointeur array de conducteur
  */
 {   
     
-    printf("debut import fct\n");
+    //printf("debut import sauvegarde\n");
 
     FILE *document;
     document = fopen("sauvegarde.txt", "r");
     char tab[4096];
     fgets(tab, sizeof(tab), document);
-        printf("fgets passe\n");
+        //printf("fgets passe\n");
                               // on lit le fichier jusqu'a que la lecture echoue
         char *mots = strtok(tab, ";"); // on delimite la str
                                        // while (mots != NULL)// on attends 4 champs id, nom, voisin, cout voisin
         float capita = get_float_from_charac(mots);//on recupere l'id de la ville que l'on est en train de lire
         *capital = capita;
+        //printf("capitale importe : %f\n", *capital);
         mots = strtok(NULL, ";"); // on passe au mots suivant
+        //printf("%s\n", mots);
         *nbr_conduc = get_num_from_charac(mots);
-        printf("debut import conduc\n");
+        //printf("nb de conducteur : %d\n", *nbr_conduc);
+        //printf("debut import conduc\n");
 
 
     for(int i = 0; i<*nbr_conduc; i++){
         fgets(tab, sizeof(tab), document);
         char *mots = strtok(tab, ";");
-        a[i].id = get_num_from_charac(mots);
+        (*a)[i].id = get_num_from_charac(mots);
         mots = strtok(NULL, ";");
-        a[i].position = get_num_from_charac(mots);
+        (*a)[i].position = get_num_from_charac(mots);
         mots = strtok(NULL, ";");
-        a[i].compteur_km = get_num_from_charac(mots);
+        (*a)[i].compteur_km = get_num_from_charac(mots);
         mots = strtok(NULL, ";");
-        a[i].cout_au_km = get_float_from_charac(mots);
+        (*a)[i].cout_au_km = get_float_from_charac(mots);
         mots = strtok(NULL, ";");
-        a[i].jour_de_repos = get_float_from_charac(mots);
+        (*a)[i].jour_de_repos = get_num_from_charac(mots);
         mots = strtok(NULL, ";");
-        strcpy(a[i].nom ,mots);
+        strcpy((*a)[i].nom ,mots);
     }
     fclose(document);//on ferme le document
 };

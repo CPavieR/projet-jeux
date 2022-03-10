@@ -75,9 +75,9 @@ printf("%d",lst_D[arrivee][0]);
 return (lst_D[arrivee][0]);
 }
 
-int main()
+/*int main()
 {
         int matrice[NOMBRE_DE_VILLE][NOMBRE_DE_VILLE] = {{0,5,8},{5,0,10},{8,10,0}};
         dijkstra(matrice,0,2);
         return 0;
-}
+}*/

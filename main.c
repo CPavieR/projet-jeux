@@ -104,57 +104,33 @@ void gestion_evenement_aleatoire(float* pointeur_du_capital)
 
 }
 
-
-int main()
-    //boucle principale du jeu
-{
-    static float capital = 10000;
-    float* pointeur_du_capital = &capital;
-    static char *nom_ville[NOMBRE_DE_VILLES];
-    static int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES];
-    printf("debut de import csv\n");
-    import_csv(nom_ville, matrice_adja);
-    init_random();
-    int code_action = -1;
-<<<<<<< HEAD
-    int nombre_de_conduct = 1;//definitions des variables nessecaire a l'excution de la boucle principale
-    struct conducteur a[10];//on definit une liste de conducteur avec 10 conducteur maximum
-    //import_sauvegarde(pointeur_du_capital,&nombre_de_conduct,a);
-    
-=======
-    int nombre_de_conduct = 3;//definitions des variables nessecaire a l'excution de la boucle principale
-    struct conducteur a[10] = {//on definit une liste de conducteur avec 10 conducteur maximum
-        {1,1,0,1.1,0,"jean-michel"},
-        {2,3,555,1.3,0,"patrick"},
-        {3,7,0,1.5,2,"pakpak"}};
-    int nombre_de_tour = 0 ;
->>>>>>> 224b4bf8a27530865b813d3ba63993c5d1858564
-    while(code_action != 0){
-        printf("vous etes actuellement au tour numero %d", nombre_de_tour);//debut d'ajout de code (matthieu le 08.03.2022)
-        nombre_de_tour++;
-        if (nombre_de_tour % 20 == 0)
-        {
-            printf("Tapez 1 si vous voulez engager un nouveau conducteur");
-            int var_validation1;
-            scanf("%d",&var_validation1);
-            if (var_validation == 1)
+void ajout_conducteur(int nombre_de_conduct, struct conducteur  (*a)[10]){
+                printf("Tapez 1 si vous voulez engager un nouveau conducteur");
+            int var_validation1 = get_int_in_input_in_range(0,1);
+            if (var_validation1 == 1)
             {
                 struct conducteur conduct1;
-                conduct1.id = nombre_de_conduct + 1;
-                conduct1.nom = nom_au_hasard();
-                conduct1.cout_au_km = cout au hasard;
+                conduct1.id = nombre_de_conduct+1;
+                //conduct1.nom = nom_au_hasard();
+                strcpy(conduct1.nom,nom_au_hasard());
+                conduct1.cout_au_km = 0.5 + ((int_random() % 10)/10);
+                conduct1.jour_de_repos = 0;
                 conduct1 = ville_aleatoire(conduct1,NOMBRE_DE_VILLES);
                 
                 struct conducteur conduct2;
-                conduct2.id = nombre_de_conduct + 2;
-                conduct2.nom = nom_au_hasard();
-                conduct2.cout_au_km = cout au hasard;
+                conduct2.id = nombre_de_conduct+1;
+                //conduct2.nom = nom_au_hasard();
+                strcpy(conduct2.nom,nom_au_hasard());
+                conduct2.cout_au_km = 0.5 + ((int_random() % 10)/10);
+                conduct2.jour_de_repos = 0;
                 conduct2 = ville_aleatoire(conduct2,NOMBRE_DE_VILLES);
                 
                 struct conducteur conduct3;
-                conduct3.id = nombre_de_conduct + 3;
-                conduct3.nom = nom_au_hasard();
-                conduct3.cout_au_km = cout au hasard;
+                conduct3.id = nombre_de_conduct+1;
+                //conduct3.nom = nom_au_hasard();
+                strcpy(conduct3.nom,nom_au_hasard());
+                conduct3.cout_au_km = 0.5 + ((int_random() % 10)/10);
+                conduct3.jour_de_repos = 0;
                 conduct3 = ville_aleatoire(conduct1,NOMBRE_DE_VILLES);
                 
                 printf("On vous propose 3 conducteur");
@@ -167,20 +143,59 @@ int main()
                 scanf("%d",&var_validation2);
                 if (var_validation2 == 1)
                 {
-                    a[nombre_de_conduct]= {conduct1.id,conduct1.position,0,conduct1.cout_au_km,0,conduct1.nom};
-                    nombre_de_conduct++;
+                    //struct conducteur nv = {conduct1.id,conduct1.position,0,conduct1.cout_au_km,0,conduct1.nom};
+                    (*a)[nombre_de_conduct]= conduct1;
+
                 }
-                elif (var_validation2 == 2)
+                else {if (var_validation2 == 2)
                 {
-                    a[nombre_de_conduct]= {conduct2.id,conduct2.position,0,conduct2.cout_au_km,0,conduct2.nom};
-                    nombre_de_conduct++;
+                    //struct conducteur nv = {conduct2.id,conduct2.position,0,conduct2.cout_au_km,0,conduct2.nom};
+                    (*a)[nombre_de_conduct]=  conduct2;
+
                 }
-                elif (var_validation2 == 3)
+                else {if (var_validation2 == 3)
                 {
-                    a[nombre_de_conduct]= {conduct3.id,conduct3.position,0,conduct3.cout_au_km,0,conduct3.nom};
-                    nombre_de_conduct++;
+                    //struct conducteur nv = {conduct3.id,conduct3.position,0,conduct3.cout_au_km,0,conduct3.nom};
+                    (*a)[nombre_de_conduct]= conduct3;
+
                 }         
-            }
+            }}}
+}
+
+
+
+
+
+int main()
+    //boucle principale du jeu
+{
+    static float capital = 10000;
+    float* pointeur_du_capital = &capital;
+    static char *nom_ville[NOMBRE_DE_VILLES];
+    static int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES];
+    printf("debut de import csv\n");
+    import_csv(nom_ville, matrice_adja);
+    init_random();
+    int code_action = -1;
+    int nombre_de_conduct = 1;//definitions des variables nessecaire a l'excution de la boucle principale
+    struct conducteur a[10] = {//on definit une liste de conducteur avec 10 conducteur maximum
+        {1,1,0,1.1,0,"jean-michel"}};
+    printf("souhaitez vous importez une sauvegarde, si celle ci existe ? 1 = oui 0 = non");
+    int choix_sauv = get_int_in_input_in_range(0,1);
+    if(choix_sauv == 1){
+
+
+    import_sauvegarde(pointeur_du_capital,&nombre_de_conduct,&a);
+    }
+
+    int nombre_de_tour = 0 ;
+    while(code_action != 0){
+        printf("vous etes actuellement au tour numero %d\n", nombre_de_tour);//debut d'ajout de code (matthieu le 08.03.2022)
+        nombre_de_tour++;
+        if (nombre_de_tour % 20 == 0)
+        {
+            ajout_conducteur(nombre_de_conduct,&a);
+            nombre_de_conduct++;
         }//fin d'ajout de code (matthieu le 08.03.2022)
 
         printf("Votre entreprise possede : %1.2f\n\n", capital);//on affiche le capital a chaque boucle
