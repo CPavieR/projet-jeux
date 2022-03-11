@@ -111,59 +111,29 @@ void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10])
     int var_validation1 = get_int_in_input_in_range(0, 1);
     if (var_validation1 == 1)
     {
-        struct conducteur conduct1;
-        conduct1.id = nombre_de_conduct + 1;
-        // conduct1.nom = nom_au_hasard();
-        strcpy(conduct1.nom, nom_au_hasard());
-        conduct1.cout_au_km = 0.5 + ((int_random() % 10) / 10);
-        conduct1.jour_de_repos = 0;
-        conduct1 = ville_aleatoire(conduct1, NOMBRE_DE_VILLES);
-
-        struct conducteur conduct2;
-        conduct2.id = nombre_de_conduct + 1;
-        // conduct2.nom = nom_au_hasard();
-        strcpy(conduct2.nom, nom_au_hasard());
-        conduct2.cout_au_km = 0.5 + ((int_random() % 10) / 10);
-        conduct2.jour_de_repos = 0;
-        conduct2 = ville_aleatoire(conduct2, NOMBRE_DE_VILLES);
-
-        struct conducteur conduct3;
-        conduct3.id = nombre_de_conduct + 1;
-        // conduct3.nom = nom_au_hasard();
-        strcpy(conduct3.nom, nom_au_hasard());
-        conduct3.cout_au_km = 0.5 + ((int_random() % 10) / 10);
-        conduct3.jour_de_repos = 0;
-        conduct3 = ville_aleatoire(conduct1, NOMBRE_DE_VILLES);
+        struct conducteur proposition_conduc[3];
+        for(int i = 0; i<3; i++){
+            proposition_conduc[i].id = nombre_de_conduct + 1;
+            // conduct1.nom = nom_au_hasard();
+            strcpy(proposition_conduc[i].nom, nom_au_hasard());
+            proposition_conduc[i].cout_au_km = 0.5 + ((int_random() % 10) / 10);
+            proposition_conduc[i].jour_de_repos = 0;
+            proposition_conduc[i] = ville_aleatoire(proposition_conduc[i], NOMBRE_DE_VILLES);
+        }
 
         printf("On vous propose 3 conducteur");
-        printf("Le premier se nommne %s à un cout de de %f et se trouve actuellement dans la ville %d\n", conduct1.nom, conduct1.cout_au_km, conduct1.position);
-        printf("Le second se nommne %s à un cout de de %f et se trouve actuellement dans la ville %d\n", conduct2.nom, conduct2.cout_au_km, conduct2.position);
-        printf("Le troisieme se nommne %s à un cout de de %f et se trouve actuellement dans la ville %d\n", conduct3.nom, conduct3.cout_au_km, conduct3.position);
+        printf("Le premier se nommne %s à un cout de de %f et se trouve actuellement dans la ville %d\n", proposition_conduc[1].nom, proposition_conduc[1].cout_au_km, proposition_conduc[1].position);
+        printf("Le second se nommne %s à un cout de de %f et se trouve actuellement dans la ville %d\n", proposition_conduc[2].nom, proposition_conduc[2].cout_au_km, proposition_conduc[2].position);
+        printf("Le troisieme se nommne %s à un cout de de %f et se trouve actuellement dans la ville %d\n", proposition_conduc[3].nom, proposition_conduc[3].cout_au_km, proposition_conduc[3].position);
 
         int var_validation2;
         printf("Tapez 1,2 ou 3 pour choisir un conducteur. Sinon vous ne pourrez pas choisir un nouveau conducteur");
         var_validation2 = get_int_in_input_in_range(1, 3);
-        if (var_validation2 == 1)
-        {
-            // struct conducteur nv = {conduct1.id,conduct1.position,0,conduct1.cout_au_km,0,conduct1.nom};
-            (*a)[nombre_de_conduct] = conduct1;
-        }
-        else
-        {
-            if (var_validation2 == 2)
-            {
-                // struct conducteur nv = {conduct2.id,conduct2.position,0,conduct2.cout_au_km,0,conduct2.nom};
-                (*a)[nombre_de_conduct] = conduct2;
-            }
-            else
-            {
-                if (var_validation2 == 3)
-                {
-                    // struct conducteur nv = {conduct3.id,conduct3.position,0,conduct3.cout_au_km,0,conduct3.nom};
-                    (*a)[nombre_de_conduct] = conduct3;
-                }
-            }
-        }
+
+        // struct conducteur nv = {conduct1.id,conduct1.position,0,conduct1.cout_au_km,0,conduct1.nom};
+        (*a)[nombre_de_conduct] = proposition_conduc[var_validation2];
+
+        
     }
 }
 
