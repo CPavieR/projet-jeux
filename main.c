@@ -7,6 +7,7 @@
 #include "systemeRevenusEvenements.h"
 #include "import.h"
 #include "sauvegarde.h"
+#include "dijkstra.h"
 
 #define NOMBRE_DE_VILLES 16 // on construit par la suite des arrays dont la taille est égale au nombre de villes, a modif aux besoins
 
@@ -50,9 +51,9 @@ int get_int_in_input_in_range(int a, int b)
 int km_random()
 {
     // donne un nombre de kilometre aleatoire, temporaire les temps que l'algo de dijsktra soit termine
-    return (int_random() % 1000);
+    return 500;
 }
-void tirage_des_contracts(int nb_contract, char *liste_entreprise[], int *revenu_de_contr, int *km)
+void tirage_des_contracts(int nb_contract, char *liste_entreprise[], int *revenu_de_contr, int *km, int * destination, int emplacement, int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])
 /***
  * @brief permet de generet un nombre de nombres definis de contrat
  *entre : nb de contrat a generer, tableau de tacleau de char pour les noms d'entreprise, int* pour les revenue associe, int* pour le nombre de km pour chaque contrat
@@ -61,12 +62,16 @@ void tirage_des_contracts(int nb_contract, char *liste_entreprise[], int *revenu
     for (int i = 0; i < nb_contract; i++)
     {
         liste_entreprise[i] = entreprise();
-        revenu_de_contr[i] = prix_contrat();
-        km[i] = km_random();
+        destination[i] = (int_random()%12) + 1;
+        
+        km[i] = dijkstra(matrice_adja, emplacement, destination[i]);
+        printf("km : %d\n",km[i]);
+        revenu_de_contr[i] = prix_contrat(km[i]);
+        
     }
 }
 
-struct conducteur gestion_contrat(struct conducteur courant, float *pointeur_du_capital)
+struct conducteur gestion_contrat(struct conducteur courant, float *pointeur_du_capital, int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES], char *nom_ville[NOMBRE_DE_VILLES])
 /***
 * @brief permet a partir d'un conducteur de luis donner un contrat
 entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
@@ -76,11 +81,12 @@ entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
     char *liste_entreprise_de_contract[3];
     int revenu_pour_contrat[3];
     int km_contract[3];
-    tirage_des_contracts(3, liste_entreprise_de_contract, revenu_pour_contrat, km_contract);
+    int destination[3];
+    tirage_des_contracts(3, liste_entreprise_de_contract, revenu_pour_contrat, km_contract, destination, courant.position, matrice_adja);
     printf("%s coûtera %1.1f euros par kilometre.\n", courant.nom, courant.cout_au_km);
     for (int j = 0; j < 3; j++)
     {
-        printf("L'entreprise %s vous propose un contrat pour %d km a %d euros.\n", liste_entreprise_de_contract[j], km_contract[j], revenu_pour_contrat[j]);
+        printf("L'entreprise %s vous propose un contrat pour %d km a %d euros en destination de %s.\n", liste_entreprise_de_contract[j], km_contract[j], revenu_pour_contrat[j], nom_ville[destination[j]]);
     }
     printf("\n\n veuillez choisir l'un de ces contracts en ecrivant 1, 2 ou 3\n");
     int choix;
@@ -177,7 +183,7 @@ int main()
             printf("conducteur : %s id: %d, position : %d, compteur : %d, coutkm : %1.1f, jour de repos : %d\n", a[i].nom, a[i].id, a[i].position, a[i].compteur_km, a[i].cout_au_km, a[i].jour_de_repos);
             if (a[i].jour_de_repos == 0)
             {
-                a[i] = gestion_contrat(a[i], pointeur_du_capital);
+                a[i] = gestion_contrat(a[i], pointeur_du_capital, matrice_adja, nom_ville);
                 gestion_evenement_aleatoire(pointeur_du_capital);
             }
             else

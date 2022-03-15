@@ -66,11 +66,10 @@ char *entreprise()
     return entreprises[int_random() % 27 + 0]; // On prend l'un des 25 noms du tableau entreprises
 }
 
-int prix_contrat()
+int prix_contrat(int a)
 { // Création d'une fonction pour générer un revenu aléatoire compris entre 6 000 et 9 000€
-    return 6000 + (int_random() % 3000);
+    return (a * 1.5 + (((int_random()%10) -5) * 500));
 }
-
 /*int main() {
     rnd_srand();
     //printf("%s coûtera %f euros par kilomètre. L'entreprise %s vous propose un contrat à %d. Par ailleurs, %s, %d\n",nom_au_hasard(n), cout_au_hasard(), entreprise(), prix_contrat(), evenement_aleatoire(n), (prix_evenement_aleatoire(n)));

@@ -8,7 +8,7 @@ char* nom_au_hasard();
 int prix_evenement_aleatoire(int n);
 char* evenement_aleatoire(int n);
 char* entreprise();
-int prix_contrat();
+int prix_contrat( int a);
 void init_random ();
 int int_random (void);
 #endif

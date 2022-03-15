@@ -27,7 +27,7 @@ int dijkstra(int matrice[NOMBRE_DE_VILLE][NOMBRE_DE_VILLE], int depart, int arri
     // Dans cette boucle for, in initialise tout les valeurs avec le max d'un int et NULL afin de pour voir manipulier plus facilement la liste lst_D par la suite
     for (int i = 0; i < NOMBRE_DE_VILLE; i++)
     {
-        lst_D[i][0] = 2147483647;
+        lst_D[i][0] = -1;
         lst_D[i][1] = 0;
     }
     // Initialisation des valeurs de départs
@@ -43,7 +43,7 @@ int dijkstra(int matrice[NOMBRE_DE_VILLE][NOMBRE_DE_VILLE], int depart, int arri
         {
             if (matrice[ind_lst_Av][i] != 0)
             {
-                if (lst_D[i][0] == 2147483647 && lst_D[i][1] == 0)
+                if (lst_D[i][0] <0 && lst_D[i][1] == 0)
                 {
                     lst_D[i][0] = lst_D[ind_lst_Av][0] + matrice[ind_lst_Av][i];
                     lst_D[i][1] = ind_lst_Av;
@@ -70,7 +70,7 @@ int dijkstra(int matrice[NOMBRE_DE_VILLE][NOMBRE_DE_VILLE], int depart, int arri
 
         ind_lst_Av++;
     }
-    printf("%d", lst_D[arrivee][0]);
+    //printf("%d", lst_D[arrivee][0]);
     return (lst_D[arrivee][0]);
 }
 
