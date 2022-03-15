@@ -111,7 +111,7 @@ void gestion_evenement_aleatoire(float *pointeur_du_capital)
     }
 }
 
-void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10])
+void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10],int *nb_conducteur, float *capitale)
 {
     printf("Tapez 1 si vous voulez engager un nouveau conducteur");
     int var_validation1 = get_int_in_input_in_range(0, 1);
@@ -135,7 +135,8 @@ void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10])
         int var_validation2;
         printf("Tapez 1,2 ou 3 pour choisir un conducteur. Sinon vous ne pourrez pas choisir un nouveau conducteur");
         var_validation2 = get_int_in_input_in_range(1, 3);
-
+        *nb_conducteur++;
+        *capitale = *capitale-90000;
         // struct conducteur nv = {conduct1.id,conduct1.position,0,conduct1.cout_au_km,0,conduct1.nom};
         (*a)[nombre_de_conduct] = proposition_conduc[var_validation2];
 
@@ -171,8 +172,8 @@ int main()
         nombre_de_tour++;
         if (nombre_de_tour % 20 == 0 && nombre_de_conduct < 10)
         {
-            ajout_conducteur(nombre_de_conduct, &a);
-            nombre_de_conduct++;
+            ajout_conducteur(nombre_de_conduct, &a, &nombre_de_conduct, &capital);
+            
         } // fin d'ajout de code (matthieu le 08.03.2022)
 
         printf("Votre entreprise possede : %1.2f\n\n", capital); // on affiche le capital a chaque boucle
