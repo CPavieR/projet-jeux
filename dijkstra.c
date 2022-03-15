@@ -29,7 +29,7 @@ int dijkstra(int matrice[NOMBRE_DE_VILLE][NOMBRE_DE_VILLE], int depart, int arri
     {
         // Ce nombre est la limite d'un int, il permet de "simuler" une taille trop grande pour quelle soit emprunter 
         //j'ai décider de mettre ce nombre car une valeur infini n'existe pas en C
-        lst_D[i][0] = -1;
+        lst_D[i][0] = 2147483647;
         // Ce nombre permet de dire qu'il n'y a pas de voisins. Je n'ai pas pus mette NULL car cela renvoyai des Warnings
         lst_D[i][1] = 0;
     }
@@ -52,7 +52,7 @@ int dijkstra(int matrice[NOMBRE_DE_VILLE][NOMBRE_DE_VILLE], int depart, int arri
         {
             if (matrice[ind_lst_Av][i] != 0)
             {
-                if (lst_D[i][0] <0 && lst_D[i][1] == 0)
+                if (lst_D[i][0] == 2147483647 && lst_D[i][1] == 0)// en regarde si l'élément est initialiser
                 {
                     //si l'élément n'est pas initialiser alors on l'initialise
                     lst_D[i][0] = lst_D[ind_lst_Av][0] + matrice[ind_lst_Av][i];
