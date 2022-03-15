@@ -62,7 +62,9 @@ void tirage_des_contracts(int nb_contract, char *liste_entreprise[], int *revenu
     for (int i = 0; i < nb_contract; i++)
     {
         liste_entreprise[i] = entreprise();
-        destination[i] = (int_random()%12) + 1;
+        do{
+        destination[i] = (int_random()%12) + 1;}
+        while(destination[i] == emplacement);
         
         km[i] = dijkstra(matrice_adja, emplacement, destination[i]);
         printf("km : %d\n",km[i]);

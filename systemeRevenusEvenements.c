@@ -59,10 +59,11 @@ int prix_evenement_aleatoire(int n)
 char *entreprise()
 { // Création d'une fonction pour prendre aléatoirement un nom d'une entreprise ci-dessous pour générer une propostion de contrat
     char *entreprises[27] = {"Aldimanche", "Zonama", "ThunderCrow", "Auchampignons", "ResearchDoor",
-                             "Big Pharma & co.", "Ccher", "Chauchea", "Hexathlon", "Boing Boing",
-                             "Cognition R&D dept", "Fromageries Bell", "Order Of Seven Angles", "Gigi", "Goose Chasing Ind.",
-                             "SPC-3008 ", "Jardiflat", "Singularity Humanity Project co.", "Le roi Martin", "Psiion 3b Project inc.",
-                             "Micromaniaque", "Nosilbe", "Pak", "Marque n°826", "Vim4ever", "Evil Corp", "Reffined Uranium & co."};
+                            "Big Pharma & co.", "Ccher", "Chauchea", "Hexathlon", "Boing Boing",
+                            "Cognition R&D dept", "Fromageries Bell", "Order Of Seven Angles", "Gigi", "Goose Chasing Ind.",
+                            "SPC-3008 ", "Jardiflat", "Singularity Humanity Project co.", "Le roi Martin", "Psiion 3b Project inc.",
+                            "Micromaniaque", "Nosilbe", "Pak", "Marque n°826", "Vim4ever", "Evil Corp", "Reffined Uranium & co.",
+                            };
     return entreprises[int_random() % 27 + 0]; // On prend l'un des 25 noms du tableau entreprises
 }
 
