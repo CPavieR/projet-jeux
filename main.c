@@ -172,7 +172,7 @@ int main()
     {
         printf("vous etes actuellement au tour numero %d\n", nombre_de_tour); // debut d'ajout de code (matthieu le 08.03.2022)
         nombre_de_tour++;
-        if (nombre_de_tour % 20 == 0 && nombre_de_conduct < 10)
+        if (nombre_de_tour % 20 == 0 && nombre_de_conduct < 10 && capital>= 90000)
         {
             ajout_conducteur(nombre_de_conduct, &a, &nombre_de_conduct, &capital);
             
