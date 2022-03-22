@@ -36,7 +36,7 @@ int get_int_in_input_in_range(int a, int b)
      * sortie : un int entre a et b
      * demande a l'utilisateur de renter un chiffre entre a et b
      * */
-    fflush(stdin);
+
     printf("rentrer un entier entre %d et %d.\n", a, b);
     int reponse = -1;
     scanf("%d", &reponse);
@@ -137,7 +137,7 @@ void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10],int *nb_
         int var_validation2;
         printf("Tapez 1,2 ou 3 pour choisir un conducteur. Sinon vous ne pourrez pas choisir un nouveau conducteur");
         var_validation2 = get_int_in_input_in_range(1, 3);
-        *nb_conducteur++;
+        *nb_conducteur = *nb_conducteur + 1;
         *capitale = *capitale-90000;
         // struct conducteur nv = {conduct1.id,conduct1.position,0,conduct1.cout_au_km,0,conduct1.nom};
         (*a)[nombre_de_conduct] = proposition_conduc[var_validation2];
@@ -202,6 +202,9 @@ int main()
 
     printf("%d\n", code_action);
     sauvegarder(capital, nombre_de_conduct, a);
+    for(int i = 0; i< NOMBRE_DE_VILLES; i++){
+        free(nom_ville[i]);
+    }
     return 0;
 }
 

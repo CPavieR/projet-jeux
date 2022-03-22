@@ -20,3 +20,10 @@ dijkstra.obj
 .~lock.Projet_exel.ods#
 dijkstra.obj
 
+conducteur.o
+dijkstra.o
+import.o
+main
+main.o
+sauvegarde.o
+systemeRevenusEvenements.o

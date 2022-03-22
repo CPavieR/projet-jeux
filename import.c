@@ -123,6 +123,10 @@ void import_csv(char *nom_ville[NOMBRE_DE_VILLES], int matrice_adja[NOMBRE_DE_VI
         id = get_num_from_charac(mots);                   // on recupere l'id de la ville que l'on est en train de lire
         mots = strtok(NULL, ";");                         // on passe au mots suivant
         nom_ville[id] = (char *)malloc(strlen(mots) + 1); // on recupere le nom de la ville et on l'enregistre dans un tableau de tableau de caracteres
+        if(nom_ville[id]==NULL){
+            printf("erreur, pas assez de memoire");
+            exit(1);
+        }
         strcpy(nom_ville[id], mots);                      // on insere le nom de la ville au bon indice
         char *li_voisin = strtok(NULL, ";");
 
