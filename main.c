@@ -113,7 +113,7 @@ void gestion_evenement_aleatoire(float *pointeur_du_capital)
     }
 }
 
-int salaire (float *capital,struct conducteur (*a)[10])
+int salaire (float *capital,struct conducteur (*a)[10], int nombre_de_conduct)
 // Dans cette fonction on regarde le nombre de kilomètre que les conducteurs ont parcourus
 // Ainsi chaque tranche de 10 000 KM ils perçoivent une augmentation de salaires. 
 {
@@ -126,18 +126,19 @@ int salaire (float *capital,struct conducteur (*a)[10])
             *capital = *capital - 1600;
             salaire = salaire + 1600;
         }
-       
+       else{
 		if (((*a)[y].compteur_km > 10000) && ((*a)[y].compteur_km <= 20000))
 		{
 			*capital = *capital - 1800;
             salaire = salaire + 1800;
 		}
-       
+       else {
 		if (((*a)[y].compteur_km > 20000) && ((*a)[y].compteur_km <= 30000))
 		{
 			*capital = *capital - 2000;
             salaire = salaire + 2000;
 		}
+        else {
 		if (((*a)[y].compteur_km > 30000) && ((*a)[y].compteur_km <= 50000))
 		{
 			*capital = *capital - 2400;
@@ -145,10 +146,12 @@ int salaire (float *capital,struct conducteur (*a)[10])
 		}
 		else 
 		{
-			*capital = *capitale - 2600;
+			*capital = *capital - 2600;
             salaire = salaire + 2600;
 		};
-
+        }
+       }
+       }
 	};
     return salaire;
 };
