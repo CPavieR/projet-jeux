@@ -223,8 +223,8 @@ int main()
         nombre_de_tour++;
         if (nombre_de_tour % 30 == 0)
         {
-            a = salaire (&capital,&a);
-            printf("Les salaires ont été versée au vos employés, vous avez perdus \d € \n", a); 
+            int b = salaire (&capital,&a, nombre_de_conduct);
+            printf("Les salaires ont été versée au vos employés, vous avez perdus %d € \n", b); 
         }
         
         if (nombre_de_tour % 20 == 0 && nombre_de_conduct < 10 && capital>= 90000)
