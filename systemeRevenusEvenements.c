@@ -30,8 +30,8 @@ float cout_au_hasard()
 char *nom_au_hasard()
 {                                                                                                                                        // Fonction pour génerer un nom "au hasard" parmis les 30 suivants :
     char *noms[30] = {"Michel", "Josué", "Anguerrande", "Josselin", "Foulque", "Frederic", "David", "Jean-Gertrude", "Liam", "Vladimir", // on commence par créer le tableau noms
-                      "William", "Sophia", "Nathan", "Léo", "Emma", "Logan", "Florence", "Thomas", "Noah", "Félix",
-                      "Edouard", "Victor", "Dylan", "Louis", "James", "Ethan", "Benjamin", "Gabriel", "Rose", "Nolan"};
+                    "William", "Sophia", "Nathan", "Léo", "Emma", "Logan", "Florence", "Thomas", "Noah", "Félix",
+                    "Edouard", "Victor", "Dylan", "Louis", "James", "Ethan", "Benjamin", "Gabriel", "Rose", "Nolan"};
     return noms[int_random() % 30]; // On prend un nombre au hasard entre 0 et 29 compris qui nous permet de prendre un nombre au hasard dans le tableau
 }
 
@@ -46,7 +46,8 @@ char *evenement_aleatoire(int n)
                             "un de vos concurrent a fait faillite, vous gagnez beaucoup de parts sur le marché et empochez un beau pactole. Vous gagnez 8000€",
                             "Vous avez oublié de déclarer 27 centimes de bénéfices, le FISC vous tombe dessus. Vous devez payer 135€ d'amende.",
                             "Suite à une erreur de la banque, il semblerait que vous ayez un moins-perçu et que vous gagnez ainsi 2000€",
-                            "Suite à une erreur de la banque, il semblerait que vous ayez un trop-perçu et que vous perdez ainsi 200€"};
+                            "Suite à une erreur de la banque, il semblerait que vous ayez un trop-perçu et que vous perdez ainsi 200€"
+                            };
     return evenements[n]; // On prend l'un des 10 évènement aléatoire du tableau evenements
 }
 
@@ -58,13 +59,14 @@ int prix_evenement_aleatoire(int n)
 
 char *entreprise()
 { // Création d'une fonction pour prendre aléatoirement un nom d'une entreprise ci-dessous pour générer une propostion de contrat
-    char *entreprises[27] = {"Aldimanche", "Zonama", "ThunderCrow", "Auchampignons", "ResearchDoor",
+    char *entreprises[34] = {"Aldimanche", "Zonama", "ThunderCrow", "Auchampignons", "ResearchDoor",
                             "Big Pharma & co.", "Ccher", "Chauchea", "Hexathlon", "Boing Boing",
                             "Cognition R&D dept", "Fromageries Bell", "Order Of Seven Angles", "Gigi", "Goose Chasing Ind.",
                             "SPC-3008 ", "Jardiflat", "Singularity Humanity Project co.", "Le roi Martin", "Psiion 3b Project inc.",
-                            "Micromaniaque", "Nosilbe", "Pak", "Marque n°826", "Vim4ever", "Evil Corp", "Reffined Uranium & co.",
+                            "Micromaniaque", "Nosilbe", "Pak", "Marque numero 826", "Vim4ever", "Evil Corp", "Reffined Uranium & co.",
+                            "Leclaire", "Stalinium steel works", "Vaticannus collegium", "Windaube", "SGF2ZSBhIG5pY2UgZGF5Lg==", "Astaroth cult inc.", "Hunda",
                             };
-    return entreprises[int_random() % 27 + 0]; // On prend l'un des 25 noms du tableau entreprises
+    return entreprises[int_random() % 34 + 0]; // On prend l'un des 34 noms du tableau entreprises
 }
 
 int prix_contrat(int a)

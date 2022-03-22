@@ -14,7 +14,7 @@ Sortie : un entier repos, nombre de jours de repos accordés
 */
 int calcule_repos(int comp)
 {
-    int repos = comp / 100;
+    int repos = comp / 250;
     return repos;
 }
 
