@@ -113,6 +113,48 @@ void gestion_evenement_aleatoire(float *pointeur_du_capital)
     }
 }
 
+int salaire (float *capital,struct conducteur (*a)[10])
+// Dans cette fonction on regarde le nombre de kilomètre que les conducteurs ont parcourus
+// Ainsi chaque tranche de 10 000 KM ils perçoivent une augmentation de salaires. 
+{
+    int salaire = 0;
+	for (int y = 0; y <nombre_de_conduct; y ++)	
+	{
+        
+        if (((*a)[y].compteur_km >= 0) && ((*a)[y].compteur_km <= 10000))
+        {
+            *capital = *capital - 1600;
+            salaire = salaire + 1600;
+        }
+       
+		if (((*a)[y].compteur_km > 10000) && ((*a)[y].compteur_km <= 20000))
+		{
+			*capital = *capital - 1800;
+            salaire = salaire + 1800;
+		}
+       
+		if (((*a)[y].compteur_km > 20000) && ((*a)[y].compteur_km <= 30000))
+		{
+			*capital = *capital - 2000;
+            salaire = salaire + 2000;
+		}
+		if (((*a)[y].compteur_km > 30000) && ((*a)[y].compteur_km <= 50000))
+		{
+			*capital = *capital - 2400;
+            salaire = salaire + 2400;
+		}
+		else 
+		{
+			*capital = *capitale - 2600;
+            salaire = salaire + 2600;
+		};
+
+	};
+    return salaire;
+};
+
+
+
 void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10],int *nb_conducteur, float *capitale)
 {
     printf("Tapez 1 si vous voulez engager un nouveau conducteur");
@@ -180,6 +222,12 @@ int main()
     {
         printf("vous etes actuellement au tour numero %d\n", nombre_de_tour); // debut d'ajout de code (matthieu le 08.03.2022)
         nombre_de_tour++;
+        if (nombre_de_tour % 30 == 0)
+        {
+            a = salaire (&capital,&a);
+            printf("Les salaires ont été versée au vos employés, vous avez perdus \d € \n", a); 
+        }
+        
         if (nombre_de_tour % 20 == 0 && nombre_de_conduct < 10 && capital>= 90000)
         {
             ajout_conducteur(nombre_de_conduct, &a, &nombre_de_conduct, &capital);
