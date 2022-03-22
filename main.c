@@ -94,7 +94,7 @@ entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
     int choix;
     choix = get_int_in_input_in_range(1, 3);
     courant = deplacement(courant, int_random() % 10, km_contract[choix - 1], pointeur_du_capital);
-    *pointeur_du_capital = *pointeur_du_capital + revenu_pour_contrat[choix];
+    *pointeur_du_capital = *pointeur_du_capital + revenu_pour_contrat[choix - 1];
     return courant;
 }
 
