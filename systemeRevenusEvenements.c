@@ -69,7 +69,7 @@ char *entreprise()
 
 int prix_contrat(int a)
 { // Création d'une fonction pour générer un revenu aléatoire compris entre 6 000 et 9 000€
-    return (a * 1.8 + (((int_random()%10) -5) * 50));
+    return (a * 2.0 + (((int_random()%10) -5) * 50));
 }
 /*int main() {
     rnd_srand();

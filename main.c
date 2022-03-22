@@ -48,11 +48,7 @@ int get_int_in_input_in_range(int a, int b)
     }
     return reponse;
 }
-int km_random()
-{
-    // donne un nombre de kilometre aleatoire, temporaire les temps que l'algo de dijsktra soit termine
-    return 500;
-}
+
 void tirage_des_contracts(int nb_contract, char *liste_entreprise[], int *revenu_de_contr, int *km, int * destination, int emplacement, int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])
 /***
  * @brief permet de generet un nombre de nombres definis de contrat
@@ -126,13 +122,13 @@ int salaire (float *capital,struct conducteur (*a)[10], int nombre_de_conduct)
             *capital = *capital - 1600;
             salaire = salaire + 1600;
         }
-       else{
+        else{
 		if (((*a)[y].compteur_km > 10000) && ((*a)[y].compteur_km <= 20000))
 		{
 			*capital = *capital - 1800;
             salaire = salaire + 1800;
 		}
-       else {
+        else {
 		if (((*a)[y].compteur_km > 20000) && ((*a)[y].compteur_km <= 30000))
 		{
 			*capital = *capital - 2000;
@@ -150,8 +146,8 @@ int salaire (float *capital,struct conducteur (*a)[10], int nombre_de_conduct)
             salaire = salaire + 2600;
 		};
         }
-       }
-       }
+        }
+        }
 	};
     return salaire;
 };
