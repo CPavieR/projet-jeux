@@ -138,7 +138,7 @@ void import_csv(char *nom_ville[NOMBRE_DE_VILLES], int matrice_adja[NOMBRE_DE_VI
     fclose(document); // on ferme le document
 };
 
-void import_sauvegarde(float *capital, int *nbr_conduc, struct conducteur (*a)[10])
+void import_sauvegarde(float *capital, int *nbr_conduc, struct conducteur (*a)[10],FILE *document)
 /**
  * @brief cette fonction importera toute les donnes du fichier sauvegarde.txt
  * elle prends en entrée les pointeur des donnes de la sauvegarde
@@ -148,8 +148,6 @@ void import_sauvegarde(float *capital, int *nbr_conduc, struct conducteur (*a)[1
 
     // printf("debut import sauvegarde\n");
 
-    FILE *document;
-    document = fopen("sauvegarde.txt", "r");
     char tab[4096];
     fgets(tab, sizeof(tab), document);
     // printf("fgets passe\n");

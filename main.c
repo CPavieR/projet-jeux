@@ -160,11 +160,19 @@ int main()
     int nombre_de_conduct = 1; // definitions des variables nessecaire a l'excution de la boucle principale
     struct conducteur a[10] = {// on definit une liste de conducteur avec 10 conducteur maximum
         {1, 1, 0, 1.1, 0, "jean-michel"}};
-    printf("souhaitez vous importez une sauvegarde, si celle ci existe ? 1 = oui 0 = non");
+    printf("souhaitez vous importez une sauvegarde, si celle ci existe ? 1 = oui 0 = non\n");
     int choix_sauv = get_int_in_input_in_range(0, 1);
     if (choix_sauv == 1)
     {
-        import_sauvegarde(pointeur_du_capital, &nombre_de_conduct, &a);
+        FILE * document;
+        document = fopen("sauvegarde.txt", "r");
+        if(document != NULL){
+        import_sauvegarde(pointeur_du_capital, &nombre_de_conduct, &a,document);
+        }
+        else
+        {
+            printf("aucune sauvegarde trouvee\n");
+        }
     }
 
     int nombre_de_tour = 0;

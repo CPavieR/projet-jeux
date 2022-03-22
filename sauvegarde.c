@@ -8,7 +8,7 @@
 void sauvegarder(float capital, int nbr_conduc, struct conducteur *a)
 {
 
-    FILE *document;
+    FILE * document;
     document = fopen("sauvegarde.txt", "w");
 
     char str[80];
