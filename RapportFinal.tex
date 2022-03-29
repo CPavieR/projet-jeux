@@ -1,0 +1,126 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{libertine}
+\usepackage[pdftex]{graphicx}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+  
+
+\begin{minipage}[c]{.46\linewidth}
+     \begin{center}
+             \includegraphics[width=4cm]{logo-fds.png}
+         \end{center}
+   \end{minipage} \hfill
+   \begin{minipage}[c]{.46\linewidth}
+    \begin{center}
+            \includegraphics[width=4cm]{logo-figure.png}
+        \end{center}
+ \end{minipage}
+\newline \newline
+
+
+    \textsc{\LARGE Faculté Des Sciences - Montpellier}\\[2cm]
+
+    \textsc{\Large Etude de faisabilité et cahier des charges}\\[1.5cm]
+
+    \HRule \\[0.4cm]
+    { \huge \bfseries Projet CMI\\[0.4cm] }
+
+    \HRule \\[2cm]
+    \\[2cm]
+
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+        Conrath Matthieu\\
+        Robert Wendy\\
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+       Pavie-Routaboul Clement\\
+        Rebagliato Lucas\\
+      \end{flushright}
+    \end{minipage}
+
+    \vfill
+
+    {\large 3 février 2022}
+
+  \end{center}
+  \end{sffamily}
+\end{titlepage}
+
+\newpage
+
+
+\renewcommand*\contentsname{Sommaire}
+\tableofcontents
+\newpage
+   \section*{Introduction}
+   \addcontentsline{toc}{section}{Introduction}
+      Ce projet a été réaliser dans le cadre du Cursus Master en Ingénierie : Informatique. Durant le second semestre de la première année de CMI, nous avons eu pour objectif de développer un jeu dans l'unité d'enseignement (UE) HAI209I. 
+      
+      \newline
+\section{Cahier des charges}
+      \subsection{But du Jeu}
+         Notre jeu sera un jeu de gestion d'une entreprise de fret. Ainsi, l'objectif de notre jeu sera de développer notre entreprise au travers de la gestion de contrats, d'employés etc. 
+      \subsection{Fonctionnement général du jeu}
+        En priorité, notre jeu doit permettre d'utiliser un graphe pondéré en guise de carte pour gérer les contrats de l'entreprise. Nous devons alors parcourir ce graphe d'un sommet A à un autre sommet B (représentant différentes villes). Pour cela, nous devons implanter l'algorithme de Dijkstra. Un système de contrat devra être mis en place qui devra comprendre la rémunération ainsi que les charges. Nous devrons également inclure de quoi sauvegarder la partie du joueur. Enfin, nous ajouterons des évènements aléatoires.
+      \subsection{Fonctionnalités optionelles}
+       Une fois que nous aurons terminé les éléments essentiels, nous pourrons alors intégrer un système d'expérience pour les employés. Ajouter une interface graphique ainsi que des sons et bruits pour ajouter une ambiance sonore au jeu serait également souhaitable.
+\newpage
+\section{Méthode de travail}
+     Dans cette section nous verrons les éléments que nous savons réaliser ainsi que ce que l'on ne sait pas faire.
+      \subsection{Outils utilisés}
+         Pour ce projet nous avons en grande partie utilisé le langage C, sans s'interdire d'utiliser les bibliothèques disponibles. De plus, nous avons fait en sorte que le jeu soit compatible avec les environnements Linux. Pour une meilleure organisation, nous avons utilisé le site GitHub afin de travail parallèlement sur le même programme.
+    \subsection{Planification du projet}
+        
+ \begin{tabular}{|l|c|r|}
+  \hline
+  Tâches à faire & Temps prévu & Répartition \\
+  \hline
+  Système de transport et algorithme de Dijkstra & 2-3 semaines & Clément\\
+  && Matthieu\\
+  \hline
+  Système de frais et de revenus (avec contrats et coûts)  & 1 semaine & Wendy \\
+  && Lucas\\
+  \hline
+  Implémentation de conducteurs avec leurs véhicules  & 1 semaine & Clément\\
+  && Matthieu \\
+  \hline
+  Système de sauvegardes & 2 semaines & En groupe \\
+  \hline
+  Évènements aléatoires & 1 semaine & Wendy \\ 
+  && Lucas \\
+  \hline
+  Expérience des conducteurs & (optionnel) & \\
+  \hline
+  Graphismes / sons & (optionnel) & Lucas \\
+  \hline
+  Finitions du code et finalisation du rapport  & 1 semaine & En groupe \\
+  \hline
+\end{tabular}
+
+ \newpage
+ 
+\section*{}
+
+\section*{Conclusion}
+   \addcontentsline{toc}{section}{Conclusion}
+      Ainsi, nous avons d'abord détaillé le cahier des charges en commençant par le but du jeu puis en détaillant ce que l'on devra ajouter. Suite à cela nous avons fait l'étude de faisabilité en expliquant les problèmes qui seront rencontrés dans le langage que nous avons choisi pour ce projet. Enfin, nous avons listé les tâches à effectuer avec l'estimation du temps et leur répartition.
+
+\section*{Bibliographie}
+    \addcontentsline{toc}{section}{Bibliographie}
+       Brian W. Kernighan and Dennis M. Ritchie. The C Programming Language. Prentice Hall Professional Technical Reference, 2nd edition, 1988
+
+
+\end{document}
