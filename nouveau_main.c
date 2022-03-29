@@ -192,10 +192,11 @@ int main()
 {
     char reponse1;
     static float capital ;
-    float *pointeur_du_capital;
+    float *pointeur_du_capital = &capital;
     int nombre_de_conduct;
-    int nombre_de_tour;
-    struct conducteur a[10] ;
+    int nombre_de_tour = 0;
+    struct conducteur a[10] = {// on definit une liste de conducteur avec 10 conducteur maximum
+        {1, 1, 0, 1.1, 0, "jean-michel"}};
     init_random();
     printf("Le jeu va démarrer, voulez vous chargez une sauvegarde? (O)oui/(N)non\n");
     scanf("%c", &reponse1);
@@ -211,17 +212,16 @@ int main()
         printf("Initialisation des données de base du jeu\n");
         printf("**********************************************************************************************\n");
         capital = 10000.0;
-        float *pointeur_du_capital = &capital;
-        nombre_de_tour = 0; 
+
+ 
         nombre_de_conduct = 1; 
-        struct conducteur a[10] = {{1, 1, 0, 1.1, 0, "jean-michel"}};
+
     }
     else 
     {
-        static float capital;
-        float *pointeur_du_capital = &capital;
-        int nombre_de_conduct;
-        struct conducteur a[10];
+
+
+
         FILE * document;
         document = fopen("sauvegarde.txt", "r");
         if(document != NULL){
@@ -231,12 +231,11 @@ int main()
         {
             printf("Aucune sauvegarde trouvee\n\n");
             printf("Initialisation des données de base du jeu\n");
-            int nombre_de_tour = 0;
-            pointeur_du_capital = &capital; 
+
+ 
             *pointeur_du_capital = 10000.0;
-            int nombre_de_conduct = 1;
-            struct conducteur a[10] = {{1, 1, 0, 1.1, 0, "jean-michel"}};
-            nombre_de_tour = 0;
+
+
 
         } 
     }
@@ -251,22 +250,20 @@ int main()
     printf("************************************************************************************************\n");
     // Début des tours
     int out = 1;
-    int tour_avant_salaire = 30;
+
     int tour_avant_prochain_conducteur =20;
     int prochain_tour=0;
     do
     {
         printf("Vous êtes au tour %d",nombre_de_tour);
-        if (tour_avant_salaire>0)
+        if (nombre_de_tour % 30 != 0)
         {
-            printf("Un salaire sera versé à vos conducteurs dans %d tour",tour_avant_salaire);
-            tour_avant_salaire --;
+            printf("Un salaire sera versé à vos conducteurs dans %d tour",30 -(nombre_de_tour % 30));
         }
         else
         {
             int b = salaire (pointeur_du_capital,&a, nombre_de_conduct);
             printf("************************************************************************************************\n");
-            tour_avant_salaire = 30;
             printf("Les salaires ont été versée au vos employés, vous avez perdus %d € \n", b); 
             printf("************************************************************************************************\n");
 
@@ -275,16 +272,14 @@ int main()
         
         do
         {
-           
             printf("\n*************************************************\n");
             printf("votre capital est de %f\n",capital);
             printf("Menu\n");
             printf("(A)ttribuer un contrat à vos conducteur\n");
             printf("(L)icencier un conducteur(en DLC)\n");
-            if (tour_avant_prochain_conducteur>0)
+            if (nombre_de_tour % 20 != 0)
             {
-                printf("Vous pourrez engager un nouveau conducteur dans %d\n",tour_avant_prochain_conducteur);
-                              
+                printf("Vous pourrez engager un nouveau conducteur dans %d\n",20 - (nombre_de_tour % 20));
             }
             else
             {
@@ -305,12 +300,11 @@ int main()
                     printf("\n !!! L'option choisie n'existe pas !!! \n ");
                 }
             } while (option!='A' /*&& option != 'L' */&& option!='E' && option!='P' && option!='Q');
-             
             printf("\n%c\n", option);
             switch (option)
             {
             case 'A':
-                    {for (int i = 0; i < nombre_de_conduct; i++)
+                    for (int i = 0; i < nombre_de_conduct; i++)
                     { // pour chacun des conducteur on teste s'il sont repose si oui, on leur assigne un nouveau contrat
                     // sinon on decremente leur jours de repos
                     printf("NOMBRE DE JOUR DE REPOS : %d\n", a[i].jour_de_repos);
@@ -326,15 +320,15 @@ int main()
                     }
                     printf("Votre entreprise possede : %1.2f euros\n\n", capital);
                     }
-                    break;}
+                    break;
             case 'E': 
-                    {if (nombre_de_conduct<10)
+                    if (nombre_de_conduct<10)
                     {
                         if (capital>= 90000)
                         {
                             ajout_conducteur(nombre_de_conduct, &a, &nombre_de_conduct, &capital);
                         }
-                        else 
+                        else
                         {
                             printf("Votre capital n'est pas suffisant pour embaucher un nouveau conducteur");
                         }
@@ -343,29 +337,26 @@ int main()
                     {
                         printf("Vous possédez déja le nombre maximum de conducteur");
                     }
-                    tour_avant_prochain_conducteur = 20;}
+
                     break;
             case 'P':
-                   { prochain_tour = 1;}
+                prochain_tour = 1;
                     break;
             case 'Q':
-                    {out = 0;}
+                    out = 0;
+                    sauvegarder(capital, nombre_de_conduct, a);
+                    for(int i = 0; i< NOMBRE_DE_VILLES; i++){
+                        free(nom_ville[i]);
+                        }
                     return 0;
             
             default:
                 break;
             }
             
-                
-            
-
-            
-            
- 
         } while (prochain_tour==0);
         
     nombre_de_tour++;
-    tour_avant_prochain_conducteur --;
 
     } while (out==1);
     

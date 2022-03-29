@@ -51,6 +51,27 @@ char *evenement_aleatoire(int n)
     return evenements[n]; // On prend l'un des 10 évènement aléatoire du tableau evenements
 }
 
+void tirage_des_contracts(int nb_contract, char *liste_entreprise[], int *revenu_de_contr, int *km, int * destination, int emplacement, int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])
+/***
+ * @brief permet de generet un nombre de nombres definis de contrat
+ *entre : nb de contrat a generer, tableau de tacleau de char pour les noms d'entreprise, int* pour les revenue associe, int* pour le nombre de km pour chaque contrat
+ */
+{
+    for (int i = 0; i < nb_contract; i++)
+    {
+        liste_entreprise[i] = entreprise();
+        do{
+        destination[i] = (int_random()%12) + 1;}
+        while(destination[i] == emplacement);
+        
+        km[i] = dijkstra(matrice_adja, emplacement, destination[i]);
+        printf("km : %d\n",km[i]);
+        revenu_de_contr[i] = prix_contrat(km[i]);
+        
+    }
+}
+
+
 int prix_evenement_aleatoire(int n)
 { // création d'une fonction pour récupérer le cout de l'évènement aléatoire de la fonction evenement_aleatoire
     int prixEvenement[10] = {-180, -300, +2500, -600, -250, -6000, +8000, -135, +2000, +200};
@@ -73,6 +94,23 @@ int prix_contrat(int a)
 { // Création d'une fonction pour générer un revenu aléatoire compris entre 6 000 et 9 000€
     return (a * 2.0 + (((int_random()%10) -5) * 50));
 }
+
+
+
+void gestion_evenement_aleatoire(float *pointeur_du_capital)
+/***
+ * @brief gere les evenements aleatoire
+ *il ont 10% de chance de se produire lorsque que l'on realise un contract
+ *
+ */
+{
+    if (int_random() % 10 == 9)
+    {
+        int nb_evenement = int_random() % 10;
+        printf("%s\n", evenement_aleatoire(nb_evenement));
+        *pointeur_du_capital = *pointeur_du_capital - prix_evenement_aleatoire(nb_evenement);
+    }
+}
 /*int main() {
     rnd_srand();
     //printf("%s coûtera %f euros par kilomètre. L'entreprise %s vous propose un contrat à %d. Par ailleurs, %s, %d\n",nom_au_hasard(n), cout_au_hasard(), entreprise(), prix_contrat(), evenement_aleatoire(n), (prix_evenement_aleatoire(n)));
@@ -82,3 +120,5 @@ int prix_contrat(int a)
     };
     return 0;
 }*/
+
+
