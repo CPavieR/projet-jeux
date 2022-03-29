@@ -1,0 +1,20 @@
+introduction :
+-presentation prjet
+-presentation jeu et regles
+-cahier des charges
+
+-PLAN
+
+developpement :
+-presentation strategie et methode de travail
+-presentation du fonctionnement du programme
+-> organigramme
+-methode d'implementation
+
+
+
+
+conclusion :
+-debriff probleme methode de travail
+-amelioration possible
+-references
