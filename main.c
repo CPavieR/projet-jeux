@@ -205,7 +205,7 @@ int main()
         for (int i = 0; i < nombre_de_conduct; i++)
         { // pour chacun des conducteur on teste s'il sont repose si oui, on leur assigne un nouveau contrat
             // sinon on decremente leur jours de repos
-            printf("NOMBRE DE JOUR DE REPOS : %d", a[i].jour_de_repos);
+            printf("NOMBRE DE JOUR DE REPOS : %d\n", a[i].jour_de_repos);
             printf("conducteur : %s id: %d, position : %d, compteur : %d, coutkm : %1.1f, jour de repos : %d\n", a[i].nom, a[i].id, a[i].position, a[i].compteur_km, a[i].cout_au_km, a[i].jour_de_repos);
             if (a[i].jour_de_repos == 0)
             {
