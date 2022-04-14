@@ -1,0 +1,207 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{libertine}
+\usepackage[pdftex]{graphicx}
+\usepackage{fullpage}
+
+
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+  
+
+\begin{minipage}[c]{.46\linewidth}
+     \begin{center}
+             \includegraphics[width=4cm]{logo-fds.png}
+         \end{center}
+   \end{minipage} \hfill
+   \begin{minipage}[c]{.46\linewidth}
+    \begin{center}
+            \includegraphics[width=4cm]{logo-figure.png}
+        \end{center}
+ \end{minipage}
+\newline \newline
+
+
+    \textsc{\LARGE Faculté des Sciences - Montpellier}\\[2cm]
+
+    \textsc{\Large Etude de faisabilité et cahier des charges}\\[1.5cm]
+
+     
+    { \huge \bfseries Projet CMI\\[0.4cm] }
+
+     
+
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+        Conrath Matthieu\\
+        Robert Wendy\\
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+       Pavie-Routaboul Clément\\
+        Rebagliato Lucas\\
+      \end{flushright}
+    \end{minipage}
+
+    \vfill
+
+    {\large 3 février 2022}
+
+  \end{center}
+  \end{sffamily}
+\end{titlepage}
+
+\newpage
+
+
+\renewcommand*\contentsname{Sommaire}
+\tableofcontents
+\newpage
+   \section*{Introduction}
+   \addcontentsline{toc}{section}{Introduction}
+      Dans le cadre du Cursus Master en Ingénierie : informatique (CMI), nous avons réalisé un projet en groupe. Durant le second semestre de la première année de CMI, nous avons eu pour objectif de développer un jeu dans l'unité d'enseignement (UE) projet CMI informatique (HAI209I). Nous avions une séance de 3h par semaine le mardi ce qui nous a permis d'avancer efficacement et quotidiennement sur le projet.
+      
+      La réalisation de ce projet nous a demandé une mobilisation de nos connaissances algorithmiques afin de les appliquer dans la création d'un jeu fonctionnel. Nous avons aussi dû maîtriser des compétences de gestion de projet comme la régularité du travail, la communication dans le groupe ou même la gestion du temps. La durée du développement du jeu s'est étendue sur trois mois, du 18 janvier au 17 avril 2022. Durant cette période, il nous était régulièrement demandé de faire un compte rendu de la semaine, à rendre sur le Moodle de l'UE. Nous y résumions nos avancées sur le projet ainsi que les choses que nous voulions planifier pour la semaine suivante.
+      
+      \newline
+\section{Cahier des charges}
+        Le choix du jeu était libre mais nous souhaitions pouvoir y utiliser des algorithmes vu au semestre 2 dans le programme de l'UE algorithmique 2 (HAI201I). L'idée de notre jeu s'est alors fondée sur l'algorithme de Dijkstra. Pour commencer, nous allons présenter l'objectif final de notre projet. Nous allons donc parler du but du jeu et de son fonctionnement général.
+      \subsection{But du Jeu}
+         nous voudrions faire un jeu de gestion d'une entreprise de fret. Ainsi, l'objectif de notre jeu sera de développer une entreprise au travers de la gestion de contrats, d'employés etc. Des chauffeurs et des véhicules seront mis à disposition afin d'évoluer dans le jeu. Il faudra alors accomplir des missions proposées par des entreprises et faire face aux évènements aléatoires qui pourraient ralentir la croissance de l'entreprise. 
+      \subsection{Fonctionnement général du jeu}
+        En priorité, notre jeu doit permettre d'utiliser un graphe pondéré en guise de carte pour gérer les contrats de l'entreprise. Nous devrons alors parcourir ce graphe d'un sommet A à un autre sommet B (représentant différentes villes) et pour cela, nous devrons implanter l'algorithme de Dijkstra. Un système de contrat devra être mis en place qui devra comprendre la rémunération ainsi que les charges. Nous devrons également inclure de quoi sauvegarder la partie du joueur. Enfin, nous ajouterons des évènements aléatoires.
+      \subsection{Fonctionnalités optionnelles}
+       Une fois que nous aurons terminé les éléments essentiels, nous pourrons alors intégrer un système d'expérience pour les employés. Il serait également souhaitable d'ajouter une interface graphique ainsi que des sons et bruits pour ajouter une ambiance sonore au jeu.
+\newpage
+\section{Méthode de travail}
+     dans cette section nous verrons les éléments que nous savons réaliser ainsi que ce que l'on ne sait pas faire.
+      \subsection{Outils utilisés}
+         Pour ce projet nous avons en grande partie utilisé le langage C, sans s'interdire d'utiliser les bibliothèques disponibles. De plus, nous avons fait en sorte que le jeu soit compatible avec les environnements Linux. Pour une meilleure organisation, nous avons utilisé le site GitHub afin de travail parallèlement sur le même programme.
+         Les rapports ont été rédiger en LaTeX grâce au site internet https://overleaf.com. l'organigramme de Gantt a été réalisé avec Microsoft Exel et l'organigramme de fonctionnement du programme grâce au logiciel libre Dia.
+    \subsection{Analyse du projet}
+        Afin de réaliser ce projet, nous avons identitfié ses fonctions principales ainsi que les objectifs de celle-ci.
+
+        \begin{itemize}
+            \item affecter toutes les variables nécessaires au programme
+            \item implenter un graphe
+            \item lire dans un fichier les données externe au programme tel que le contenu du graphe
+            \item appliquer l'algorithme de Dijkstra sur le-dit graphe
+            \item lire un fichier de sauvegarde et permettre de charger celui-ci
+            \item permettre l'affectation de conducteur
+            \item calculer le temps de repos du conducteur
+            \item calculer les coûts et revenu des contrats
+            \item generer des nombres pseudo-aléatoires
+            \item tirer des evenement aleatoire et appliquer les consequences de ceux-ci
+            \item mettre en place le deroulement du jeux
+            
+        \end{itemize}
+    \subsection{Planification du projet}
+        \paragraph{Planification initial\newline\newline}
+    
+    
+        \begin{tabular}{|l|c|r|}
+         \hline
+        Tâches à faire & Temps prévu & Répartition \\
+        \hline
+        Système de transport et algorithme de Dijkstra & 2-3 semaines & Clément\\
+        && Matthieu\\
+        \hline
+         Système de frais et de revenus (avec contrats et coûts)  & 1 semaine & Wendy \\
+         && Lucas\\
+        \hline
+         Implémentation de conducteurs avec leurs véhicules  & 1 semaine & Clément\\
+         && Matthieu \\
+         \hline
+         Système de sauvegardes & 2 semaines & en groupe \\
+          \hline
+         Évènements aléatoires & 1 semaine & Wendy \\ 
+         && Lucas \\
+          \hline
+          Expérience des conducteurs & (optionnel) & \\
+          \hline
+         
+        Graphismes / sons & (optionnel) & Lucas \\
+        \hline
+         Finitions du code et finalisation du rapport  & 1 semaine & en groupe \\
+         \hline
+        \end{tabular}\newline\newline
+        Initialement nous avions prévus de nous répartir le travail comme ci-dessus, nous avions donc fait le choix de attribué le tâches à réaliser en deux groupes différents. Cependant nous savions inialement la cette planification serrai sujet à des changements. Par exemple les évènements aléatoires a été faits avec la totalité du groupe et le système de sauvegarde a été réalisé par Clément.  
+        
+        \newpage
+        \paragraph{Organisation final et diagrame de Gantt\newline\newline}
+        
+        \includegraphics[width=16cm]{graphe_Gantt.jpg}
+        \newline\newline
+        Ce diagrame de Gantt récapitule les objectifs que nous avons réalisés à l’expetion de l’aspect
+    graphique que n’a pas pu être fini. Pour récapituler, nous avons commencé par réaliser les
+    fonctions essentiel au fonctionnement basique du jeu ; ainsi nous avons commencé par les
+    fonctions qui nous permettrons d’initialiser les données initiales du jeu, ainsi les 4 premieres
+    semaines ont été consacrées à l’ouverture et la lecture d’un fichier en ".csv", la création du
+    .csv, la génération du conducteur aléatoire (avec des noms prédéfinis et des coûts au kilomètre
+    compris dans un interval prédéfini), du déplacement de ces derniers et enfin à la génération d'une matrice pour stocker notre graphe. Ainsi à la séance 4 nous pouvions déja réaliser les actions principale du jeu qui est de ce faire déplacer un conducteur d’un point A à B. Ainsi, la scéance 5 fut une séance où l’on par exemple commencé à équilibré notre jeu avec l’instauration de jour de repos afin d’éviter que les conducteurs puissent enchainer des contrats sans contreparties.
+        
+        
+        
+\subsection{Méthodologie}
+afin d'être efficaces, nous avons décidé de ne pas travaille à plusieurs sur une même portion du code en même temps. Pour ce faire nous avons portionné notre code C en différentes bibliothèques chacun étant chargé d'en coder une voire plusieurs.
+Un membre du groupe a ensuite était chargé de mettre en commun tout le code et de fabriquer la fonction principale du programme.
+Lorsque qu'une portion du code nessecité une fonction définie dans une bibliothèque, alors la personne s'occupant de cette fonction et celle responsable de la fonction dont elle est dependante se mettez d'accord en premier lieu sur une signature a respecté.
+\subsection{Organisation du code du programme}
+\includegraphics[width=16cm]{diagramme-biblio.png}
+légende à faire !
+Ci-dessus est un organigramme de l'organisation du code du programme, on y voie ici les différentes portions du code, leur contenu ainsi que leur dépendance.
+
+
+
+ \newpage
+ 
+\section{Developement}
+    \subsection{Le graphe}
+        La première tâche a effectuer était l'implementation du graphe qui allé servir afin de modelisé les villes.
+        Les première implementation de celui-ci était sous la forme d'un champ de bits contenant :
+        
+
+        \begin{itemize}
+            \item un identifiant unique de type int
+            \item le nom de la ville
+            \item le nombre de villes adjacentes
+            \item une liste d'adjacence contenant les identifiants des villes adjacente
+        \end{itemize}
+        Cependant, cette implementation était très lourde a creer et a manipuler.
+        Trouver le nom d'une ville a partir de son identifiants demandant de parcourir toutes les villes.
+        Une amélioration a ensuite était faite, les noms des villes étaient maintenant enregistrer dans un tableau de String, l'indice representant l'identifiant de la villes.
+        Néanmoins, les autres operations resté très lourde a effectué, comme par exemple trouver la liste d'adjacence d'une certaine ville, demandant de parcourir encore une fois toutes les villes.
+        Il as donc été décidé d'implementer les liste d'adjacence par une matrice, cette matrice permettrait de tester immediatement l'apartenance d'une ville a la liste d'adjacence d'une autre ville.
+        L'index representant encore une fois l'identifiant de la ville.
+        La matrice est implementer grâce a un tableaux de tableaux de int.
+        Afin de permettre une meilleur adaptation du tableau des noms ainsi que de la matrice, leur créations est faite en utilisant comme taille une macro NOMBRE DE VILLES, définit en debut de code, permetant ainsi de facilement changer la taille de ceux-ci.
+    \subsection{Le contenu du graphe}
+        Le contenu du graphe est enregistré dans un fichier externe au programme.
+        
+
+
+
+
+
+\newpage
+\section*{Conclusion}
+   \addcontentsline{toc}{section}{Conclusion}
+      Grâce à ce projet CMI, nous avons acquis des compétences pour la gestion de projet. Nous avons dû faire face à certaines difficultés et cela a permis à chacun des membres du groupe de s'améliorer pour de futurs projets à venir. 
+      
+
+ \newpage
+
+\section*{Bibliographie}
+    \addcontentsline{toc}{section}{Bibliographie}
+       Brian W. Kernighan and Dennis M. Ritchie. The C Programming Language. Prentice Hall Professional Technical Reference, 2nd edition, 1988
+
+
+\end{document}
+

@@ -49,25 +49,6 @@ int get_int_in_input_in_range(int a, int b)
     return reponse;
 }
 
-void tirage_des_contracts(int nb_contract, char *liste_entreprise[], int *revenu_de_contr, int *km, int * destination, int emplacement, int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])
-/***
- * @brief permet de generet un nombre de nombres definis de contrat
- *entre : nb de contrat a generer, tableau de tacleau de char pour les noms d'entreprise, int* pour les revenue associe, int* pour le nombre de km pour chaque contrat
- */
-{
-    for (int i = 0; i < nb_contract; i++)
-    {
-        liste_entreprise[i] = entreprise();
-        do{
-        destination[i] = (int_random()%12) + 1;}
-        while(destination[i] == emplacement);
-        
-        km[i] = dijkstra(matrice_adja, emplacement, destination[i]);
-        printf("km : %d\n",km[i]);
-        revenu_de_contr[i] = prix_contrat(km[i]);
-        
-    }
-}
 
 struct conducteur gestion_contrat(struct conducteur courant, float *pointeur_du_capital, int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES], char *nom_ville[NOMBRE_DE_VILLES])
 /***
@@ -94,20 +75,7 @@ entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
     return courant;
 }
 
-void gestion_evenement_aleatoire(float *pointeur_du_capital)
-/***
- * @brief gere les evenements aleatoire
- *il ont 10% de chance de se produire lorsque que l'on realise un contract
- *
- */
-{
-    if (int_random() % 10 == 9)
-    {
-        int nb_evenement = int_random() % 10;
-        printf("%s\n", evenement_aleatoire(nb_evenement));
-        *pointeur_du_capital = *pointeur_du_capital - prix_evenement_aleatoire(nb_evenement);
-    }
-}
+
 
 int salaire (float *capital,struct conducteur (*a)[10], int nombre_de_conduct)
 // Dans cette fonction on regarde le nombre de kilomètre que les conducteurs ont parcourus
@@ -237,7 +205,7 @@ int main()
         for (int i = 0; i < nombre_de_conduct; i++)
         { // pour chacun des conducteur on teste s'il sont repose si oui, on leur assigne un nouveau contrat
             // sinon on decremente leur jours de repos
-            printf("NOMBRE DE JOUR DE REPOS : %d", a[i].jour_de_repos);
+            printf("NOMBRE DE JOUR DE REPOS : %d\n", a[i].jour_de_repos);
             printf("conducteur : %s id: %d, position : %d, compteur : %d, coutkm : %1.1f, jour de repos : %d\n", a[i].nom, a[i].id, a[i].position, a[i].compteur_km, a[i].cout_au_km, a[i].jour_de_repos);
             if (a[i].jour_de_repos == 0)
             {

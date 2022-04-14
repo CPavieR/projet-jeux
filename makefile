@@ -1,8 +1,8 @@
-main : main.o dijkstra.o conducteur.o systemeRevenusEvenements.o import.o sauvegarde.o
-	gcc -o main dijkstra.o conducteur.o main.o systemeRevenusEvenements.o import.o sauvegarde.o
+main : nouveau_main.o dijkstra.o conducteur.o systemeRevenusEvenements.o import.o sauvegarde.o
+	gcc -o main dijkstra.o conducteur.o nouveau_main.o systemeRevenusEvenements.o import.o sauvegarde.o
 
 main.o : main.c dijkstra.h conducteur.h systemeRevenusEvenements.h import.h
-	gcc -Wall main.c -c
+	gcc -Wall nouveau_main.c -c
 
 dijkstra.o : dijkstra.c dijkstra.h
 	gcc -Wall dijkstra.c -c
