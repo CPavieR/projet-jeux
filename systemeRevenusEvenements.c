@@ -4,20 +4,21 @@
 #include "systemeRevenusEvenements.h"
 
 static int a;
-static int *g_seed = &a;
+static int *pointeur_rand = &a;
 void init_random()
 {
-    *g_seed = time(NULL);
+    *pointeur_rand = time(NULL);//on creer une graine pour la generation des nombre aleatoire.
+    // afaire avant d'utiliser l'aleatoire
 }
 
 int int_random(void)
 {
-    *g_seed = (1103515245 * *g_seed + 12345) % 2147483647;
-    if (*g_seed < 0)
-    {
-        *g_seed = -*g_seed;
+    *pointeur_rand = (1103515245 * *pointeur_rand + 12345) % 2147483647;
+    if (*pointeur_rand < 0)//on part du dernier nom aleatoire tire et on s'en sert afin d'en generer un nouveau
+    {//ce dernier est conserve entre les appels de fonctions car la variable est statique
+        *pointeur_rand = -*pointeur_rand;
     }
-    return (*g_seed);
+    return (*pointeur_rand);
 }
 
 float cout_au_hasard()

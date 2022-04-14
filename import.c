@@ -106,12 +106,12 @@ void insert_voisin(int id, char *li_voisin, char *voisin_cout, int matrice_adja[
 void import_csv(char *nom_ville[NOMBRE_DE_VILLES], int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])
 /**
  * @brief cette fonction importera toute les variables stocké dans le fichier .csv
- * elle prends en entrée les pointeur a l'endroit ou l'on voudrat stocké le resultat
+ * elle prends en entrée les pointeur a l'endroit ou l'on voudrat stocker le resultat
  * 1 pointeur tableau noms des ville
  * 2 pointeur matrice d'adjacence pondéré
  */
 {
-    int id = 0; // initialisations des variables propres aux villes
+    int id = 0; // initialisations des variables
     FILE *document;
     document = fopen("villes.csv", "r");
     char tab[4096];
