@@ -81,7 +81,7 @@ entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
     int km_contract[3];
     int destination[3];
     tirage_des_contracts(3, liste_entreprise_de_contract, revenu_pour_contrat, km_contract, destination, courant.position, matrice_adja);
-    printf("%s coûtera %1.1f euros par kilometre.\n", courant.nom, courant.cout_au_km);
+    printf("%s coûtera %1.1f euros par kilomètre.\n", courant.nom, courant.cout_au_km);
     for (int j = 0; j < 3; j++)
     {
         printf("L'entreprise %s vous propose un contrat pour %d km a %d euros en destination de %s.\n", liste_entreprise_de_contract[j], km_contract[j], revenu_pour_contrat[j], nom_ville[destination[j]]);
@@ -165,7 +165,7 @@ void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10],int *nb_
             proposition_conduc[i].id = nombre_de_conduct + 1;
             // conduct1.nom = nom_au_hasard();
             strcpy(proposition_conduc[i].nom, nom_au_hasard());
-            proposition_conduc[i].cout_au_km = 0.5 + ((int_random() % 10) / 10);
+            proposition_conduc[i].cout_au_km = 0.5 + ((float)(int_random() % 10) / 10.);
             proposition_conduc[i].jour_de_repos = 0;
             proposition_conduc[i].compteur_km = 0;
             proposition_conduc[i] = ville_aleatoire(proposition_conduc[i], NOMBRE_DE_VILLES);
@@ -197,7 +197,7 @@ void affichage_menu(int * nombre_de_tour, float * capital,int * contract_real)
         {printf("(A)ttribuer un contrat à vos conducteur\n");}
     else
         {printf("Vous avez deja attribué vous contract\n");}
-    printf("(L)icencier un conducteur(en DLC)\n");
+    //printf("(L)icencier un conducteur(en DLC)\n");
     if (*nombre_de_tour % 20 != 0)
     {
         printf("Vous pourrez engager un nouveau conducteur dans %d\n",20 - (*nombre_de_tour % 20));
@@ -300,7 +300,7 @@ int main()
         {
             int b = salaire (pointeur_du_capital,&a, nombre_de_conduct);
             printf("************************************************************************************************\n");
-            printf("Les salaires ont été versée à vos employés, vous avez perdu %d € \n", b); 
+            printf("Les salaires ont été versé à vos employés, vous avez perdu %d euros \n", b); 
             printf("************************************************************************************************\n");
 
         }
@@ -339,8 +339,8 @@ int main()
                         for (int i = 0; i < nombre_de_conduct; i++)
                         {// pour chacun des conducteur on teste s'il sont repose si oui, on leur assigne un nouveau contrat
                         // sinon on decremente leur jours de repos
-                        printf("NOMBRE DE JOUR DE REPOS : %d\n", a[i].jour_de_repos);
-                        printf("conducteur : %s\n id: %d\n position : %d\n compteur : %d\n coutkm : %1.1f, jour de repos : %d\n", a[i].nom, a[i].id, a[i].position, a[i].compteur_km, a[i].cout_au_km, a[i].jour_de_repos);
+                        
+                        printf("conducteur : %s\n numero : %d\n position : %d\n compteur : %d\n coutkm : %1.1f, jour de repos : %d\n", a[i].nom, a[i].id, a[i].position, a[i].compteur_km, a[i].cout_au_km, a[i].jour_de_repos);
                         if (a[i].jour_de_repos == 0)
                         {
                             a[i] = gestion_contrat(a[i], pointeur_du_capital, matrice_adja, nom_ville);
@@ -365,7 +365,7 @@ int main()
                         else
                         {
                             printf("Votre capital n'est pas suffisant pour embaucher un nouveau conducteur\n");
-                            printf("Pour rappel, il faut que votre capital posséde 90 000 € pour pouvoir financer un nouveau conducteur et son matériel");
+                            printf("Pour rappel, il faut que votre capital possede 90 000 euros pour pouvoir financer un nouveau conducteur et son materiel");
                         }
                     }
                     else

@@ -26,3 +26,5 @@ main
 main.o
 sauvegarde.o
 systemeRevenusEvenements.o
+sauvegarde.exe
+nouveau_main.obj

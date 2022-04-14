@@ -51,9 +51,8 @@ struct conducteur deplacement(struct conducteur conducteur_a_deplacer, int id_ar
     // on fait le déplacemnt
     conducteur_a_deplacer.position = id_arrivee;
     int jour_de_rep = calcule_repos(deplacement_en_km);
-    printf("NB JOUR DE REPOS : %d", calcule_repos(deplacement_en_km));
     conducteur_a_deplacer.jour_de_repos = jour_de_rep;
-    printf("cout conduc :%f\n", conducteur_a_deplacer.cout_au_km);
+    //rintf("cout conduc :%f\n", conducteur_a_deplacer.cout_au_km);
     *pointeur_du_capital = *pointeur_du_capital - calcule_cout(deplacement_en_km, conducteur_a_deplacer.cout_au_km);
     printf("le trajet vous as coute %f euros\n", calcule_cout(deplacement_en_km, conducteur_a_deplacer.cout_au_km));
 
