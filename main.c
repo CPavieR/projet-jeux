@@ -182,7 +182,7 @@ void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10],int *nb_
         *nb_conducteur = *nb_conducteur + 1;
         *capitale = *capitale-90000;
         // struct conducteur nv = {conduct1.id,conduct1.position,0,conduct1.cout_au_km,0,conduct1.nom};
-        (*a)[nombre_de_conduct] = proposition_conduc[var_validation2];
+        (*a)[nombre_de_conduct] = proposition_conduc[var_validation2-1];
 
         
     }
