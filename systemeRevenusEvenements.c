@@ -76,7 +76,7 @@ void tirage_des_contracts(int nb_contract, char *liste_entreprise[], int *revenu
 
 int prix_evenement_aleatoire(int n)
 { // création d'une fonction pour récupérer le cout de l'évènement aléatoire de la fonction evenement_aleatoire
-    int prixEvenement[10] = {-180, -300, +2500, -600, -250, -6000, +8000, -135, +2000, +200};
+    int prixEvenement[10] = {-180, -300, +2500, -600, -250, -6000, +8000, -135, +2000, -200};
     return prixEvenement[n]; // On prend l'évènement aléatoire du tableau prixEvenement qui correspond à l'évènement aléatoire généré
 }
 
