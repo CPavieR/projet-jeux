@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "systemeRevenusEvenements.h"
+#include "dijkstra.h"
 
 static int a;
 static int *pointeur_rand = &a;

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "dijkstra.h"
 #define NOMBRE_DE_VILLE 16
 // Cette fonction permet de connaitre si une valeur représenter par val est présente dans une liste li. Cette fonction renvoie une valeur booleen
 _Bool is_not_in(int li[NOMBRE_DE_VILLE], int val)
