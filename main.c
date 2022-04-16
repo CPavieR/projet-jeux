@@ -50,7 +50,7 @@ int get_int_in_input_in_range(int a, int b)
 }
 /*
 void tirage_des_contracts(int nb_contract, char *liste_entreprise[], int *revenu_de_contr, int *km, int * destination, int emplacement, int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES])
-/***
+
  * @brief permet de generet un nombre de nombres definis de contrat
  *entre : nb de contrat a generer, tableau de tacleau de char pour les noms d'entreprise, int* pour les revenue associe, int* pour le nombre de km pour chaque contrat
  
@@ -95,7 +95,7 @@ entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
 }
 /*
 void gestion_evenement_aleatoire(float *pointeur_du_capital)
-/***
+
  * @brief gere les evenements aleatoire
  *il ont 10% de chance de se produire lorsque que l'on realise un contract
  *
@@ -284,7 +284,7 @@ int main()
     // Début des tours
     int out = 1;
 
-    int tour_avant_prochain_conducteur =20;
+    //int tour_avant_prochain_conducteur =20;
     int prochain_tour=0;
     int contract_real;
     do
