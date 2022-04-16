@@ -37,13 +37,13 @@ float get_float_from_charac(char characters[])
     i = i + 1;
     // printf("unite fini : %f\n", somme);
     int limite = i + 2;
-    while (i < limite)
+    while (i < k && i < limite)
     {
         cent = cent * 10 + characters[i] - 48;
         i++;
         // printf(" virgule : %f\n", cent);
     }
-    cent = cent / 100;
+    cent = cent / 100.;
     somme = somme + cent;
     // printf("%f\n", somme);
     return somme;
