@@ -364,8 +364,8 @@ int main()
                         }
                         else
                         {
-                            printf("Votre capital n'est pas suffisant pour embaucher un nouveau conducteur.\n");
-                            printf("Pour rappel, il faut que votre capital soit d'au moins 90 000 euros pour pouvoir financer un nouveau conducteur et son materiel.");
+                            printf("\nVotre capital n'est pas suffisant pour embaucher un nouveau conducteur.\n");
+                            printf("Pour rappel, il faut que votre capital soit d'au moins 90 000 euros pour pouvoir financer un nouveau conducteur et son materiel.\n");
                         }
                     }
                     else
