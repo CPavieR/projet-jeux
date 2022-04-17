@@ -110,7 +110,7 @@ void gestion_evenement_aleatoire(float *pointeur_du_capital)
     {
         int nb_evenement = int_random() % 10;
         printf("%s\n", evenement_aleatoire(nb_evenement));
-        *pointeur_du_capital = *pointeur_du_capital - prix_evenement_aleatoire(nb_evenement);
+        *pointeur_du_capital = *pointeur_du_capital + prix_evenement_aleatoire(nb_evenement);
     }
 }
 /*int main() {
