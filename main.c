@@ -81,7 +81,7 @@ entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
     int km_contract[3];
     int destination[3];
     tirage_des_contracts(3, liste_entreprise_de_contract, revenu_pour_contrat, km_contract, destination, courant.position, matrice_adja);
-    printf("%s coûtera %1.1f euros par kilomètre.\n", courant.nom, courant.cout_au_km);
+    printf("%s coûtera %1.1f euros par kilomètre.\n\n", courant.nom, courant.cout_au_km);
     for (int j = 0; j < 3; j++)
     {
         printf("L'entreprise %s vous propose un contrat pour %d km à %d euros en destination de %s.\n", liste_entreprise_de_contract[j], km_contract[j], revenu_pour_contrat[j], nom_ville[destination[j]]);
@@ -340,7 +340,7 @@ int main()
                         {// pour chacun des conducteur on teste s'il sont repose si oui, on leur assigne un nouveau contrat
                         // sinon on decremente leur jours de repos
                         
-                        printf("Conducteur : %s\n Numero : %d\n Position : %d\n Compteur : %d\n cout/km : %1.1f, Jours de repos : %d\n", a[i].nom, a[i].id, a[i].position, a[i].compteur_km, a[i].cout_au_km, a[i].jour_de_repos);
+                        printf("\nConducteur : %s\n Numero : %d\n Position : %d\n Compteur : %d\n Cout/km : %1.1f\n Jours de repos : %d\n\n", a[i].nom, a[i].id, a[i].position, a[i].compteur_km, a[i].cout_au_km, a[i].jour_de_repos);
                         if (a[i].jour_de_repos == 0)
                         {
                             a[i] = gestion_contrat(a[i], pointeur_du_capital, matrice_adja, nom_ville);
