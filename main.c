@@ -194,7 +194,7 @@ void affichage_menu(int * nombre_de_tour, float * capital,int * contract_real)
     printf("Votre capital est de %f euros.\n",*capital);
     printf("\nMenu\n");
     if (*contract_real == 0)
-        {printf("(A)ttribuer un contrat à vos conducteur\n");}
+        {printf("(A)ttribuer un contrat à vos conducteurs\n");}
     else
         {printf("Vous avez déjà attribué des contrats à vos conducteurs.\n");}
     //printf("(L)icencier un conducteur(en DLC)\n");
