@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#define NOMBRE_DE_VILLES 16 // on construit par la suite des arrays dont la taille est égale au nombre de villes, a modif aux besoins
+#define NOMBRE_DE_VILLES 27 // on construit par la suite des arrays dont la taille est égale au nombre de villes, a modif aux besoins
 
 // on vas implementer le graphe pondéré des ville grace a une matrice pour les distance et liaison
 //  et une liste de nom ou l'id de la ville est l'index de son nom
