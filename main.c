@@ -231,7 +231,7 @@ int main()
     int nombre_de_conduct;
     int nombre_de_tour = 0;
     struct conducteur a[10] = {// on definit une liste de conducteur avec 10 conducteur maximum
-        {1, 1, 0, 1.1, 0, "jean-michel"}};
+        {1, 1, 0, 1.1, 0, "Jean-Michel"}};
     init_random();
     printf("Le jeu va démarrer, voulez vous charger une sauvegarde ? (O)oui/(N)non\n");
     scanf("%c", &reponse1);
