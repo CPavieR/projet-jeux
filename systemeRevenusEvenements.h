@@ -1,6 +1,6 @@
 #ifndef SYSTEMEREVENUSEVENEMENTS
 #define SYSTEMEREVENUSEVENEMENTS
-#define NOMBRE_DE_VILLES   16
+#define NOMBRE_DE_VILLES   27
 
 
 float cout_au_hasard();
