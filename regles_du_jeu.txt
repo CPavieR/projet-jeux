@@ -1,10 +1,10 @@
 Règles du jeu :
 
 Vous incarnez le dirigeant d'une entreprise de transport.
-Au début du jeu, il vous sera demandé si vous souhaitez charger une sauvegarde s’il en existe une, votre progression est automatiquement sauvegardée quand vous quittez le jeu
+Au début du jeu, il vous sera demandé si vous souhaitez charger une sauvegarde s’il en existe une, votre progression est automatiquement sauvegardée quand vous quittez le jeu.
 Le but du jeu est d'étendre son entreprise, afin d'embaucher plus de conducteurs et faire plus de bénéfices.
 Pour ce faire, vous commencerez le jeu avec un conducteur, celui-ci pourra réaliser des contrats.
-Cependant, lorsque celui-ci effectuera un contrat, il devra ensuite se reposer un nombre de jours égal au modulo à 100 du nombre de km parcourus
+Cependant, lorsque celui-ci effectuera un contrat, il devra ensuite se reposer un nombre de jours égal à un jour tous les 250km parcourus.
 En plus de cela, chaque conducteur aura un coût au kilomètre qui lui est propre qui correspond à sa consommation de carburant(qui varie selon son style de conduite) ainsi que les primes qui lui seront accordées.
-Tous les 20 tours vous pourrez engager un nouveau conducteur cependant il vous faudra posséder au moins 90 000 euros afin d'acheter un nouveau camion.
+Tous les 20 tours vous pourrez engager un nouveau conducteur, cependant il vous faudra posséder au moins 90 000 euros afin d'acheter son matériel.
 Occasionnellement des événements aléatoires se produiront, ceux-ci pourront vous faire gagner ou perdre de l'argent.
