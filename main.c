@@ -37,12 +37,12 @@ int get_int_in_input_in_range(int a, int b)
      * demande a l'utilisateur de renter un chiffre entre a et b
      * */
 
-    printf("rentrer un entier entre %d et %d.\n", a, b);
+    //printf("rentrer un entier entre %d et %d.\n", a, b);
     int reponse = -1;
     scanf("%d", &reponse);
     while (a > reponse || reponse > b)
     {
-        printf("nous n'avons pas compris votre demande, ressayez.\n");
+        printf("Nous n'avons pas compris votre demande, réessayez.\n");
         viderBuffer();
         scanf("%d", &reponse);
     }
@@ -75,7 +75,7 @@ struct conducteur gestion_contrat(struct conducteur courant, float *pointeur_du_
 entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
 */
 {
-    printf("le conducteur %s a finis de se reposer, il peux donc realiser un contract\n", courant.nom);
+    printf("Le conducteur %s a fini de se reposer, il peut donc realiser un contrat\n", courant.nom);
     char *liste_entreprise_de_contract[3];
     int revenu_pour_contrat[3];
     int km_contract[3];
@@ -84,9 +84,9 @@ entre  : un conducteur, pointeur d'un float, le capital de l'entreprise
     printf("%s coûtera %1.1f euros par kilomètre.\n", courant.nom, courant.cout_au_km);
     for (int j = 0; j < 3; j++)
     {
-        printf("L'entreprise %s vous propose un contrat pour %d km a %d euros en destination de %s.\n", liste_entreprise_de_contract[j], km_contract[j], revenu_pour_contrat[j], nom_ville[destination[j]]);
+        printf("L'entreprise %s vous propose un contrat pour %d km à %d euros en destination de %s.\n", liste_entreprise_de_contract[j], km_contract[j], revenu_pour_contrat[j], nom_ville[destination[j]]);
     }
-    printf("\n\n veuillez choisir l'un de ces contracts en ecrivant 1, 2 ou 3\n");
+    printf("\n\nVeuillez choisir l'un de ces contrats en ecrivant 1, 2 ou 3.\n");
     int choix;
     choix = get_int_in_input_in_range(1, 3);
     courant = deplacement(courant, int_random() % 10, km_contract[choix - 1], pointeur_du_capital);
@@ -156,7 +156,7 @@ int salaire (float *capital,struct conducteur (*a)[10], int nombre_de_conduct)
 
 void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10],int *nb_conducteur, float *capitale)
 {
-    printf("Tapez 1 si vous voulez engager un nouveau conducteur");
+    printf("Tapez 1 si vous voulez engager un nouveau conducteur (rappel : cela vous coutera 90 000 euros).");
     int var_validation1 = get_int_in_input_in_range(0, 1);
     if (var_validation1 == 1)
     {
@@ -171,13 +171,13 @@ void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10],int *nb_
             proposition_conduc[i] = ville_aleatoire(proposition_conduc[i], NOMBRE_DE_VILLES);
         }
 
-        printf("On vous propose 3 conducteur");
-        printf("Le premier se nomme %s à un cout de de %f et se trouve actuellement dans la ville %d\n", proposition_conduc[0].nom, proposition_conduc[0].cout_au_km, proposition_conduc[0].position);
-        printf("Le second se nomme %s à un cout de de %f et se trouve actuellement dans la ville %d\n", proposition_conduc[1].nom, proposition_conduc[1].cout_au_km, proposition_conduc[1].position);
-        printf("Le troisieme se nomme %s à un cout de de %f et se trouve actuellement dans la ville %d\n", proposition_conduc[2].nom, proposition_conduc[2].cout_au_km, proposition_conduc[2].position);
+        printf("On vous propose 3 conducteurs");
+        printf("Le premier se nomme %s a un cout par kilomètre de %f et se trouve actuellement dans la ville de %d.\n", proposition_conduc[0].nom, proposition_conduc[0].cout_au_km, proposition_conduc[0].position);
+        printf("Le second se nomme %s a un cout par kilomètre de %f et se trouve actuellement dans la ville de %d.\n", proposition_conduc[1].nom, proposition_conduc[1].cout_au_km, proposition_conduc[1].position);
+        printf("Le troisieme se nomme %s a un cout par kilomètre de %f et se trouve actuellement dans la ville de %d.\n", proposition_conduc[2].nom, proposition_conduc[2].cout_au_km, proposition_conduc[2].position);
 
         int var_validation2;
-        printf("Tapez 1,2 ou 3 pour choisir un conducteur. Sinon vous ne pourrez pas choisir un nouveau conducteur");
+        printf("Tapez 1, 2 ou 3 pour choisir un conducteur. Sinon vous ne pourrez pas choisir un nouveau conducteur.");
         var_validation2 = get_int_in_input_in_range(1, 3);
         *nb_conducteur = *nb_conducteur + 1;
         *capitale = *capitale-90000;
@@ -191,16 +191,16 @@ void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10],int *nb_
 void affichage_menu(int * nombre_de_tour, float * capital,int * contract_real)
 {
     printf("\n*************************************************\n");
-    printf("votre capital est de %f\n",*capital);
-    printf("Menu\n");
+    printf("votre capital est de %f euros.\n",*capital);
+    printf("\nMenu\n");
     if (*contract_real == 0)
         {printf("(A)ttribuer un contrat à vos conducteur\n");}
     else
-        {printf("Vous avez deja attribué vous contract\n");}
+        {printf("Vous avez déjà attribué des contrats à vos conducteurs.\n");}
     //printf("(L)icencier un conducteur(en DLC)\n");
     if (*nombre_de_tour % 20 != 0)
     {
-        printf("Vous pourrez engager un nouveau conducteur dans %d\n",20 - (*nombre_de_tour % 20));
+        printf("Vous pourrez engager un nouveau conducteur dans %d tours.\n",20 - (*nombre_de_tour % 20));
     }
     else
     {
@@ -233,12 +233,12 @@ int main()
     struct conducteur a[10] = {// on definit une liste de conducteur avec 10 conducteur maximum
         {1, 1, 0, 1.1, 0, "jean-michel"}};
     init_random();
-    printf("Le jeu va démarrer, voulez vous chargez une sauvegarde? (O)oui/(N)non\n");
+    printf("Le jeu va démarrer, voulez vous charger une sauvegarde ? (O)oui/(N)non\n");
     scanf("%c", &reponse1);
     while (reponse1!='N' && reponse1!='O')
     {
-        printf("Le choix est invalide\n");
-        printf("Le jeu va démarrer, voulez vous chargez une sauvegarde? (O)oui/(N)non\n");
+        printf("Le choix est invalide.\n");
+        printf("Le jeu va démarrer, voulez vous charger une sauvegarde ? (O)oui/(N)non\n");
         scanf("%c", &reponse1);
     }
     if (reponse1 == 'N')
@@ -264,7 +264,7 @@ int main()
         }
         else
         {
-            printf("Aucune sauvegarde trouvee\n\n");
+            printf("Aucune sauvegarde trouvée\n\n");
             printf("Initialisation des données de base du jeu\n"); 
             *pointeur_du_capital = 10000.0;
 
@@ -273,7 +273,7 @@ int main()
         } 
     }
     printf("**********************************************************************************************\n");
-    printf("debut de import csv\n");
+    printf("début de import csv\n");
     printf("**********************************************************************************************\n");
     static char *nom_ville[NOMBRE_DE_VILLES];
     static int matrice_adja[NOMBRE_DE_VILLES][NOMBRE_DE_VILLES];
@@ -291,16 +291,16 @@ int main()
     {
         contract_real = 0;
         system("clear");
-        printf("Vous êtes au tour %d\n",nombre_de_tour);
+        printf("Vous êtes au tour %d.\n",nombre_de_tour);
         if (nombre_de_tour == 0 || nombre_de_tour % 30 != 0  )
         {
-            printf("Un salaire sera versé à vos conducteurs dans %d tour",30 -(nombre_de_tour % 30));
+            printf("Un salaire sera versé à vos conducteurs dans %d tours.\n",30 -(nombre_de_tour % 30));
         }
         else
         {
             int b = salaire (pointeur_du_capital,&a, nombre_de_conduct);
             printf("************************************************************************************************\n");
-            printf("Les salaires ont été versé à vos employés, vous avez perdu %d euros \n", b); 
+            printf("Les salaires ont été versé à vos employés, vous avez perdu %d euros.\n", b); 
             printf("************************************************************************************************\n");
 
         }
@@ -321,16 +321,16 @@ int main()
 
             do
             {
-                printf("\nEntrez votre option\n");
+                printf("\nEntrez votre choix :\n");
                 option = get_a_char();
                 
 
                 if (option!='A' /*&& option!='L' */&& option!='E' && option!='P'&& option!='Q')
                 {
-                    printf("\n !!! L'option choisie n'existe pas !!! \n ");
+                    printf("\n --- L'option choisie n'existe pas --- \n ");
                 }
             } while (option!='A' /*&& option != 'L' */&& option!='E' && option!='P' && option!='Q');
-            printf("\n%c\n", option);
+            //printf("\n%c\n", option);
             switch (option)
             {
             case 'A':
@@ -340,19 +340,19 @@ int main()
                         {// pour chacun des conducteur on teste s'il sont repose si oui, on leur assigne un nouveau contrat
                         // sinon on decremente leur jours de repos
                         
-                        printf("conducteur : %s\n numero : %d\n position : %d\n compteur : %d\n coutkm : %1.1f, jour de repos : %d\n", a[i].nom, a[i].id, a[i].position, a[i].compteur_km, a[i].cout_au_km, a[i].jour_de_repos);
+                        printf("Conducteur : %s\n Numero : %d\n Position : %d\n Compteur : %d\n cout/km : %1.1f, Jours de repos : %d\n", a[i].nom, a[i].id, a[i].position, a[i].compteur_km, a[i].cout_au_km, a[i].jour_de_repos);
                         if (a[i].jour_de_repos == 0)
                         {
                             a[i] = gestion_contrat(a[i], pointeur_du_capital, matrice_adja, nom_ville);
                             gestion_evenement_aleatoire(pointeur_du_capital);
                         }
-                        printf("Votre entreprise possede : %1.2f euros\n\n", capital);
+                        printf("Votre entreprise possède : %1.2f euros.\n\n", capital);
                         }
                         contract_real = 1;
                     }
                     else
                     {
-                        printf("Cette option n'est plus disponible pour ce tour");
+                        printf("Cette option n'est plus disponible pour ce tour.");
                     }
                     break;
             case 'E': 
@@ -364,13 +364,13 @@ int main()
                         }
                         else
                         {
-                            printf("Votre capital n'est pas suffisant pour embaucher un nouveau conducteur\n");
-                            printf("Pour rappel, il faut que votre capital possede 90 000 euros pour pouvoir financer un nouveau conducteur et son materiel");
+                            printf("Votre capital n'est pas suffisant pour embaucher un nouveau conducteur.\n");
+                            printf("Pour rappel, il faut que votre capital soit d'au moins 90 000 euros pour pouvoir financer un nouveau conducteur et son materiel.");
                         }
                     }
                     else
                     {
-                        printf("Vous ne pouvez pas disposer de plus de 10 conducteurs");
+                        printf("Vous ne pouvez pas disposer de plus de 10 conducteurs.");
                     }
 
                     break;
