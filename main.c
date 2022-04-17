@@ -191,7 +191,7 @@ void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10],int *nb_
 void affichage_menu(int * nombre_de_tour, float * capital,int * contract_real)
 {
     printf("\n*************************************************\n");
-    printf("votre capital est de %f euros.\n",*capital);
+    printf("Votre capital est de %f euros.\n",*capital);
     printf("\nMenu\n");
     if (*contract_real == 0)
         {printf("(A)ttribuer un contrat à vos conducteur\n");}
