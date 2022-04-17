@@ -156,7 +156,7 @@ int salaire (float *capital,struct conducteur (*a)[10], int nombre_de_conduct)
 
 void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10],int *nb_conducteur, float *capitale)
 {
-    printf("Tapez 1 si vous voulez engager un nouveau conducteur (rappel : cela vous coutera 90 000 euros).");
+    printf("Tapez 1 si vous voulez engager un nouveau conducteur (rappel : cela vous coutera 90 000 euros).\n");
     int var_validation1 = get_int_in_input_in_range(0, 1);
     if (var_validation1 == 1)
     {
@@ -171,13 +171,13 @@ void ajout_conducteur(int nombre_de_conduct, struct conducteur (*a)[10],int *nb_
             proposition_conduc[i] = ville_aleatoire(proposition_conduc[i], NOMBRE_DE_VILLES);
         }
 
-        printf("On vous propose 3 conducteurs");
-        printf("Le premier se nomme %s a un cout par kilomètre de %f et se trouve actuellement dans la ville de %d.\n", proposition_conduc[0].nom, proposition_conduc[0].cout_au_km, proposition_conduc[0].position);
-        printf("Le second se nomme %s a un cout par kilomètre de %f et se trouve actuellement dans la ville de %d.\n", proposition_conduc[1].nom, proposition_conduc[1].cout_au_km, proposition_conduc[1].position);
-        printf("Le troisieme se nomme %s a un cout par kilomètre de %f et se trouve actuellement dans la ville de %d.\n", proposition_conduc[2].nom, proposition_conduc[2].cout_au_km, proposition_conduc[2].position);
+        printf("On vous propose 3 conducteurs :\n");
+        printf("Le premier se nomme %s a un coût par kilomètre de %f et se trouve actuellement dans la ville %d.\n", proposition_conduc[0].nom, proposition_conduc[0].cout_au_km, proposition_conduc[0].position);
+        printf("Le second se nomme %s a un coût par kilomètre de %f et se trouve actuellement dans la ville %d.\n", proposition_conduc[1].nom, proposition_conduc[1].cout_au_km, proposition_conduc[1].position);
+        printf("Le troisieme se nomme %s a un coût par kilomètre de %f et se trouve actuellement dans la ville %d.\n", proposition_conduc[2].nom, proposition_conduc[2].cout_au_km, proposition_conduc[2].position);
 
         int var_validation2;
-        printf("Tapez 1, 2 ou 3 pour choisir un conducteur. Sinon vous ne pourrez pas choisir un nouveau conducteur.");
+        printf("Tapez 1, 2 ou 3 pour choisir un conducteur. Sinon vous ne pourrez pas choisir un nouveau conducteur.\n");
         var_validation2 = get_int_in_input_in_range(1, 3);
         *nb_conducteur = *nb_conducteur + 1;
         *capitale = *capitale-90000;
