@@ -22,7 +22,7 @@ void sauvegarder(float capital, int nbr_conduc, struct conducteur *a)
 
     for (int i = 0; i < nbr_conduc; i++)
     {
-        sprintf(str, "%d;%d;%d;%f;%d;%s\n", a[i].id, a[i].position, a[i].compteur_km, a[i].cout_au_km, a[i].jour_de_repos, a[i].nom);
+        sprintf(str, "%d;%d;%d;%f;%d;%s;\n", a[i].id, a[i].position, a[i].compteur_km, a[i].cout_au_km, a[i].jour_de_repos, a[i].nom);
         fputs(str, document);//on toutes les info de chaque conduc
     }
     fclose(document); // on ferme le document
