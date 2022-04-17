@@ -1,6 +1,6 @@
 #ifndef DIJKSTRA_H
 #define DIJKSTRA_H
-#define NOMBRE_DE_VILLE 16
+#define NOMBRE_DE_VILLE 27
 
 
 _Bool is_not_in(int li[NOMBRE_DE_VILLE],int val);
