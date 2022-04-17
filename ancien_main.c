@@ -9,7 +9,7 @@
 #include "sauvegarde.h"
 #include "dijkstra.h"
 
-#define NOMBRE_DE_VILLES 27 // on construit par la suite des arrays dont la taille est égale au nombre de villes, a modif aux besoins
+#define NOMBRE_DE_VILLES 16 // on construit par la suite des arrays dont la taille est égale au nombre de villes, a modif aux besoins
 
 void viderBuffer()
 {

@@ -1,6 +1,6 @@
 #ifndef IMPORT_H
 #define IMPORT_H
-#define NOMBRE_DE_VILLES   27
+#define NOMBRE_DE_VILLES   16
 #include "conducteur.h"
 #include <stdio.h>
 

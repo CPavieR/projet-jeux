@@ -1,6 +1,6 @@
 #ifndef CONDUCTEUR_H
 #define CONDUCTEUR_H
-#define NOMBRE_DE_VILLES   27
+#define NOMBRE_DE_VILLES   16
 struct conducteur {
 int id;
 int position;

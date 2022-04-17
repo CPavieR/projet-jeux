@@ -3,7 +3,7 @@
 #include "conducteur.h"
 
 
-#define NOMBRE_DE_VILLES   27
+#define NOMBRE_DE_VILLES   16
 
 
 
